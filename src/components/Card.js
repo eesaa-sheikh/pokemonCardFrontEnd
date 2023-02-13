@@ -49,7 +49,9 @@ const Card = ({pokemon}) => {
                 <li>Spe: {pokemon.speed}</li>
             </ul>
             </div>
+            <div>
             <p className="rating">Rating: {pokemon.rating}</p>
+            </div>
         </div>
 
     );
