@@ -2,9 +2,11 @@ const Card = ({pokemon}) => {
 
 
     return ( 
-        <>
+        <div className = "pokemonCard" style = {{backgroundImage : `url(${pokemon.imgUrl})`, width: "30vw", height: "45vh", backgroundSize: "cover", backgroundPosition:"center"}}>
             <h2>{pokemon.name}</h2>
-            <img src={pokemon.imgUrl}/>
+
+            {/* <img src={pokemon.imgUrl}/> */}
+            <div className="pokeInfo">
             <p>Type: {pokemon.type.name}</p>
             <ul>
                 <li>HP: {pokemon.hp}</li>
@@ -14,8 +16,9 @@ const Card = ({pokemon}) => {
                 <li>SpD: {pokemon.specialDefence}</li>
                 <li>Spe: {pokemon.speed}</li>
             </ul>
+            </div>
             <p>Rating: {pokemon.rating}</p>
-        </>
+        </div>
     );
 }
  
