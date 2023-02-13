@@ -9,12 +9,11 @@
 
 }
 
-.pokiName{
+.pokiName, .rating{
 padding-left: 3px;
 color: aliceblue;
-background: linear-gradient(109.6deg, rgba(0, 0, 0, 0.93) 11.2%, rgb(63, 61, 61) 78.9%);
-image-rendering: url(https://www.pngall.com/wp-content/uploads/4/Pokeball-PNG-Images.png);
-}
+background: rgb(36,37,37);
+background: linear-gradient(260deg, rgba(36,37,37,0.2091211484593838) 0%, rgba(0,0,0,0.5) 80%);}
 
 
 .pokeInfo{
@@ -25,7 +24,6 @@ image-rendering: url(https://www.pngall.com/wp-content/uploads/4/Pokeball-PNG-Im
   opacity: 0.65;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 10px;
   padding: 0.5em;
   -webkit-text-fill-color: black;
   -webkit-text-stroke-width: 0.6px;
@@ -38,6 +36,24 @@ image-rendering: url(https://www.pngall.com/wp-content/uploads/4/Pokeball-PNG-Im
 .pokiType{
   background-color: blue;
 } */
+
+.pokiType{
+
+  width: 90px;
+  padding-top: 1px;
+  text-align: center;
+
+  border-radius: 10px;
+  border: 3px solid #4a4949;
+ 
+  background: rgb(0,255,27);
+  background: linear-gradient(94deg, rgba(0,255,27,1) 0%, rgba(101,191,104,1) 84%);
+  word-wrap: break-word;
+  padding-left:1px;
+  padding-bottom:1px;
+
+  }
+
 
 
 .pokemonCard:hover{
@@ -69,12 +85,18 @@ ul {
   columns: 3;
   -webkit-columns: 3;
   -moz-columns: 3;
-  gap: 10px;
-  background: rgb(0,90,226);
-  background: linear-gradient(202deg, rgba(0,90,226,0.007440476190476164) 3%, rgba(226,206,0,1) 84%);
+
+  background: rgb(36,37,37);
+  background: linear-gradient(260deg, rgba(36,37,37,0.2091211484593838) 0%, rgba(0,0,0,1) 84%);
+  
   border-radius: 10px;
   justify-content: space-between;
+
   list-style: none;
+}
+
+li{
+  padding: 1px 1px 1px 10px;
 }
 
 
@@ -101,4 +123,59 @@ ul {
   bottom: 0;
   top: 0;
   background-repeat: no-repeat;
+} */
+
+
+/* .pokiType{
+ background-color: aqua;
+} */
+
+
+
+/* §§§§§§§§§§§§§§§§§ Pokemon type assignment */
+.pokiType[class*="water"]{
+  background-color: blue;
+}
+
+.pokiType[class*="grass"]{
+  background-color: green;
+}
+
+.pokiType[class*="rock"]{
+  background-color: grey;
+}
+
+.pokiType[class*="poisen"]{
+  background-color: purple;
+}
+
+/* .rock {
+  background-color: rgb(148, 81, 81);
+}
+.ghost {
+  background-color: rgb(247, 247, 247);
+}
+.electric {
+  background-color: rgb(255, 255, 161);
+}
+.bug {
+  background-color: #F6D6A7;
+}
+.poison {
+  background-color: #e0a7f6;
+}
+.normal {
+  background-color: #F4F4F4;
+}
+.fairy {
+  background-color: rgba(255, 192, 203, 0.863);
+}
+.fire {
+  background-color: #FBE3DF;
+}
+.grass {
+  background-color:#E2F9E1;
+}
+.water {
+  background-color:#E0F1FD;
 } */
