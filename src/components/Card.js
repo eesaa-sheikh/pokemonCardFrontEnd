@@ -2,8 +2,16 @@ const Card = ({pokemon}) => {
 
 
     return ( 
-        <div className = "pokemonCard" style = {{backgroundImage : `url(${pokemon.imgUrl})`, width: "6.3cm", height: "8.8cm", backgroundSize: "cover", backgroundPosition:"center"}}>
-            <h2>{pokemon.name}</h2>
+        
+        //         <div className= "meme" style = {backgroundImage: "https://assets.codepen.io/13471/sparkles.gif", opacity:"0.5"}></div>
+
+        
+        <div className = "pokemonCard" style = {{backgroundImage : `url(${pokemon.imgUrl})`,width: "6.3cm", height: "8.8cm", backgroundSize: "cover", backgroundPosition:"center"}}>
+            <h2 className="pokiName">{pokemon.name}</h2>
+
+            {/* <div>
+            <img src="background-image: url('https://images.pokemontcg.io/swsh3/19_hires.png');"/>
+            </div> */}
 
             {/* <img src={pokemon.imgUrl}/> */}
             
@@ -21,6 +29,7 @@ const Card = ({pokemon}) => {
             </div>
             <p>Rating: {pokemon.rating}</p>
         </div>
+
     );
 }
  

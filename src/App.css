@@ -2,17 +2,18 @@
   border: 15px solid rgb(241,222,43);
   border-radius: 10px;
   position: relative;
-
-  
-
   
   animation: holoSparkle 20s ease infinite;
 
 
 
 }
-.pokemonCard:hover{
-  background-image: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/13471/sparkles.gif);
+
+.pokiName{
+padding-left: 3px;
+color: aliceblue;
+background: linear-gradient(109.6deg, rgba(0, 0, 0, 0.93) 11.2%, rgb(63, 61, 61) 78.9%);
+image-rendering: url(https://www.pngall.com/wp-content/uploads/4/Pokeball-PNG-Images.png);
 }
 
 
@@ -38,15 +39,18 @@
   background-color: blue;
 } */
 
+
 .pokemonCard:hover{
   transform: scale(1.1);
   transition: 0.1s;
+  background-image: url();
 
   width: 200px;
     height: 100px;
     border: 10px solid;
-    border-image: linear-gradient(45deg, gold, deeppink) 1;
+    border-image: linear-gradient(45deg, gold, rgb(20, 36, 255)) 1;
     clip-path: inset(0px round 10px);
+    background-image: url(https://assets.codepen.io/13471/sparkles.gif);
     animation: huerotate 6s infinite linear;
     filter: hue-rotate(360deg);
 
@@ -60,3 +64,41 @@
       filter: hue-rotate(360deg);
   }
 }
+
+ul {
+  columns: 3;
+  -webkit-columns: 3;
+  -moz-columns: 3;
+  gap: 10px;
+  background: rgb(0,90,226);
+  background: linear-gradient(202deg, rgba(0,90,226,0.007440476190476164) 3%, rgba(226,206,0,1) 84%);
+  border-radius: 10px;
+  justify-content: space-between;
+  list-style: none;
+}
+
+
+
+/* .pokemonCard:after {
+  opacity: 1;
+  background-image: url(https://assets.codepen.io/13471/sparkles.gif);
+  background-position: center;
+  background-size: 160%;
+  z-index: 2;
+  animation: holoSparkle 15s ease infinite both;
+  filter: brightness(1);
+  transition: filter 0.5s ease;
+}
+
+
+.pokemonCard:before, .card:after {
+  content: "";
+  opacity: .1;
+  mix-blend-mode: screen;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 0;
+  background-repeat: no-repeat;
+} */
