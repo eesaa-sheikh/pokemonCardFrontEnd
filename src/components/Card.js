@@ -6,8 +6,10 @@ const Card = ({pokemon}) => {
             <h2>{pokemon.name}</h2>
 
             {/* <img src={pokemon.imgUrl}/> */}
+            
+            
+            <p className="pokiType">Type: {pokemon.type.name}</p>
             <div className="pokeInfo">
-            <p>Type: {pokemon.type.name}</p>
             <ul>
                 <li>HP: {pokemon.hp}</li>
                 <li>Atk: {pokemon.attack}</li>
