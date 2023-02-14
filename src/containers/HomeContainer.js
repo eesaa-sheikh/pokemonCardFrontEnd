@@ -14,14 +14,7 @@ const HomeContainer = () => {
 
     return ( 
         <>
-            <Link to="/">Home</Link>
-            <Link to="/game">Play</Link>
-            <Link to="/pokedex">Pokedex</Link>
-
-            <Routes>
-                <Route path="/pokedex" element={<PokedexContainer/>}/>
-                <Route path="/game" element={<GameContainer/>}/>
-            </Routes>
+            
         </>
     );
 }
