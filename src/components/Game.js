@@ -14,7 +14,7 @@ const Game = ({user}) => {
         .then(response => response.json())
         .then(data => setOpponent(data));
 
-    }, [])
+    }, [id])
     
     return ( 
         <>
