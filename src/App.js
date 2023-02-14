@@ -25,7 +25,7 @@ function App() {
     <>
       <AccountContext.Provider value={account}>
         <BrowserRouter>
-
+            <p>Hello {account.username}</p>
             <Link to="/">Home</Link>
             <Link to="/game">Play</Link>
             <Link to="/pokedex">Pokedex</Link>
