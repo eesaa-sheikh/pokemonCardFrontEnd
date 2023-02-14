@@ -10,8 +10,20 @@ html, body {
 
 }
 
-.pokemonCard .cardBanner {
+.pokemonCard .cardBannerTop {
+  display: flex;
+  justify-content: space-between;
   background-image: linear-gradient(rgb(0,0,0,0.6) 70%, rgb(0,0,0,0));
+}
+
+.cardBannerTop .typeImage {
+  width:auto;
+  height: 30px;
+  padding: 8px;
+}
+
+.pokemonCard .cardBanner {
+  
 }
 
 .pokemonCard .cardBanner h2 {

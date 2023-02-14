@@ -16,15 +16,16 @@ const Card = ({pokemon}) => {
                                                  position: "relative",
                                                  fontFamily: "'Roboto', sans-serif",
                                                 }}>
-            <div className="cardBanner">
-            <h2>{pokemon.name}</h2>
-            <Rating name="pokemonRating" size="small" className="cardRating" value={pokemon.rating} max={pokemon.rating} readOnly/>
-            </div>
-            {/* <img src={pokemon.imgUrl}/> */}
-
-            <img className='typeImage' src= {require(`../PokemonTypeAsset/${pokemon.type.name}_icon_SwSh.png`)} width = {"30px"} alt = {pokemon.type.name}/>
-
-                        <div className="pokeInfo">
+            <div className='cardBannerTop'>
+                <div className="cardBanner">
+                <h2>{pokemon.name}</h2>
+                <Rating name="pokemonRating" size="small" className="cardRating" value={pokemon.rating} max={pokemon.rating} readOnly/>
+                </div>
+                {/* <img src={pokemon.imgUrl}/> */}
+                
+                <img className='typeImage' src= {require(`../PokemonTypeAsset/${pokemon.type.name}_icon_SwSh.png`)} width = {"30px"} alt = {pokemon.type.name}/>
+                </div>
+            <div className="pokeInfo">
                 <ul>
                     <p><span className="statName">HP</span> {pokemon.hp}</p>
                     <p><span className="statName">Atk</span> {pokemon.attack}</p>
