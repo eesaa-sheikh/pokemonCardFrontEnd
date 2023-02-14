@@ -20,6 +20,11 @@ function App() {
     .then (data => setAccount(data))
   }, []);
   
+  const logInToAnAccount = async (accountName, accountPassword) => {
+    const response = await fetch(`http://localhost:8080/accounts/login?name=${accountName}&password=${accountPassword}`)
+    const data = await response.json()
+    setAccount(data);
+  };
 
   return (
     <>
@@ -36,7 +41,7 @@ function App() {
             <Route path="/pokedex" element={<PokedexContainer/>}/>
             <Route path="/game" element={<OppsSelect/>}/>
             <Route path="/game/playgame/:id" element={<Game account={account}/>}/>
-            <Route path="/register" element={<LoginContainer setAccount={setAccount}/>} /> 
+            <Route path="/register" element={<LoginContainer logInToAnAccount={logInToAnAccount}/>} /> 
           </Routes>
 
           
