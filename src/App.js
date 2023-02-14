@@ -1,7 +1,9 @@
-import { createContext, useContext, useState } from 'react';
+import { createContext, useContext, useEffect, useState } from 'react';
 import { BrowserRouter, Link, Route, Router, Routes, useSearchParams } from 'react-router-dom';
 import './App.css';
 import GameContainer from './containers/GameContainer';
+import HomeContainer from './containers/HomeContainer';
+import LoginContainer from './containers/LoginContainer';
 import PokedexContainer from './containers/PokedexContainer';
 
 const AccountContext = createContext();  
@@ -9,6 +11,10 @@ const AccountContext = createContext();
 function App() {
   
   const [account, setAccount] = useState("");
+
+  useEffect(() => {
+    setAccount("Brock");
+  }, []);
   
 
   return (
@@ -16,13 +22,12 @@ function App() {
       <AccountContext.Provider value={account}>
         <BrowserRouter>
 
+          
+
           <Routes>
-            <Route path="/" element={<h1>Kabutops Trumps</h1>}/>
-            <Route path="/pokedex" element={<PokedexContainer/>}/>
+            <Route path="/*" element={<HomeContainer/>}/>
           </Routes>
 
-          <Link to="/">Home</Link>
-          <Link to="/pokedex">Pokedex</Link>
           
         </BrowserRouter>
       </AccountContext.Provider>
@@ -31,3 +36,4 @@ function App() {
 }
 
 export default App;
+export {AccountContext};

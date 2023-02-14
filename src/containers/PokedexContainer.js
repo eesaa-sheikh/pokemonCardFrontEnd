@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react"
 import Card from "../components/Card"
+import PokedexList from "../components/PokedexList";
 
 const PokedexContainer = () => {
 
@@ -13,20 +14,11 @@ const PokedexContainer = () => {
         .then(data => setPokedex(data));
     }, []);
 
-    const pokedexList = pokedex.map((pokemon) => {
-
-        return (
-            <>
-                <Card key={pokemon.id} pokemon={pokemon}/>
-                <hr/>
-            </>
-        )
-    });
+    
 
     return ( 
         <>
-            {pokedexList}
-            {console.log(pokedex)}
+            <PokedexList pokedex={pokedex}/>
         </>
     );
 }
