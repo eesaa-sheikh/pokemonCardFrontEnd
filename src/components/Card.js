@@ -1,6 +1,7 @@
 import * as React from 'react';
 import Rating from '@mui/material/Rating';
 
+
 const Card = ({pokemon}) => {
 
 
@@ -21,13 +22,9 @@ const Card = ({pokemon}) => {
             </div>
             {/* <img src={pokemon.imgUrl}/> */}
 
-            <img className='typeImage' src= {pokemon.type.imgUrl} width = {"20px"} alt = {pokemon.type.name}/>
+            <img className='typeImage' src= {require(`../PokemonTypeAsset/${pokemon.type.name}_icon_SwSh.png`)} width = {"30px"} alt = {pokemon.type.name}/>
 
-            
-            
-            
-            <p className="pokiType">Type: {pokemon.type.name}</p>
-            <div className="pokeInfo">
+                        <div className="pokeInfo">
                 <ul>
                     <p><span className="statName">HP</span> {pokemon.hp}</p>
                     <p><span className="statName">Atk</span> {pokemon.attack}</p>
