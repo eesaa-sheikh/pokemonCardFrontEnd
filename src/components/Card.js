@@ -9,7 +9,12 @@ const Card = ({pokemon}) => {
                                                  width: "6.3cm",
                                                  height: "8.8cm", 
                                                  backgroundSize: "cover", 
-                                                 backgroundPosition:"center"}}>
+                                                 backgroundPosition:"center",
+                                                 border: `10px solid ${pokemon.type.colourType}`,
+                                                 borderRadius: "10px",
+                                                 position: "relative",
+                                                 fontFamily: "'Roboto', sans-serif",
+                                                }}>
             <div className="cardBanner">
             <h2>{pokemon.name}</h2>
             <Rating name="pokemonRating" size="small" className="cardRating" value={pokemon.rating} max={pokemon.rating} readOnly/>

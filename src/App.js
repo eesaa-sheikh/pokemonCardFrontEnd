@@ -32,7 +32,7 @@ function App() {
             <Route path="/" element={<HomeContainer/>}/>
             <Route path="/pokedex" element={<PokedexContainer/>}/>
             <Route path="/game" element={<OppsSelect/>}/>
-            <Route path="/game/playgame/:id" element={<Game/>}/>
+            <Route path="/game/playgame/:id" element={<Game account={account}/>}/>
           </Routes>
 
           

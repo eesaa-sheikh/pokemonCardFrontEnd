@@ -6,10 +6,7 @@ html, body {
   
 
 .pokemonCard{
-  border: 15px solid rgb(241,222,43);
-  border-radius: 10px;
-  position: relative;
-  font-family: 'Roboto', sans-serif;
+
 
 }
 
