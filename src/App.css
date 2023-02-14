@@ -58,7 +58,7 @@ background: linear-gradient(260deg, rgba(36,37,37,0.2091211484593838) 0%, rgba(0
 
 .pokemonCard:hover{
   transform: scale(1.1);
-  transition: 0.1s;
+  transition: 0.5s;
   background-image: url();
 
   width: 200px;
