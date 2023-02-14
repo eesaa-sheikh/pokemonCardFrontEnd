@@ -2,11 +2,19 @@ import * as React from 'react';
 import Rating from '@mui/material/Rating';
 
 
-const Card = ({pokemon, selectedCard, setSelectedCard}) => {
+const Card = ({pokemon, userHand, setUserHand, selectedCard, setSelectedCard}) => {
 
+    const handleClick = (() => {
+        if (selectedCard === "") {
+            setSelectedCard(pokemon);
+            const newHand = userHand.filter(item => item !== pokemon);
+            console.log(newHand);
+            setUserHand(newHand);
+        }
+    })
 
     return ( 
-        <>{pokemon !== selectedCard ? <div onClick={() => {setSelectedCard(pokemon)}} 
+        <>{1 === 1  ? <div onClick={handleClick} 
              className = "pokemonCard" style = {{backgroundImage : `url(${pokemon.imgUrl})`,
                                                  width: "6.3cm",
                                                  height: "8.8cm", 
@@ -31,17 +39,17 @@ const Card = ({pokemon, selectedCard, setSelectedCard}) => {
             <div className="pokeInfo">
                 <ul>
                     <p className={pokemon === selectedCard ? "hover:border-white  transition-all duration-500 border-cyan-500/0 rounded-md border-[1px] m-[1px] mx-auto w-fit p-[3px] text-sm" : "m-[1px] mx-auto w-fit p-[3px] text-sm"}><span className="statName">HP</span> {pokemon.hp}</p>
-                    <p className='m-[1px] mx-auto transition-all duration-500 border-cyan-500/0 rounded-md border-[1px] w-fit p-[3px] text-sm hover:border-white'><span className="statName">Atk</span> {pokemon.attack}</p>
+                    <p className={pokemon === selectedCard ? "hover:border-white  transition-all duration-500 border-cyan-500/0 rounded-md border-[1px] m-[1px] mx-auto w-fit p-[3px] text-sm" : "m-[1px] mx-auto w-fit p-[3px] text-sm"}><span className="statName">Atk</span> {pokemon.attack}</p>
                 
                 </ul>
                 <ul>
-                    <p className='m-[1px] mx-auto transition-all duration-500 border-cyan-500/0 rounded-md border-[1px] w-fit p-[3px] text-sm hover:border-white'><span className="statName">Def</span> {pokemon.defence}</p>
-                    <p className='m-[1px] mx-auto transition-all duration-500 border-cyan-500/0 rounded-md border-[1px] w-fit p-[3px] text-sm hover:border-white'><span className="statName">SpA</span> {pokemon.specialAttack}</p>
+                    <p className={pokemon === selectedCard ? "hover:border-white  transition-all duration-500 border-cyan-500/0 rounded-md border-[1px] m-[1px] mx-auto w-fit p-[3px] text-sm" : "m-[1px] mx-auto w-fit p-[3px] text-sm"}><span className="statName">Def</span> {pokemon.defence}</p>
+                    <p className={pokemon === selectedCard ? "hover:border-white  transition-all duration-500 border-cyan-500/0 rounded-md border-[1px] m-[1px] mx-auto w-fit p-[3px] text-sm" : "m-[1px] mx-auto w-fit p-[3px] text-sm"}><span className="statName">SpA</span> {pokemon.specialAttack}</p>
 
                 </ul>
                 <ul>
-                    <p className='m-[1px] mx-auto transition-all duration-500 border-cyan-500/0 rounded-md border-[1px] w-fit p-[3px] text-sm hover:border-white'><span className="statName">SpD</span> {pokemon.specialDefence}</p>
-                    <p className='m-[1px] mx-auto transition-all duration-500 border-cyan-500/0 rounded-md border-[1px] w-fit p-[3px] text-sm hover:border-white'><span className="statName">Spe</span> {pokemon.speed}</p>
+                    <p className={pokemon === selectedCard ? "hover:border-white  transition-all duration-500 border-cyan-500/0 rounded-md border-[1px] m-[1px] mx-auto w-fit p-[3px] text-sm" : "m-[1px] mx-auto w-fit p-[3px] text-sm"}><span className="statName">SpD</span> {pokemon.specialDefence}</p>
+                    <p className={pokemon === selectedCard ? "hover:border-white  transition-all duration-500 border-cyan-500/0 rounded-md border-[1px] m-[1px] mx-auto w-fit p-[3px] text-sm" : "m-[1px] mx-auto w-fit p-[3px] text-sm"}><span className="statName">Spe</span> {pokemon.speed}</p>
                 </ul>
             </div>
             {/* <p>Rating: {pokemon.rating}</p> */}

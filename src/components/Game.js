@@ -54,14 +54,14 @@ const Game = ({user}) => {
         <>
             <p>{opponent.trainerTitle} {opponent.username} VS {account.trainerTitle} {account.username}</p>
             <div className="scale-50">
-                <HandCards cards={opponentHand}/>
+                <HandCards userHand={opponentHand}/>
             </div>
                 {/* OpponentCard */}
 
-                {selectedCard ? <Card pokemon={selectedCard}/> : <></> }
+                {selectedCard ? <Card pokemon={selectedCard} selectedCard={selectedCard}/> : <></> }
                 {/* YourCard */}
             <div className="scale-50">
-                <HandCards cards={userHand} selectedCard={selectedCard} setSelectedCard={setSelectedCard}/>
+                <HandCards userHand={userHand} setUserHand={setUserHand} selectedCard={selectedCard} setSelectedCard={setSelectedCard}/>
             </div>
            
             {console.log(opponentHand)}
