@@ -20,6 +20,10 @@ const Card = ({pokemon}) => {
             <Rating name="pokemonRating" size="small" className="cardRating" value={pokemon.rating} max={pokemon.rating} readOnly/>
             </div>
             {/* <img src={pokemon.imgUrl}/> */}
+
+            <img className='typeImage' src= {pokemon.type.imgUrl} width = {"20px"} alt = {pokemon.type.name}/>
+
+            
             
             
             <p className="pokiType">Type: {pokemon.type.name}</p>
