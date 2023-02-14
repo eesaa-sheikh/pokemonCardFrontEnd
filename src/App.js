@@ -15,7 +15,9 @@ function App() {
   const [account, setAccount] = useState("");
 
   useEffect(() => {
-    setAccount("Brock");
+    fetch("http://localhost:8080/accounts/10")
+    .then(response => response.json( ))
+    .then (data => setAccount(data))
   }, []);
   
 
@@ -34,7 +36,7 @@ function App() {
             <Route path="/pokedex" element={<PokedexContainer/>}/>
             <Route path="/game" element={<OppsSelect/>}/>
             <Route path="/game/playgame/:id" element={<Game account={account}/>}/>
-            <Route path="/register" element={<LoginContainer/>} /> 
+            <Route path="/register" element={<LoginContainer setAccount={setAccount}/>} /> 
           </Routes>
 
           

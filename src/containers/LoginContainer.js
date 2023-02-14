@@ -1,6 +1,6 @@
-const LoginContainer = () => {
+const LoginContainer = ({setAccount}) => {
 
-    
+
 
 
 
