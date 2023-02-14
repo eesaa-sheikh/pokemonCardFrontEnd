@@ -1,6 +1,6 @@
 import AccountCard from "./AccountCard";
 
-const AccountList = ({allAccounts, setOpps}) => {
+const AccountList = ({allAccounts, setOpp}) => {
 
     return ( 
         <>

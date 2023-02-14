@@ -4,11 +4,12 @@ import Game from "../components/Game";
 
 const GameContainer = () => {
 
-    const [opps, setOpps] = useState("");
+    const [opp, setOpp] = useState("");
 
     return ( 
         <>
-            {<OppsSelect setOpps={setOpps}/>}
+            {opp === "" ? <OppsSelect setOpp={setOpp}/> : <Game/>}
+
         </>
     );
 }
