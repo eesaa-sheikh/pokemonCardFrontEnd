@@ -1,7 +1,35 @@
+html, body {
+  margin: 0px;
+  padding: 0px;
+  border: 0px;
+}
+  
+
 .pokemonCard{
   border: 15px solid rgb(241,222,43);
   border-radius: 10px;
   position: relative;
+  font-family: 'Roboto', sans-serif;
+
+}
+
+.pokemonCard .cardBanner {
+  background-image: linear-gradient(rgb(0,0,0,0.6) 70%, rgb(0,0,0,0));
+}
+
+.pokemonCard .cardBanner h2 {
+  margin: 0px;
+  padding-left: 10px;
+  padding-top: 10px;
+  color: white;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 800;
+  font-size: large;
+}
+
+.pokemonCard .cardRating {
+  padding-left: 8px;
+  padding-bottom: 15px
 }
 
 .pokeInfo{
@@ -10,18 +38,62 @@
   /* padding-left: 1vh; */
  /* background-color: antiquewhite; */
   opacity: 0.65;
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 10px;
-  padding: 0.5em;
-  -webkit-text-fill-color: black;
-  -webkit-text-stroke-width: 0.6px;
-  -webkit-text-stroke-color: white;
-  font-style: oblique;
-  font-weight: bolder;
+  display: flex;
+  text-align: center;
+  background-image: linear-gradient(rgb(0,0,0,0) 0%, rgb(0,0,0,0.6) 20%);
+  /* -webkit-text-stroke: 1px white; */
+  color: white;
+  /* font-style: oblique; */
+  font-weight:800;
+  /* padding-left: 20px; */
+  width: 100%;
+  opacity: 1;
+  transition: 0.5s ease;
+
+}
+
+.pokemonCard:hover .pokeInfo{
+  bottom: 0;
+  height: fit-content;
+  transition: 0.5s ease;
+}
+
+.pokeInfo ul {
+  width: 50%;
+  padding: 0;
+  margin-top: 20px;
+  margin-bottom: 8px;
+  display: flex;
+  flex-direction: column;
+}
+
+.pokeInfo ul p {
+  margin: 1px;
+  margin-left: auto;
+  margin-right: auto;
+  transition: 0.5s ease-in-out;
+  border: 1px solid rgb(0,0,0,0);
+  border-radius: 5px;
+  width: fit-content;
+  padding: 3px;
+  font-size: small;
+  
+}
+
+.pokeInfo ul p:hover {
+  /* scale: 1.1; */
+
+  transition: 0s ease-out;
+  border: 1px solid white;
+  border-radius: 5px;
+
+}
+
+.pokeInfo ul p .statName {
+  font-weight: 300;
 }
 
 
 .pokiType{
-  background-color: blue;
+  /* background-color: blue; */
 }
