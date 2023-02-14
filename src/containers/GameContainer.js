@@ -1,13 +1,15 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import OppsSelect from "./OppsSelect";
+import Game from "../components/Game";
 
 const GameContainer = () => {
-    
-    useEffect(() => {
-        
-    }, []);
+
+    const [opps, setOpps] = useState("");
 
     return ( 
-        <></>
+        <>
+            {<OppsSelect setOpps={setOpps}/>}
+        </>
     );
 }
  
