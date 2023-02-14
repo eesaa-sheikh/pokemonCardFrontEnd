@@ -61,11 +61,11 @@ html, body {
 
 }
 
-.pokemonCard:hover .pokeInfo{
+/* .pokemonCard:hover .pokeInfo{
   bottom: 0;
   height: fit-content;
   transition: 0.5s ease;
-}
+} */
 
 .pokeInfo ul {
   width: 50%;
@@ -76,7 +76,7 @@ html, body {
   flex-direction: column;
 }
 
-.pokeInfo ul p {
+/* .pokeInfo ul p {
   margin: 1px;
   margin-left: auto;
   margin-right: auto;
@@ -87,16 +87,16 @@ html, body {
   padding: 3px;
   font-size: small;
   
-}
+} */
 
-.pokeInfo ul p:hover {
-  /* scale: 1.1; */
+/* .pokeInfo ul p:hover {
+  scale: 1.1;
 
   transition: 0s ease-out;
   border: 1px solid white;
   border-radius: 5px;
 
-}
+} */
 
 .pokeInfo ul p .statName {
   font-weight: 300;

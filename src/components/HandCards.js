@@ -1,12 +1,12 @@
 import Card from "./Card";
 
-const HandCards = ({cards}) => {
+const HandCards = ({cards, selectedCard, setSelectedCard}) => {
     return (  
-        <div className="flex">
+        <div className="flex gap-5">
             {cards.map((pokemon) => {
                 return (
                     <div>
-                        <Card key={pokemon.id} pokemon={pokemon}/>
+                        <Card key={pokemon.id} pokemon={pokemon} selectedCard={selectedCard} setSelectedCard={setSelectedCard}/>
                     </div>
                 )
             })}

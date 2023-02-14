@@ -2,11 +2,12 @@ import * as React from 'react';
 import Rating from '@mui/material/Rating';
 
 
-const Card = ({pokemon}) => {
+const Card = ({pokemon, selectedCard, setSelectedCard}) => {
 
 
     return ( 
-        <div className = "pokemonCard" style = {{backgroundImage : `url(${pokemon.imgUrl})`,
+        <>{pokemon !== selectedCard ? <div onClick={() => {setSelectedCard(pokemon)}} 
+             className = "pokemonCard" style = {{backgroundImage : `url(${pokemon.imgUrl})`,
                                                  width: "6.3cm",
                                                  height: "8.8cm", 
                                                  backgroundSize: "cover", 
@@ -25,24 +26,26 @@ const Card = ({pokemon}) => {
                 
                 <img className='typeImage' src= {require(`../PokemonTypeAsset/${pokemon.type.name}_icon_SwSh.png`)} width = {"30px"} alt = {pokemon.type.name}/>
                 </div>
+            
+            
             <div className="pokeInfo">
                 <ul>
-                    <p><span className="statName">HP</span> {pokemon.hp}</p>
-                    <p><span className="statName">Atk</span> {pokemon.attack}</p>
+                    <p className={pokemon === selectedCard ? "hover:border-white  transition-all duration-500 border-cyan-500/0 rounded-md border-[1px] m-[1px] mx-auto w-fit p-[3px] text-sm" : "m-[1px] mx-auto w-fit p-[3px] text-sm"}><span className="statName">HP</span> {pokemon.hp}</p>
+                    <p className='m-[1px] mx-auto transition-all duration-500 border-cyan-500/0 rounded-md border-[1px] w-fit p-[3px] text-sm hover:border-white'><span className="statName">Atk</span> {pokemon.attack}</p>
                 
                 </ul>
                 <ul>
-                    <p><span className="statName">Def</span> {pokemon.defence}</p>
-                    <p><span className="statName">SpA</span> {pokemon.specialAttack}</p>
+                    <p className='m-[1px] mx-auto transition-all duration-500 border-cyan-500/0 rounded-md border-[1px] w-fit p-[3px] text-sm hover:border-white'><span className="statName">Def</span> {pokemon.defence}</p>
+                    <p className='m-[1px] mx-auto transition-all duration-500 border-cyan-500/0 rounded-md border-[1px] w-fit p-[3px] text-sm hover:border-white'><span className="statName">SpA</span> {pokemon.specialAttack}</p>
 
                 </ul>
                 <ul>
-                    <p><span className="statName">SpD</span> {pokemon.specialDefence}</p>
-                    <p><span className="statName">Spe</span> {pokemon.speed}</p>
+                    <p className='m-[1px] mx-auto transition-all duration-500 border-cyan-500/0 rounded-md border-[1px] w-fit p-[3px] text-sm hover:border-white'><span className="statName">SpD</span> {pokemon.specialDefence}</p>
+                    <p className='m-[1px] mx-auto transition-all duration-500 border-cyan-500/0 rounded-md border-[1px] w-fit p-[3px] text-sm hover:border-white'><span className="statName">Spe</span> {pokemon.speed}</p>
                 </ul>
             </div>
             {/* <p>Rating: {pokemon.rating}</p> */}
-        </div>
+        </div> : <></>}</>
     );
 }
  

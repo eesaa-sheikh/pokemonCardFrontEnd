@@ -1,6 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { AccountContext } from "../App";
+import Card from "./Card";
 import HandCards from "./HandCards";
 
 const Game = ({user}) => {
@@ -45,14 +46,22 @@ const Game = ({user}) => {
         if (opponentDeck) {
             setOpponentHand(opponentDeck.slice(0,5));
         }
-    }, [id, userDeck, account])
+    }, [id, userDeck, account, opponentDeck]) // might not need account, will see later
+
+    const [selectedCard, setSelectedCard] = useState("");
     
     return ( 
         <>
             <p>{opponent.trainerTitle} {opponent.username} VS {account.trainerTitle} {account.username}</p>
-            <div>
+            <div className="scale-50">
                 <HandCards cards={opponentHand}/>
-                <HandCards cards={userHand}/>
+            </div>
+                {/* OpponentCard */}
+
+                {selectedCard ? <Card pokemon={selectedCard}/> : <></> }
+                {/* YourCard */}
+            <div className="scale-50">
+                <HandCards cards={userHand} selectedCard={selectedCard} setSelectedCard={setSelectedCard}/>
             </div>
            
             {console.log(opponentHand)}
