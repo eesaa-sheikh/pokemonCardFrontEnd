@@ -17,7 +17,7 @@ const Game = ({user}) => {
         fetch(`${SERVER_URL}/${id}`)
         .then(response => response.json())
         .then(data => setOpponent(data));
-    }, [id])
+    }, [id, account])
 
     const [opponentDeck, setOpponentDeck] = useState([]);
 
@@ -25,7 +25,7 @@ const Game = ({user}) => {
         fetch(`http://localhost:8080/cards/account/${id}/deck`)
         .then(response => response.json())
         .then(data => setOpponentDeck(data));
-    }, [id])
+    }, [id, account])
 
     const [userDeck, setUserDeck] = useState([]);
 
