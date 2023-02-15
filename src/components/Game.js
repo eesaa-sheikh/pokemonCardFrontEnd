@@ -123,7 +123,7 @@ const Game = ({user}) => {
         
     })
 
-    // Opponent Plays First Card in Hand
+    // Opponent Plays First Card in Hand -------------
     // After game is updated
     // Add indicators of Player A score and Player B score and round number(+1) to visual representation to screen
     // Discard opponent card
@@ -131,18 +131,18 @@ const Game = ({user}) => {
     // Display winner when gameState.winner !== ""
     
     useEffect(() => {
-        console.log(gameState);
+        console.log(gameState, "game state");
     }, [gameState])
 
     return ( 
         <>
-            <p>{opponent.trainerTitle} {opponent.username} VS {account.trainerTitle} {account.username}</p>
+            <p>{account.trainerTitle} {account.username} VS {opponent.trainerTitle} {opponent.username}</p>
             <div className="scale-50">
                 <HandCards userHand={opponentHand}/>
             </div>
                 {/* OpponentCard */}
 
-                {selectedCard ? <Card pokemon={selectedCard} setSelectedStat={setSelectedStat} selectedCard={selectedCard} handleRound={handleRound}/> : <></> }
+                {selectedCard ? <Card pokemon={selectedCard} selectedCard={selectedCard} handleRound={handleRound} gameState={gameState}/> : <></> }
                 {/* YourCard */}
             <div className="scale-50">
                 <HandCards userHand={userHand} setUserHand={setUserHand} selectedCard={selectedCard} setSelectedCard={setSelectedCard}/>
