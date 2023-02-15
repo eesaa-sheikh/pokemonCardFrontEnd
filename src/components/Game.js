@@ -104,25 +104,35 @@ const Game = ({user}) => {
     // console.log(gameState.id)
 
     const handleRound = ((selectedStat) => {
-        
-        if (opponentHand.length > 0 && selectedCard !== "") {
-            const opponentPlayStat = opponentHand[0][selectedStat];
-            const opponentPlayTypeId = opponentHand[0].type.id
-            const userPlayStat = selectedCard[selectedStat];
-            const userPlayTypeId = selectedCard.type.id
-            
-            fetch(`http://localhost:8080/games/${gameState.id}?statA=${userPlayStat}&statB=${opponentPlayStat}&typeAId=${userPlayTypeId}&typeBId=${opponentPlayTypeId}`,
-                {method: "PATCH",
-                headers: {'Content-Type': 'application/json'}
-                })
-            .then ((response)=> response.json())
-            .then ((response)=> {setGameState(response)})
-            
-            setSelectedCard("");
-        }
-        
-    })
+        let userPlayStat
+        let opponentPlayStat
+        const opponentPlayTypeId = opponentHand[0].type.id
+        const userPlayTypeId = selectedCard.type.id
 
+
+
+        if (gameState.playerATurn) {
+            
+            opponentPlayStat = opponentHand[0][selectedStat];
+            userPlayStat = selectedCard[selectedStat];
+            
+            
+            
+        } 
+        
+        // if(){
+            
+        // }
+        fetch(`http://localhost:8080/games/${gameState.id}?statA=${userPlayStat}&statB=${opponentPlayStat}&typeAId=${userPlayTypeId}&typeBId=${opponentPlayTypeId}`,
+            {method: "PATCH",
+            headers: {'Content-Type': 'application/json'}
+            })
+        .then ((response)=> response.json())
+        .then ((response)=> {setGameState(response)})
+        
+        setSelectedCard("");
+    })
+    
     // Opponent Plays First Card in Hand -------------
     // After game is updated
     // Add indicators of Player A score and Player B score and round number(+1) to visual representation to screen
@@ -145,7 +155,7 @@ const Game = ({user}) => {
                 {selectedCard ? <Card pokemon={selectedCard} selectedCard={selectedCard} handleRound={handleRound} gameState={gameState}/> : <></> }
                 {/* YourCard */}
             <div className="scale-50">
-                <HandCards userHand={userHand} setUserHand={setUserHand} selectedCard={selectedCard} setSelectedCard={setSelectedCard}/>
+                <HandCards userHand={userHand} setUserHand={setUserHand} selectedCard={selectedCard} setSelectedCard={setSelectedCard} gameState={gameState} handleRound={handleRound}/>
             </div>
            
             {/* {console.log(opponentHand, "hand 1")}

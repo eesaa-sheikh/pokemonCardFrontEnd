@@ -26,10 +26,15 @@ const Card = ({pokemon, userHand, setUserHand, selectedCard, setSelectedCard, ha
     const handleClick = (() => {
         // check if NOT playerA turn 
         // check 
+        console.log(gameState);
         if (selectedCard === "") {
             setSelectedCard(pokemon);
             const newHand = userHand.filter(item => item !== pokemon);
             setUserHand(newHand);
+        }
+        if(!gameState.playerATurn){
+            setTimeout(500);
+            handleRound("hp");
         }
 
     })
