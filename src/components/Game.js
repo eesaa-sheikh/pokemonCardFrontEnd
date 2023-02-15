@@ -86,6 +86,7 @@ const Game = ({user}) => {
     console.log(selectedStat)
 
     const [selectedCard, setSelectedCard] = useState("");
+    const [oppSelectedCard, setOppSelectedCard] = useState("");
     
     // let opponentPlayStat
     // let userPlayStat
@@ -103,22 +104,24 @@ const Game = ({user}) => {
     // console.log(userPlayTypeId)
     // console.log(gameState.id)
 
-    const handleRound = ((selectedStat, selectedCard) => {
+    const handleTimeOutBeforeRound = ((selectedStat) => {
+        setOppSelectedCard(opponentHand[0]);
+        setTimeout(handleRound(selectedStat), 3000);
+    })
+
+    const handleRound = ((selectedStat) => {
+
         let userPlayStat
         let opponentPlayStat
         const opponentPlayTypeId = opponentHand[0].type.id
         const userPlayTypeId = selectedCard.type.id
 
-
-
-        if (gameState.playerATurn) {
+        // if (gameState.playerATurn ) {
             
-            opponentPlayStat = opponentHand[0][selectedStat];
-            userPlayStat = selectedCard[selectedStat];
+        opponentPlayStat = opponentHand[0][selectedStat];
+        userPlayStat = selectedCard[selectedStat];
             
-            
-            
-        } 
+        // } 
         
         // if(){
             
@@ -151,8 +154,9 @@ const Game = ({user}) => {
                 <HandCards userHand={opponentHand}/>
             </div>
                 {/* OpponentCard */}
-
-                {selectedCard ? <Card pokemon={selectedCard} selectedCard={selectedCard} handleRound={handleRound} gameState={gameState}/> : <></> }
+                {console.log(oppSelectedCard)}
+                {oppSelectedCard ? <Card pokemon={oppSelectedCard} selectedCard={oppSelectedCard} handleRound={handleRound} gameState={gameState}/> : <></> }
+                {selectedCard ? <Card pokemon={selectedCard} selectedCard={selectedCard} handleRound={handleRound} handleTimeOutBeforeRound={handleTimeOutBeforeRound} gameState={gameState}/> : <></> }
                 {/* YourCard */}
             <div className="scale-50">
                 <HandCards userHand={userHand} setUserHand={setUserHand} selectedCard={selectedCard} setSelectedCard={setSelectedCard} gameState={gameState} handleRound={handleRound}/>
