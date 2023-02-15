@@ -83,7 +83,6 @@ const Game = ({user}) => {
     // Function for checking player turn
 
     const [selectedStat, setSelectedStat] = useState("");
-    console.log(selectedStat)
 
     const [selectedCard, setSelectedCard] = useState("");
     const [oppSelectedCard, setOppSelectedCard] = useState("");
@@ -105,10 +104,11 @@ const Game = ({user}) => {
     // console.log(gameState.id)
 
     const handleTimeOutBeforeRound = ((selectedStat) => {
+        
         setOppSelectedCard(opponentHand[0]);
         const newHand = opponentHand.filter(item => item !== opponentHand[0]);
         setOpponentHand(newHand);
-        let timeout = setTimeout(function(){handleRound(selectedStat);}, 1000);
+        let timeout = setTimeout(function(){handleRound(selectedStat);}, 3000);
         let timeouttwo = setTimeout(function(){
             setSelectedCard("");
             setOppSelectedCard("");
@@ -129,7 +129,8 @@ const Game = ({user}) => {
             console.log(userDeck);
             console.log(opponentDeck);
         
-        }, 1100);
+            setSelectedStat("");
+        }, 3100);
     })
 
     const handleRound = ((selectedStat) => {
@@ -155,6 +156,8 @@ const Game = ({user}) => {
             })
         .then ((response)=> response.json())
         .then ((response)=> {setGameState(response)})
+
+        
     
     })
     
@@ -174,14 +177,16 @@ const Game = ({user}) => {
             <p>{account.trainerTitle} {account.username} VS {opponent.trainerTitle} {opponent.username}</p>
             <p>{account.username}: {gameState.scoreA} </p>
             <p>{opponent.username}: {gameState.scoreB} </p>
+            {gameState.winner !== "" ? <p>Winner: {gameState.winner}</p> : <></>}
+            {selectedStat !== "" ? <p>{gameState.playerATurn ? account.username : opponent.username} chose {selectedStat}!</p> : <div></div>}
             <div className="scale-50">
                 <HandCards userHand={opponentHand}/>
             </div>
                 {/* OpponentCard */}
                 {console.log(oppSelectedCard)}
                 {oppSelectedCard ? <Card pokemon={oppSelectedCard} selectedCard={oppSelectedCard} handleRound={handleRound} gameState={gameState}/> : <></> }
-                {selectedCard ? <Card pokemon={selectedCard} selectedCard={selectedCard} handleRound={handleRound} handleTimeOutBeforeRound={handleTimeOutBeforeRound} gameState={gameState}/> : <></> }
                 {/* YourCard */}
+                {selectedCard ? <Card pokemon={selectedCard} selectedCard={selectedCard} handleRound={handleRound} handleTimeOutBeforeRound={handleTimeOutBeforeRound} gameState={gameState} setSelectedStat={setSelectedStat}/> : <></> }
             <div className="scale-50">
                 <HandCards userHand={userHand} setUserHand={setUserHand} selectedCard={selectedCard} setSelectedCard={setSelectedCard} gameState={gameState} handleRound={handleRound}/>
             </div>
