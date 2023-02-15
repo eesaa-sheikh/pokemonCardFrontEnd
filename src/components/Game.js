@@ -105,17 +105,11 @@ const Game = ({user}) => {
 
     const handleRound = ((selectedStat) => {
         
-        
         if (opponentHand.length > 0 && selectedCard !== "") {
             const opponentPlayStat = opponentHand[0][selectedStat];
             const opponentPlayTypeId = opponentHand[0].type.id
             const userPlayStat = selectedCard[selectedStat];
             const userPlayTypeId = selectedCard.type.id
-            console.log(opponentPlayStat);
-            console.log(userPlayStat);
-            console.log(opponentPlayTypeId)
-            console.log(userPlayTypeId)
-            console.log(gameState.id)
             
             fetch(`http://localhost:8080/games/${gameState.id}?statA=${userPlayStat}&statB=${opponentPlayStat}&typeAId=${userPlayTypeId}&typeBId=${opponentPlayTypeId}`,
                 {method: "PATCH",
@@ -128,6 +122,13 @@ const Game = ({user}) => {
         }
         
     })
+
+    // Opponent Plays First Card in Hand
+    // After game is updated
+    // Add indicators of Player A score and Player B score and round number(+1) to visual representation to screen
+    // Discard opponent card
+    // Opponent and user's hand is updated with the next card in deck
+    // Display winner when gameState.winner !== ""
     
     useEffect(() => {
         console.log(gameState);
