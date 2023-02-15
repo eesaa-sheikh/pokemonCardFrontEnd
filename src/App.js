@@ -13,18 +13,40 @@ const AccountContext = createContext();
 function App() {
   
   const [account, setAccount] = useState("");
+  const [allAccounts, setAllAccounts] = useState([])
+
 
   useEffect(() => {
     fetch("http://localhost:8080/accounts/10")
     .then(response => response.json( ))
     .then (data => setAccount(data))
   }, []);
+
+  useEffect(() => {
+    const fetchData = async() => {
+        const response = await fetch("http://localhost:8080/accounts")
+        const data = await response.json();
+        setAllAccounts(data);
+    }
+    fetchData()
+  }, [])
   
   const logInToAnAccount = async (accountName, accountPassword) => {
-    const response = await fetch(`http://localhost:8080/accounts/login?name=${accountName}&password=${accountPassword}`)
-    const data = await response.json()
-    setAccount(data);
+    let check = false;
+    for(const accountInList of allAccounts){
+      if((accountInList.username===accountName)&(accountInList.password===accountPassword)){
+        setAccount(accountInList);
+        check= true;
+      }
+    }
+    return check;
   };
+
+  // const logInToAnAccount = async (accountName, accountPassword) => {
+  //   const response = await fetch(`http://localhost:8080/accounts/login?name=${accountName}&password=${accountPassword}`)
+  //   const data = await response.json()
+  //   setAccount(data);
+  // };
 
   return (
     <>
