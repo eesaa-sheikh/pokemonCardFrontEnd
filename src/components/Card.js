@@ -2,7 +2,7 @@ import Rating from '@mui/material/Rating';
 import { useState, useEffect } from 'react';
 
 
-const Card = ({pokemon, userHand, setUserHand, selectedCard, setSelectedCard}) => {
+const Card = ({pokemon, setSelectedStat, userHand, setUserHand, selectedCard, setSelectedCard}) => {
 
 //     const [mousePos, setMousePos] = useState({});
 
@@ -32,14 +32,11 @@ const Card = ({pokemon, userHand, setUserHand, selectedCard, setSelectedCard}) =
         }
     })
 
-    const [selectedStat, setSelectedStat] = useState("");
 
     const handleStatClick = (stat) => {
         setSelectedStat(stat);
         console.log(stat);
     };
-
-    console.log(selectedStat)
 
 
 
@@ -78,15 +75,21 @@ const Card = ({pokemon, userHand, setUserHand, selectedCard, setSelectedCard}) =
                 <ul>
                     {/* extract selectedStat name from both cards */}
                     {pokemon === selectedCard ? <p onClick={() => {setSelectedStat("hp")}} className={pokemon === selectedCard ? "hover:border-white  transition-all duration-500 border-cyan-500/0 rounded-md border-[1px] m-[1px] mx-auto w-fit p-[3px] text-sm cursor-pointer z-50" : "m-[1px] mx-auto w-fit p-[3px] text-sm cursor-default"}><span className="statName">HP</span> {pokemon.hp}</p> : <p className={pokemon === selectedCard ? "hover:border-white  transition-all duration-500 border-cyan-500/0 rounded-md border-[1px] m-[1px] mx-auto w-fit p-[3px] text-sm cursor-pointer" : "m-[1px] mx-auto w-fit p-[3px] text-sm cursor-default"}><span className="statName">HP</span> {pokemon.hp}</p>}                
-                    <p className={pokemon === selectedCard ? "hover:border-white  transition-all duration-500 border-cyan-500/0 rounded-md border-[1px] m-[1px] mx-auto w-fit p-[3px] text-sm cursor-pointer  z-50" : "m-[1px] mx-auto w-fit p-[3px] text-sm cursor-default"}><span className="statName">Atk</span> {pokemon.attack}</p>        
+                    {pokemon === selectedCard ? <p onClick={() => {setSelectedStat("attack")}} className={pokemon === selectedCard ? "hover:border-white  transition-all duration-500 border-cyan-500/0 rounded-md border-[1px] m-[1px] mx-auto w-fit p-[3px] text-sm cursor-pointer z-50" : "m-[1px] mx-auto w-fit p-[3px] text-sm cursor-default"}><span className="statName">Atk</span> {pokemon.attack}</p> : <p className={pokemon === selectedCard ? "hover:border-white  transition-all duration-500 border-cyan-500/0 rounded-md border-[1px] m-[1px] mx-auto w-fit p-[3px] text-sm cursor-pointer" : "m-[1px] mx-auto w-fit p-[3px] text-sm cursor-default"}><span className="statName">Atk</span> {pokemon.attack}</p>}                
+                    {/* <p className={pokemon === selectedCard ? "hover:border-white  transition-all duration-500 border-cyan-500/0 rounded-md border-[1px] m-[1px] mx-auto w-fit p-[3px] text-sm cursor-pointer  z-50" : "m-[1px] mx-auto w-fit p-[3px] text-sm cursor-default"}><span className="statName">Atk</span> {pokemon.attack}</p>         */}
                 </ul>
                 <ul>
-                    <p className={pokemon === selectedCard ? "hover:border-white  transition-all duration-500 border-cyan-500/0 rounded-md border-[1px] m-[1px] mx-auto w-fit p-[3px] text-sm cursor-pointer z-50" : "m-[1px] mx-auto w-fit p-[3px] text-sm cursor-default"}><span className="statName">Def</span> {pokemon.defence}</p>
-                    <p className={pokemon === selectedCard ? "hover:border-white  transition-all duration-500 border-cyan-500/0 rounded-md border-[1px] m-[1px] mx-auto w-fit p-[3px] text-sm cursor-pointer z-50" : "m-[1px] mx-auto w-fit p-[3px] text-sm cursor-default"}><span className="statName">SpA</span> {pokemon.specialAttack}</p>
+                    {pokemon === selectedCard ? <p onClick={() => {setSelectedStat("defence")}} className={pokemon === selectedCard ? "hover:border-white  transition-all duration-500 border-cyan-500/0 rounded-md border-[1px] m-[1px] mx-auto w-fit p-[3px] text-sm cursor-pointer z-50" : "m-[1px] mx-auto w-fit p-[3px] text-sm cursor-default"}><span className="statName">Def</span> {pokemon.defence}</p> : <p className={pokemon === selectedCard ? "hover:border-white  transition-all duration-500 border-cyan-500/0 rounded-md border-[1px] m-[1px] mx-auto w-fit p-[3px] text-sm cursor-pointer" : "m-[1px] mx-auto w-fit p-[3px] text-sm cursor-default"}><span className="statName">Def</span> {pokemon.defence}</p>}                
+                    {pokemon === selectedCard ? <p onClick={() => {setSelectedStat("specialAttack")}} className={pokemon === selectedCard ? "hover:border-white  transition-all duration-500 border-cyan-500/0 rounded-md border-[1px] m-[1px] mx-auto w-fit p-[3px] text-sm cursor-pointer z-50" : "m-[1px] mx-auto w-fit p-[3px] text-sm cursor-default"}><span className="statName">SpA</span> {pokemon.specialAttack}</p> : <p className={pokemon === selectedCard ? "hover:border-white  transition-all duration-500 border-cyan-500/0 rounded-md border-[1px] m-[1px] mx-auto w-fit p-[3px] text-sm cursor-pointer" : "m-[1px] mx-auto w-fit p-[3px] text-sm cursor-default"}><span className="statName">SpA</span> {pokemon.specialAttack}</p>}                
+                    {/* <p className={pokemon === selectedCard ? "hover:border-white  transition-all duration-500 border-cyan-500/0 rounded-md border-[1px] m-[1px] mx-auto w-fit p-[3px] text-sm cursor-pointer z-50" : "m-[1px] mx-auto w-fit p-[3px] text-sm cursor-default"}><span className="statName">Def</span> {pokemon.defence}</p>
+                    <p className={pokemon === selectedCard ? "hover:border-white  transition-all duration-500 border-cyan-500/0 rounded-md border-[1px] m-[1px] mx-auto w-fit p-[3px] text-sm cursor-pointer z-50" : "m-[1px] mx-auto w-fit p-[3px] text-sm cursor-default"}><span className="statName">SpA</span> {pokemon.specialAttack}</p> */}
                 </ul>
                 <ul>
-                    <p className={pokemon === selectedCard ? "hover:border-white  transition-all duration-500 border-cyan-500/0 rounded-md border-[1px] m-[1px] mx-auto w-fit p-[3px] text-sm cursor-pointer z-50" : "m-[1px] mx-auto w-fit p-[3px] text-sm cursor-default"}><span className="statName">SpD</span> {pokemon.specialDefence}</p>
-                    <p className={pokemon === selectedCard ? "hover:border-white  transition-all duration-500 border-cyan-500/0 rounded-md border-[1px] m-[1px] mx-auto w-fit p-[3px] text-sm cursor-pointer z-50" : "m-[1px] mx-auto w-fit p-[3px] text-sm cursor-default"}><span className="statName">Spe</span> {pokemon.speed}</p>
+                    {pokemon === selectedCard ? <p onClick={() => {setSelectedStat("specialDefence")}} className={pokemon === selectedCard ? "hover:border-white  transition-all duration-500 border-cyan-500/0 rounded-md border-[1px] m-[1px] mx-auto w-fit p-[3px] text-sm cursor-pointer z-50" : "m-[1px] mx-auto w-fit p-[3px] text-sm cursor-default"}><span className="statName">SpD</span> {pokemon.specialDefence}</p> : <p className={pokemon === selectedCard ? "hover:border-white  transition-all duration-500 border-cyan-500/0 rounded-md border-[1px] m-[1px] mx-auto w-fit p-[3px] text-sm cursor-pointer" : "m-[1px] mx-auto w-fit p-[3px] text-sm cursor-default"}><span className="statName">SpD</span> {pokemon.specialDefence}</p>}                
+                    {pokemon === selectedCard ? <p onClick={() => {setSelectedStat("speed")}} className={pokemon === selectedCard ? "hover:border-white  transition-all duration-500 border-cyan-500/0 rounded-md border-[1px] m-[1px] mx-auto w-fit p-[3px] text-sm cursor-pointer z-50" : "m-[1px] mx-auto w-fit p-[3px] text-sm cursor-default"}><span className="statName">Spe</span> {pokemon.speed}</p> : <p className={pokemon === selectedCard ? "hover:border-white  transition-all duration-500 border-cyan-500/0 rounded-md border-[1px] m-[1px] mx-auto w-fit p-[3px] text-sm cursor-pointer" : "m-[1px] mx-auto w-fit p-[3px] text-sm cursor-default"}><span className="statName">Spe</span> {pokemon.speed}</p>}                
+                    
+                    {/* <p className={pokemon === selectedCard ? "hover:border-white  transition-all duration-500 border-cyan-500/0 rounded-md border-[1px] m-[1px] mx-auto w-fit p-[3px] text-sm cursor-pointer z-50" : "m-[1px] mx-auto w-fit p-[3px] text-sm cursor-default"}><span className="statName">SpD</span> {pokemon.specialDefence}</p>
+                    <p className={pokemon === selectedCard ? "hover:border-white  transition-all duration-500 border-cyan-500/0 rounded-md border-[1px] m-[1px] mx-auto w-fit p-[3px] text-sm cursor-pointer z-50" : "m-[1px] mx-auto w-fit p-[3px] text-sm cursor-default"}><span className="statName">Spe</span> {pokemon.speed}</p> */}
                 </ul>
             </div>
             {/* mega lucario: https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/2cdf2e60-0243-485d-a272-d1dcd303cb53/dbkm2m6-9bc4ad73-fe77-4000-9a53-65bd8f48b568.jpg/v1/fill/w_294,h_350,q_70,strp/no_448_mega_by_ffxazq_dbkm2m6-350t.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9MTIxOCIsInBhdGgiOiJcL2ZcLzJjZGYyZTYwLTAyNDMtNDg1ZC1hMjcyLWQxZGNkMzAzY2I1M1wvZGJrbTJtNi05YmM0YWQ3My1mZTc3LTQwMDAtOWE1My02NWJkOGY0OGI1NjguanBnIiwid2lkdGgiOiI8PTEwMjQifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6aW1hZ2Uub3BlcmF0aW9ucyJdfQ.POTcNHPHtrB6-6MKsXvcti0VkYprWK7f0S9xNm7FYK8 */}

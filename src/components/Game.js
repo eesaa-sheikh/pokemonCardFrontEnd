@@ -12,6 +12,8 @@ const Game = ({user}) => {
 
     const {id} = useParams();
 
+    // GAME SETUP
+
     const [opponent, setOpponent] = useState("");
     const [gameState, setGameState] = useState("");
 
@@ -76,28 +78,23 @@ const Game = ({user}) => {
         }
     }, [id, account, opponentDeck])
 
-    // useEffect(() => {
-    //     console.log(userHand,"user hand");
-    //     console.log(opponentHand, "opponent hand");
+    // END OF GAME SET UP
 
-    //     if (userHand.length===5) {
+    // Function for checking player turn
 
-    //         const newDeck = userDeck.slice(5);
-    //         setUserDeck(newDeck);
-
-    //         console.log(newDeck,"user deck");
-            
-    //     }
-    //     if (opponentHand.length===5) {
-    //         const newDeck = opponentDeck.slice(5);
-    //         setOpponentDeck(newDeck);
-
-    //         console.log(newDeck,"opponent deck");
-    //     }
-
-    // }, [id, account,userHand,opponentHand])
+    const [selectedStat, setSelectedStat] = useState("");
+    console.log(selectedStat)
 
     const [selectedCard, setSelectedCard] = useState("");
+    
+    let opponentPlayStat
+    let userPlayStat
+    if (opponentHand.length > 0 && selectedCard !== "") {
+        opponentPlayStat = opponentHand[0][selectedStat];
+        userPlayStat = selectedCard[selectedStat];
+    }
+    console.log(opponentPlayStat);
+    console.log(userPlayStat);
     
     return ( 
         <>
@@ -107,7 +104,7 @@ const Game = ({user}) => {
             </div>
                 {/* OpponentCard */}
 
-                {selectedCard ? <Card pokemon={selectedCard} selectedCard={selectedCard}/> : <></> }
+                {selectedCard ? <Card pokemon={selectedCard} setSelectedStat={setSelectedStat} selectedCard={selectedCard}/> : <></> }
                 {/* YourCard */}
             <div className="scale-50">
                 <HandCards userHand={userHand} setUserHand={setUserHand} selectedCard={selectedCard} setSelectedCard={setSelectedCard}/>
