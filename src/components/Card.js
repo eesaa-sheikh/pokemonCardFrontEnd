@@ -2,7 +2,7 @@ import Rating from '@mui/material/Rating';
 import { useState, useEffect } from 'react';
 
 
-const Card = ({pokemon, userHand, setUserHand, selectedCard, setSelectedCard, handleRound, gameState}) => {
+const Card = ({pokemon, userHand, setUserHand, selectedCard, setSelectedCard, oppSelectedCard, setOppSelectedCard, opponentHand, setOpponentHand, handleRound, gameState}) => {
 
 //     const [mousePos, setMousePos] = useState({});
 
@@ -24,19 +24,21 @@ const Card = ({pokemon, userHand, setUserHand, selectedCard, setSelectedCard, ha
     
 
     const handleClick = (() => {
-        // check if NOT playerA turn 
-        // check 
+        
         if (selectedCard === "") {
             setSelectedCard(pokemon);
+            console.log(opponentHand);
+            // setOppSelectedCard(opponentHand[0]);
+            
             const newHand = userHand.filter(item => item !== pokemon);
             setUserHand(newHand);
+
+            // const newOppHand = opponentHand.filter(item => item !== oppSelectedCard);
+            // setOpponentHand(newOppHand);
         }
 
     })
 
-    const handleStateClick = () => {
-        
-    };
 
     return ( 
         <>
