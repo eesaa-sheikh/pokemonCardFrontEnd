@@ -13,6 +13,21 @@ const Game = ({user}) => {
     const {id} = useParams();
 
     const [opponent, setOpponent] = useState("");
+    const [gameState, setGameState] = useState("");
+
+    useEffect(() =>{
+        fetch(`http://localhost:8080/games?playerAId=${account.id}&playerBId=${id}`,
+        {method: "POST",
+        headers: {'Content-Type': 'application/json'}
+            })
+        .then ((response)=> response.json())
+        .then ((response)=> {setGameState(response)})
+        console.log(gameState);
+        // const newGame = await response.json()
+        },[]) 
+    
+
+
 
     useEffect(() => {
         fetch(`${SERVER_URL}/${id}`)
