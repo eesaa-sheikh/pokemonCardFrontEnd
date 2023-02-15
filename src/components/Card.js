@@ -32,8 +32,8 @@ const Card = ({pokemon, userHand, setUserHand, selectedCard, setSelectedCard, ha
             const newHand = userHand.filter(item => item !== pokemon);
             setUserHand(newHand);
         }
-        if(!gameState.playerATurn){
-            setTimeout(500);
+        if(!gameState.playerATurn && selectedCard){
+            setTimeout(2000);
             handleRound("hp");
         }
 

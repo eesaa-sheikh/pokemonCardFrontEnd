@@ -103,7 +103,7 @@ const Game = ({user}) => {
     // console.log(userPlayTypeId)
     // console.log(gameState.id)
 
-    const handleRound = ((selectedStat) => {
+    const handleRound = ((selectedStat, selectedCard) => {
         let userPlayStat
         let opponentPlayStat
         const opponentPlayTypeId = opponentHand[0].type.id
