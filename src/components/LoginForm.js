@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+
 
 const LoginForm = ({logInToAnAccount}) => {
 
@@ -6,14 +8,17 @@ const LoginForm = ({logInToAnAccount}) => {
     const [password, setPassword] = useState("");
     const [error, setError] = useState("");
 
+    const navigate = useNavigate();
+
     const handleSubmit = async (event) => {
       event.preventDefault();
       const result = await logInToAnAccount(userName,password)
-      if(result != true){
+      if(result !== true){
           setError("Incorrect combination of details")
       }
       else{
       setError("")
+      navigate("/")
       }
   }
 
@@ -38,6 +43,7 @@ const LoginForm = ({logInToAnAccount}) => {
                     </li>
                     <input type="submit" value="OK" className="okButton"/>
                 </form>
+                <p>{error}</p>
                 
             </div>
         </>
