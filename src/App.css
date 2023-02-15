@@ -29,12 +29,12 @@ html, body {
     background-repeat: no-repeat;
     opacity: .5;
     mix-blend-mode: color-dodge;
-    transition: all .33s ease;
+    transition: all 1s ease;
   }
   
   
   .pokemonCard:after {
-    opacity: 1;
+    /* opacity: 1; */
     background-image: url("https://assets.codepen.io/13471/sparkles.gif"), 
       url(https://assets.codepen.io/13471/holo.png), 
       linear-gradient(125deg, #ff008450 15%, #fca40040 30%, #ffff0030 40%, #00ff8a20 60%, #00cfff40 70%, #cc4cfa50 85%);
@@ -43,7 +43,7 @@ html, body {
     background-blend-mode: overlay;
     z-index: 2;
     filter: brightness(1.5) contrast(2);
-    transition: all .33s ease;
+    transition: all 1s ease;
     mix-blend-mode: color-dodge;
     opacity: .70;
   }
@@ -62,7 +62,7 @@ html, body {
     background-size: 250% 250%;
     opacity: .88;
     filter: brightness(.40) contrast(1.20);
-    transition: none;
+    transition: all 1s ease-in-out;
   }
 
 
