@@ -87,15 +87,52 @@ const Game = ({user}) => {
 
     const [selectedCard, setSelectedCard] = useState("");
     
-    let opponentPlayStat
-    let userPlayStat
-    if (opponentHand.length > 0 && selectedCard !== "") {
-        opponentPlayStat = opponentHand[0][selectedStat];
-        userPlayStat = selectedCard[selectedStat];
-    }
-    console.log(opponentPlayStat);
-    console.log(userPlayStat);
+    // let opponentPlayStat
+    // let userPlayStat
+    // let opponentPlayTypeId
+    // let userPlayTypeId
+    // if (opponentHand.length > 0 && selectedCard !== "") {
+    //     opponentPlayStat = opponentHand[0][selectedStat];
+    //     opponentPlayTypeId = opponentHand[0].type.id
+    //     userPlayStat = selectedCard[selectedStat];
+    //     userPlayTypeId = selectedCard.type.id
+    // }
+    // console.log(opponentPlayStat);
+    // console.log(userPlayStat);
+    // console.log(opponentPlayTypeId)
+    // console.log(userPlayTypeId)
+    // console.log(gameState.id)
+
+    const handleRound = ((selectedStat) => {
+        
+        
+        if (opponentHand.length > 0 && selectedCard !== "") {
+            const opponentPlayStat = opponentHand[0][selectedStat];
+            const opponentPlayTypeId = opponentHand[0].type.id
+            const userPlayStat = selectedCard[selectedStat];
+            const userPlayTypeId = selectedCard.type.id
+            console.log(opponentPlayStat);
+            console.log(userPlayStat);
+            console.log(opponentPlayTypeId)
+            console.log(userPlayTypeId)
+            console.log(gameState.id)
+            
+            fetch(`http://localhost:8080/games/${gameState.id}?statA=${userPlayStat}&statB=${opponentPlayStat}&typeAId=${userPlayTypeId}&typeBId=${opponentPlayTypeId}`,
+                {method: "PATCH",
+                headers: {'Content-Type': 'application/json'}
+                })
+            .then ((response)=> response.json())
+            .then ((response)=> {setGameState(response)})
+            
+            setSelectedCard("");
+        }
+        
+    })
     
+    useEffect(() => {
+        console.log(gameState);
+    }, [gameState])
+
     return ( 
         <>
             <p>{opponent.trainerTitle} {opponent.username} VS {account.trainerTitle} {account.username}</p>
@@ -104,7 +141,7 @@ const Game = ({user}) => {
             </div>
                 {/* OpponentCard */}
 
-                {selectedCard ? <Card pokemon={selectedCard} setSelectedStat={setSelectedStat} selectedCard={selectedCard}/> : <></> }
+                {selectedCard ? <Card pokemon={selectedCard} setSelectedStat={setSelectedStat} selectedCard={selectedCard} handleRound={handleRound}/> : <></> }
                 {/* YourCard */}
             <div className="scale-50">
                 <HandCards userHand={userHand} setUserHand={setUserHand} selectedCard={selectedCard} setSelectedCard={setSelectedCard}/>
