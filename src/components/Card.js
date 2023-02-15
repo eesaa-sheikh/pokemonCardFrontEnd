@@ -8,7 +8,7 @@ const Card = ({pokemon, userHand, setUserHand, selectedCard, setSelectedCard}) =
         if (selectedCard === "") {
             setSelectedCard(pokemon);
             const newHand = userHand.filter(item => item !== pokemon);
-            console.log(newHand);
+            // console.log(newHand);
             setUserHand(newHand);
         }
     })

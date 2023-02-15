@@ -55,13 +55,47 @@ const Game = ({user}) => {
     const [opponentHand, setOpponentHand] = useState([]);
 
     useEffect(() => {
-        if (userDeck) {
-            setUserHand(userDeck.slice(0, 5));
+        if (userDeck.length===11) {
+            const newHand = userDeck.slice(0, 5);
+            setUserHand(newHand)
+
+            const newDeck = userDeck.slice(5);
+            setUserDeck(newDeck);
+            
         }
-        if (opponentDeck) {
-            setOpponentHand(opponentDeck.slice(0,5));
+    }, [id, account, userDeck]) // might not need account, will see later
+   
+    useEffect(() => {
+        if (opponentDeck.length===11) {
+            const newHand = opponentDeck.slice(0, 5);
+            setOpponentHand(newHand)
+
+            const newDeck = opponentDeck.slice(5);
+            setOpponentDeck(newDeck);
+            
         }
-    }, [id, userDeck, account, opponentDeck]) // might not need account, will see later
+    }, [id, account, opponentDeck])
+
+    // useEffect(() => {
+    //     console.log(userHand,"user hand");
+    //     console.log(opponentHand, "opponent hand");
+
+    //     if (userHand.length===5) {
+
+    //         const newDeck = userDeck.slice(5);
+    //         setUserDeck(newDeck);
+
+    //         console.log(newDeck,"user deck");
+            
+    //     }
+    //     if (opponentHand.length===5) {
+    //         const newDeck = opponentDeck.slice(5);
+    //         setOpponentDeck(newDeck);
+
+    //         console.log(newDeck,"opponent deck");
+    //     }
+
+    // }, [id, account,userHand,opponentHand])
 
     const [selectedCard, setSelectedCard] = useState("");
     
@@ -79,8 +113,10 @@ const Game = ({user}) => {
                 <HandCards userHand={userHand} setUserHand={setUserHand} selectedCard={selectedCard} setSelectedCard={setSelectedCard}/>
             </div>
            
-            {console.log(opponentHand)}
-            {console.log(userHand)}
+            {/* {console.log(opponentHand, "hand 1")}
+            {console.log(userHand, "hand 2")}
+            {console.log(opponentDeck, "hand 3")}
+            {console.log(userDeck, "hand 4")} */}
         </>
     );
 }
