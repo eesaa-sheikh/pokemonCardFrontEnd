@@ -108,19 +108,28 @@ const Game = ({user}) => {
         setOppSelectedCard(opponentHand[0]);
         const newHand = opponentHand.filter(item => item !== opponentHand[0]);
         setOpponentHand(newHand);
-        let timeout = setTimeout(function(){handleRound(selectedStat);}, 4000);
+        let timeout = setTimeout(function(){handleRound(selectedStat);}, 1000);
         let timeouttwo = setTimeout(function(){
             setSelectedCard("");
             setOppSelectedCard("");
-            setUserHand(userHand.concat(userDeck[0]));
-            const newUserDeck = userDeck.slice(1);
-            setUserDeck(newUserDeck);
-            setOpponentHand(newHand.concat(opponentDeck[0]));
-            const newOpponentDeck = opponentDeck.slice(1);
-            setOpponentDeck(newOpponentDeck);
+            
+            if (userDeck.length >= 1) {
+                setUserHand(userHand.concat(userDeck[0]));
+                const newUserDeck = userDeck.slice(1);
+                setUserDeck(newUserDeck);
+            }
+            
+            if (opponentDeck.length >= 1) {
+                setOpponentHand(newHand.concat(opponentDeck[0]));
+                const newOpponentDeck = opponentDeck.slice(1);
+                setOpponentDeck(newOpponentDeck);
+            
+            }
+           
             console.log(userDeck);
             console.log(opponentDeck);
-        }, 4100);
+        
+        }, 1100);
     })
 
     const handleRound = ((selectedStat) => {
@@ -166,7 +175,7 @@ const Game = ({user}) => {
             <p>{account.username}: {gameState.scoreA} </p>
             <p>{opponent.username}: {gameState.scoreB} </p>
             <div className="scale-50">
-                {/* <HandCards userHand={opponentHand}/> */}
+                <HandCards userHand={opponentHand}/>
             </div>
                 {/* OpponentCard */}
                 {console.log(oppSelectedCard)}
