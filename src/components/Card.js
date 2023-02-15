@@ -46,7 +46,7 @@ const Card = ({pokemon, userHand, setUserHand, selectedCard, setSelectedCard}) =
     return ( 
         <>
         <>
-        ({mousePos.x}, {mousePos.y})
+        {/* ({mousePos.x}, {mousePos.y}) */}
         </>
         <div onClick={handleClick} 
              className = "pokemonCard" style = {{backgroundImage : `url(${pokemon.imgUrl})`,
