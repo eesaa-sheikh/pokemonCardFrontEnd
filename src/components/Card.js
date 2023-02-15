@@ -4,22 +4,22 @@ import { useState, useEffect } from 'react';
 
 const Card = ({pokemon, userHand, setUserHand, selectedCard, setSelectedCard}) => {
 
-    const [mousePos, setMousePos] = useState({});
+//     const [mousePos, setMousePos] = useState({});
 
-  useEffect(() => {
-    const handleMouseMove = (event) => {
-      setMousePos({ x: event.clientX, y: event.clientY });
-    };
+//   useEffect(() => {
+//     const handleMouseMove = (event) => {
+//       setMousePos({ x: event.clientX, y: event.clientY });
+//     };
 
-    window.addEventListener('mousemove', handleMouseMove);
+//     window.addEventListener('mousemove', handleMouseMove);
 
-    return () => {
-      window.removeEventListener(
-        'mousemove',
-        handleMouseMove
-      );
-    };
-  }, []);
+//     return () => {
+//       window.removeEventListener(
+//         'mousemove',
+//         handleMouseMove
+//       );
+//     };
+//   }, []);
 
 
 
