@@ -1,8 +1,27 @@
 import Rating from '@mui/material/Rating';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 
 const Card = ({pokemon, userHand, setUserHand, selectedCard, setSelectedCard}) => {
+
+    const [mousePos, setMousePos] = useState({});
+
+  useEffect(() => {
+    const handleMouseMove = (event) => {
+      setMousePos({ x: event.clientX, y: event.clientY });
+    };
+
+    window.addEventListener('mousemove', handleMouseMove);
+
+    return () => {
+      window.removeEventListener(
+        'mousemove',
+        handleMouseMove
+      );
+    };
+  }, []);
+
+
 
     const handleClick = (() => {
         if (selectedCard === "") {
@@ -22,7 +41,10 @@ const Card = ({pokemon, userHand, setUserHand, selectedCard, setSelectedCard}) =
 
     console.log(selectedStat)
 
+
+
     return ( 
+        <>
         <div onClick={handleClick} 
              className = "pokemonCard" style = {{backgroundImage : `url(${pokemon.imgUrl})`,
                                                  width: "6.3cm",
@@ -32,8 +54,12 @@ const Card = ({pokemon, userHand, setUserHand, selectedCard, setSelectedCard}) =
                                                  border: `10px solid ${pokemon.type.colourType}`,
                                                  borderRadius: "10px",
                                                  position: "relative",
-                                                 fontFamily: "'Roboto', sans-serif",
-                                                }}>
+                                                 fontFamily: "'Roboto', sans-serif"}}>
+    <div class="card"></div>
+    <div class="card"></div>
+    <div class="card"></div>
+  
+                                             
             <div className='cardBannerTop'>
                 <div className="cardBanner">
                 <h2>{pokemon.name}</h2>
@@ -63,6 +89,7 @@ const Card = ({pokemon, userHand, setUserHand, selectedCard, setSelectedCard}) =
             {/* mega lucario: https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/2cdf2e60-0243-485d-a272-d1dcd303cb53/dbkm2m6-9bc4ad73-fe77-4000-9a53-65bd8f48b568.jpg/v1/fill/w_294,h_350,q_70,strp/no_448_mega_by_ffxazq_dbkm2m6-350t.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9MTIxOCIsInBhdGgiOiJcL2ZcLzJjZGYyZTYwLTAyNDMtNDg1ZC1hMjcyLWQxZGNkMzAzY2I1M1wvZGJrbTJtNi05YmM0YWQ3My1mZTc3LTQwMDAtOWE1My02NWJkOGY0OGI1NjguanBnIiwid2lkdGgiOiI8PTEwMjQifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6aW1hZ2Uub3BlcmF0aW9ucyJdfQ.POTcNHPHtrB6-6MKsXvcti0VkYprWK7f0S9xNm7FYK8 */}
             {/* <p>Rating: {pokemon.rating}</p> */}
         </div>
+        </>
     );
 }
  
