@@ -106,7 +106,9 @@ const Game = ({user}) => {
 
     const handleTimeOutBeforeRound = ((selectedStat) => {
         setOppSelectedCard(opponentHand[0]);
-        setTimeout(handleRound(selectedStat), 3000);
+        setOpponentHand(opponentHand.slice(1));
+        let timeout = setTimeout(handleRound(selectedStat), 3000);
+        setOppSelectedCard("");
     })
 
     const handleRound = ((selectedStat) => {
@@ -150,6 +152,8 @@ const Game = ({user}) => {
     return ( 
         <>
             <p>{account.trainerTitle} {account.username} VS {opponent.trainerTitle} {opponent.username}</p>
+            <p>{account.username}: {gameState.scoreA} </p>
+            <p>{opponent.username}: {gameState.scoreB} </p>
             <div className="scale-50">
                 <HandCards userHand={opponentHand}/>
             </div>
