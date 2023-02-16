@@ -15,13 +15,6 @@ function App() {
   const [account, setAccount] = useState("");
   const [allAccounts, setAllAccounts] = useState([])
 
-
-  useEffect(() => {
-    fetch("http://localhost:8080/accounts/10")
-    .then(response => response.json( ))
-    .then (data => setAccount(data))
-  }, []);
-
   useEffect(() => {
     const fetchData = async() => {
         const response = await fetch("http://localhost:8080/accounts")
@@ -54,9 +47,10 @@ function App() {
         <BrowserRouter>
             <p>Hello {account.username}</p>
             <Link to="/">Home</Link>
-            <Link to="/game">Play</Link>
-            <Link to="/pokedex">Pokedex</Link>
-            <Link to="/register">Login</Link>
+            {account !== "" ? <Link to="/game">Play</Link> :<></>}
+            {account !== "" ? <Link to="/pokedex">Pokedex</Link> :<></>}
+            {account === "" ?<Link to="/register">Login</Link>:<></>}
+            {account !== "" ? <button onClick={()=>setAccount("")}><Link to="/">Logout</Link></button> :<></>}
 
           <Routes>
             <Route path="/" element={<HomeContainer/>}/>
