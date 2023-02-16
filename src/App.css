@@ -4,6 +4,7 @@ html, body {
   border: 0px;
 }
 
+
 :root {
   --color1: rgb(0, 231, 255);
   --color2: rgb(255, 0, 231);
@@ -536,7 +537,44 @@ margin-right: 16vw;
   display: flex;
 }
 .endGameText{
-  border: 3px solid white;
-  display: relative;
-  color: white
+  border: 5px solid rgb(3, 3, 3); 
+  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  margin-inline: 10px;
+  background-color: aliceblue;
+  text-align: center;
+  outline-style: dotted;
+  font-size: 50px;
+
+  overflow: hidden; 
+  white-space: nowrap; 
+  margin: 0 auto; 
+  letter-spacing: .15em;
+  animation: 
+    typing 1.5s steps(40, end),
+    blink-caret .75s step-end infinite;
+
+}
+
+.homeB{
+  overflow: hidden; 
+  white-space: nowrap; 
+  margin: 0 auto; 
+  letter-spacing: .15em;
+  animation: 
+    typing 1.5s steps(40, end),
+    blink-caret .75s step-end infinite;
+
+}
+
+
+/* The typing effect */
+@keyframes typing {
+  from { width: 0 }
+  to { width: 100% }
+}
+
+/* The typewriter cursor effect */
+@keyframes blink-caret {
+  from, to { border-color: transparent }
+
 }

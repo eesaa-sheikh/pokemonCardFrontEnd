@@ -254,10 +254,10 @@ const Game = ({user}) => {
                         </div>
                     
                         <div className="endGameText">
-                            {gameState.winner === "Tie"? <p>That was a close battle!</p>: <></>}
-                            {gameState.winner === account.username ? <p>You are stronger than I thought!</p>: <></>}
-                            {gameState.winner === opponent.username ? <p>Better luck next time</p>: <></>}
-                        <button onClick={()=>navigate("/")}>Home</button>
+                            {gameState.winner === "Tie"? <p>That was a close battle!<i></i></p>: <></>}
+                            {gameState.winner === account.username ? <p>You are stronger than I thought!<i></i></p>: <></>}
+                            {gameState.winner === opponent.username ? <p>Better luck next time<i></i></p>: <></>}
+                        <button onClick={()=>navigate("/")}><p className="homeB">Home</p></button>
                         </div>
                     </div>: <></>}
 
