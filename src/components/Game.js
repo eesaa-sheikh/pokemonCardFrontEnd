@@ -212,7 +212,7 @@ const Game = ({user}) => {
                         </div>
                         <div className="flex">
                             <div className="w-[44%] text-right"><p className="mx-auto my-auto text-3xl"><span className=" font-extrabold">{opponent.username}</span></p></div>
-                            <div className="w-[12%]"><p className="mx-auto my-auto text-3xl">{gameState.scoreA} : {gameState.scoreB}</p></div>
+                            <div className="w-[12%]"><p className="mx-auto my-auto text-3xl">{gameState.scoreB} : {gameState.scoreA}</p></div>
                             <div className="w-[44%] text-left"><p className="mx-auto my-auto text-3xl"><span className=" font-extrabold">{account.username}</span></p></div>
                         </div>
 
