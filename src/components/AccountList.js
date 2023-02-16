@@ -9,16 +9,18 @@ const AccountList = ({allAccounts, setOpp}) => {
 
 
     return ( 
-        <>
-        <div className="flex flex-col items-center font-mono text-lg text-slate-800">
+        <div className="h-screen">
+        <div className="flex flex-col items-center font-mono text-3xl text-white mt-20">
         <h1>Pick Your Opponent!</h1>
         </div>
-        <div className="flex gap-5 overflow-x-scroll">
+        <div className="flex gap-5 overflow-x-scroll h-[80vh] pl-12">
             {trainers.map((acc) => {
-                return <AccountCard acc={acc} setOpp={setOpp}/>
+                return <div className="my-auto"> 
+                    <AccountCard acc={acc} setOpp={setOpp}/>
+                    </div>
             })}
         </div>
-        </>
+        </div>
     );
 } 
  

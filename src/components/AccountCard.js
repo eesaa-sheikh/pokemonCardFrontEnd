@@ -20,6 +20,7 @@ const AccountCard = ({acc, setOpp, props}) => {
             // card wrapper
             <>
             <div style={{ perspective: 2000}}>
+            
                 {/* card */}
                 <motion.div
                 style={{ x, y, rotateX, rotateY, z: 5,  }}
@@ -32,13 +33,14 @@ const AccountCard = ({acc, setOpp, props}) => {
                 <img className='object-cover min-h-[600px] rounded-[30px] max-h-[600px] cursor-grab relative ' src={require(`../TrainerPokemon/${acc.username}.jpg`)} alt='trainer fanart' draggable='false' />
                 {/* card image */}
                 <motion.div style={{ x, y, rotateX, rotateY, z: 10 }} className='absolute top-20 -right-64 w-[620px]'>
+                    <Link to={`playgame/${acc.id}`}> 
                     <img className='h-[400px] drop-shadow-lg' src={require(`../TrainerPng/${acc.username}.png`)} alt='trainer image' draggable='false' id={"floaterTrainer"}/>
+                    </Link> 
                 </motion.div>
                 </motion.div>
 
-                {/* {width: 150px;
-  -webkit-filter: drop-shadow(5px 5px 5px #222);
-  filter: drop-shadow(5px 5px 5px #222);} */}
+             
+                  
 
             </div>
             </>
