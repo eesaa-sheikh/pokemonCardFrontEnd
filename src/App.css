@@ -435,4 +435,7 @@ background: linear-gradient(21deg, rgba(0,127,255,1) 0%, rgba(27,0,195,1) 84%); 
   background: linear-gradient(109.6deg, rgb(20, 30, 48) 11.2%, rgb(36, 59, 85) 91.1%);
 }
 
-
+#floaterTrainer {
+  -webkit-filter: drop-shadow(5px 5px 5px rgb(0, 0, 0));
+  filter: drop-shadow(5px 5px 5px rgb(0, 0, 0));
+}

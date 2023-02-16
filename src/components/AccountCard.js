@@ -32,11 +32,13 @@ const AccountCard = ({acc, setOpp, props}) => {
                 <img className='w-[426px] min-h-[600px] rounded-[30px] max-h-[600px] cursor-grab relative ' src={require(`../TrainerAsset/${acc.username}.jpg`)} alt='trainer fanart' draggable='false' />
                 {/* card image */}
                 <motion.div style={{ x, y, rotateX, rotateY, z: 10 }} className='absolute top-20 -right-64 w-[620px]'>
-                    <img className='h-[400px] drop-shadow-lg' src={require(`../TrainerPng/${acc.username}.png`)} alt='trainer image' draggable='false' />
+                    <img className='h-[400px] drop-shadow-lg' src={require(`../TrainerPng/${acc.username}.png`)} alt='trainer image' draggable='false' id={"floaterTrainer"}/>
                 </motion.div>
                 </motion.div>
 
-                
+                {/* {width: 150px;
+  -webkit-filter: drop-shadow(5px 5px 5px #222);
+  filter: drop-shadow(5px 5px 5px #222);} */}
 
             </div>
             </>
