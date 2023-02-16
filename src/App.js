@@ -53,12 +53,15 @@ function App() {
       <AccountContext.Provider value={account}>
         <BrowserRouter>
 
-        <header className='fixed'>
-            <p>Hello {account.username}</p>
-            <Link to="/">Home</Link>
-            <Link to="/game">Play</Link>
-            <Link to="/pokedex">Pokedex</Link>
-            <Link to="/register">Login</Link>
+        <div className='helloWill'>
+          <img src ="https://cdn-icons-png.flaticon.com/512/287/287226.png" width={75} className ="icon"/>
+            <p className='acc'>Hello {account.username}</p>
+        </div>
+          <header className='navBar'>
+            <Link className ="home" to="/">Home</Link>
+            <Link className ="game" to="/game">Play</Link>
+            <Link className ="pokedex" to="/pokedex">Pokedex</Link>
+            <Link className ="register" to="/register">Login</Link>
         </header>
           <Routes>
             <Route path="/" element={<HomeContainer/>}/>
