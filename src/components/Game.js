@@ -59,6 +59,8 @@ const Game = ({user}) => {
 
     const [userHand, setUserHand] = useState([]);
     const [opponentHand, setOpponentHand] = useState([]);
+    const [reward, setReward] = useState("");
+
 
     useEffect(() => {
         if (userDeck.length===deckLength) {
@@ -78,7 +80,10 @@ const Game = ({user}) => {
 
             const newDeck = opponentDeck.slice(5);
             setOpponentDeck(newDeck);
-            
+
+            const newReward = opponentDeck.slice(deckLength-1, deckLength)[0];
+            setReward(newReward);
+
         }
     }, [id, account, opponentDeck])
 
@@ -137,6 +142,16 @@ const Game = ({user}) => {
         }, 3100);
     })
 
+    const handlePostRound =((response) =>{
+        setGameState(response);
+        if(response.winner === account.username){
+            fetch(`http://localhost:8080/ownerships/${account.id}/${reward.id}?inDeck=false`,
+            {method: "POST",
+            headers: {'Content-Type': 'application/json'}
+            })
+        }
+    })
+
     const handleRound = ((selectedStat) => {
 
         let userPlayStat
@@ -154,11 +169,9 @@ const Game = ({user}) => {
             headers: {'Content-Type': 'application/json'}
             })
         .then ((response)=> response.json())
-        .then ((response)=> {setGameState(response)})
+        .then ((response)=> {handlePostRound(response)})
     
     })
-
-    const [reward, setReward] = useState("");
 
     
     // Opponent Plays First Card in Hand -------------
@@ -195,11 +208,25 @@ const Game = ({user}) => {
             {gameState.winner === "" ? <div className="scale-50">
                 <HandCards userHand={userHand} setUserHand={setUserHand} selectedCard={selectedCard} setSelectedCard={setSelectedCard} gameState={gameState} handleRound={handleRound}/>
             </div> : <></>}
-            {gameState.winner !== "" ? <img src= "https://pbs.twimg.com/media/EWCNVF8WkAA2b_t.png" alt="opponent"/> : <></>}
-            {gameState.winner === "Tie"? <p>That was a close battle!</p>: <></>}
-            {gameState.winner === account.username ? <p>You are stronger than I thought!</p>: <></>}
-            {gameState.winner === opponent.username ? <p>Better luck next time</p>: <></>}
-            {gameState.winner === "" ? <button onClick={()=>navigate("/")}>Home</button> : <></>}
+
+            {gameState.winner !== "" ?<div>
+                <div>
+                    <img src= "https://pbs.twimg.com/media/EWCNVF8WkAA2b_t.png" alt="opponent"/>
+                </div>
+                <div>
+                    {gameState.winner === account.username ?<p>Reward</p>: <></>}
+                    {reward !== "" && gameState.winner === account.username? <Card key={reward.id} pokemon={reward}/>: <></>}
+                    <hr/>
+                </div>
+                <div>
+                    {gameState.winner === "Tie"? <p>That was a close battle!</p>: <></>}
+                    {gameState.winner === account.username ? <p>You are stronger than I thought!</p>: <></>}
+                    {gameState.winner === opponent.username ? <p>Better luck next time</p>: <></>}
+                    <button onClick={()=>navigate("/")}>Home</button>
+                </div>
+            </div>: <></>}
+           
+            
 
             {/* {console.log(opponentHand, "hand 1")}
             {console.log(userHand, "hand 2")}
