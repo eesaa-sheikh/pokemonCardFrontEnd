@@ -9,11 +9,11 @@ const AccountList = ({allAccounts, setOpp}) => {
 
 
     return ( 
-        <>
+        <div className="flex gap-5 overflow-x-scroll">
             {trainers.map((acc) => {
                 return <AccountCard acc={acc} setOpp={setOpp}/>
             })}
-        </>
+        </div>
     );
 }
  
