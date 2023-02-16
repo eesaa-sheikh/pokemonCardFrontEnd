@@ -22,8 +22,8 @@ const PokedexContainer = () => {
             <div className="pokedex-list grid gap-2 overflow-y-scroll h-screen whitespace-nowrap scrollbar-hide">
                 <PokedexList pokedex={pokedex} setShowCard={setShowCard}/>
             </div>
-            <div className="show-card">
-                {showCard ? <Card pokemon={showCard}/> : <div className="w-1/2"></div>}
+            <div className="card-div">
+                {showCard ? <Card className="pokedex-card" pokemon={showCard}/> : <div className="w-1/2"></div>}
             </div>
         </div>
     );

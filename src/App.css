@@ -200,23 +200,43 @@ html, body {
 }
 
 .pokedex{
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
   overflow-y: auto;
   overflow-x: hidden;
   border: 1px solid black;
-  justify-content: space-around;
+  position: relative;
 }
 
 .pokedex-list {
   border: 1px solid red;
+  /* width: 500px; */
+}
+
+.entry-list{
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
 }
 
 .pokedex-entry {
   display: flex;
   justify-content: space-between;
-  /* row-gap: 10px; */
+  border-radius: 15px;
+  width: 20em;
+  padding: 3px 10px;
 }
 
-.show-card{
+.pokemon-name {
+  color: white;
+}
+
+.card-div{
   border: 1px solid blue;
+  position: relative;
+}
+
+.pokedex-card{
+  position: absolute;
+
 }
