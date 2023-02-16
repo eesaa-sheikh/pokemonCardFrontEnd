@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 import Card from "../components/Card"
 import PokedexList from "../components/PokedexList";
+import pokedexSong from "../PokemonTypeAsset/pokiSong.mp3";
 
 const PokedexContainer = () => {
 
