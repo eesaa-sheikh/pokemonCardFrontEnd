@@ -85,28 +85,7 @@ const Game = ({user}) => {
     const [selectedStat, setSelectedStat] = useState("");
 
     const [selectedCard, setSelectedCard] = useState("");
-<<<<<<< HEAD
-
     const [oppSelectedCard, setOppSelectedCard] = useState("");
-
-    const [beginningRound, setBeginningRound] = useState(true);
-
-    useEffect(() => {
-        
-        // on page load, oppHand empty: 
-        // we want oppHand to set itself, when loaded
-
-        if (beginningRound) {
-            setOppSelectedCard(opponentHand[0]);
-            console.log(opponentHand, "beggining round");
-            const newOppHand = opponentHand.filter(item => item !== oppSelectedCard);
-            setOpponentHand(newOppHand);
-            setBeginningRound(false);
-        }
-    }, [opponentHand, userHand, beginningRound])
-=======
-    const [oppSelectedCard, setOppSelectedCard] = useState("");
->>>>>>> oppHandRemoval
     
     // let opponentPlayStat
     // let userPlayStat
@@ -123,40 +102,6 @@ const Game = ({user}) => {
     // console.log(opponentPlayTypeId)
     // console.log(userPlayTypeId)
     // console.log(gameState.id)
-<<<<<<< HEAD
-    
-    // handle Player A
-    const handleRound = ((selectedStat) => {
-        
-        // console.log(oppSelectedCard);
-        let opponentPlayStat;
-        const opponentPlayTypeId = opponentHand[0].type.id;
-
-        let userPlayStat;
-        const userPlayTypeId = selectedCard.type.id;
-
-        if (gameState.playerATurn) {    
-            if (opponentHand.length > 0 && selectedCard !== "") {
-
-                userPlayStat = selectedCard[selectedStat];
-                opponentPlayStat = oppSelectedCard[selectedStat];
-                
-                fetch(`http://localhost:8080/games/${gameState.id}?statA=${userPlayStat}&statB=${opponentPlayStat}&typeAId=${userPlayTypeId}&typeBId=${opponentPlayTypeId}`,
-                    {method: "PATCH",
-                    headers: {'Content-Type': 'application/json'}
-                    })
-                .then ((response)=> response.json())
-                .then ((response)=> {setGameState(response)})
-                
-                setSelectedCard("");
-                setOppSelectedCard("");
-            }
-        }
-         
-        if (!gameState.playerATurn) {
-            
-        }
-=======
 
     const handleTimeOutBeforeRound = ((selectedStat) => {
         
@@ -186,7 +131,6 @@ const Game = ({user}) => {
         
             setSelectedStat("");
         }, 3100);
->>>>>>> oppHandRemoval
     })
 
     const handleRound = ((selectedStat) => {
@@ -240,18 +184,11 @@ const Game = ({user}) => {
             </div>
             <div className="flex">
                 {/* OpponentCard */}
-<<<<<<< HEAD
-                {oppSelectedCard ? <Card oppSelectedCard={oppSelectedCard} setOppSelectedCard={oppSelectedCard} handleRound={handleRound} gameState={gameState} opponentHand={opponentHand} setOpponentHand={setOpponentHand}/> : <></> }
-                
-                {/* YourCard */}
-                {selectedCard ? <Card pokemon={selectedCard} selectedCard={selectedCard} handleRound={handleRound} gameState={gameState}/> : <></> }
-            </div>
-=======
                 {console.log(oppSelectedCard)}
                 {oppSelectedCard ? <Card pokemon={oppSelectedCard} selectedCard={oppSelectedCard} handleRound={handleRound} gameState={gameState}/> : <></> }
                 {/* YourCard */}
                 {selectedCard ? <Card pokemon={selectedCard} selectedCard={selectedCard} handleRound={handleRound} handleTimeOutBeforeRound={handleTimeOutBeforeRound} gameState={gameState} setSelectedStat={setSelectedStat}/> : <></> }
->>>>>>> oppHandRemoval
+            </div>
             <div className="scale-50">
                 <HandCards userHand={userHand} setUserHand={setUserHand} selectedCard={selectedCard} setSelectedCard={setSelectedCard} gameState={gameState} handleRound={handleRound}/>
             </div>

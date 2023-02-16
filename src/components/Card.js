@@ -31,7 +31,7 @@ const Card = ({pokemon, userHand, setUserHand, selectedCard, setSelectedCard, ha
         let chosenStat;
         if (selectedCard === "") {
             setSelectedCard(pokemon);
-            console.log(opponentHand);
+            // console.log(opponentHand);
             // setOppSelectedCard(opponentHand[0]);
             
             const newHand = userHand.filter(item => item !== pokemon);
