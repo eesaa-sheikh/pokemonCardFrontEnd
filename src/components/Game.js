@@ -203,7 +203,7 @@ const Game = ({user}) => {
                         {selectedStat !== "" ? <p className="font-bold">{gameState.playerATurn ? account.username : opponent.username} chose {selectedStat}!</p> : <div></div>}
                     </div>
                     <div className="scale-[70%] h-[200px] origin-bottom-left">
-                        <HandCards userHand={opponentHand} inHand={true}/>
+                        <HandCards userHand={opponentHand} inHand={true} isOpponent={true}/>
                     </div>
                     <div className="flex h-[50vh] mt-5 mx-auto z-50">
                         {/* OpponentCard */}
