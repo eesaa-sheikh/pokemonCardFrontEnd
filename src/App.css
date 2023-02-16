@@ -238,6 +238,7 @@ background: url(PokemonTypeAsset/PokemonOverlay.png);
 }
 
 .navBar{
+display: flexbox;
 position:absolute;
 z-index: 2;
 padding: 15%;
@@ -436,3 +437,80 @@ background: linear-gradient(21deg, rgba(0,127,255,1) 0%, rgba(27,0,195,1) 84%); 
 }
 
 
+.loginForm{
+
+  margin-bottom: 10vh;
+  color: rgb(0, 0, 0);
+  
+  font-weight:bold;
+  list-style: none;
+
+  margin-left: 20.5vw;
+  margin-top: 7vh;
+  margin-right: 20.5vw; 
+}
+
+.login_label{
+  margin-left: 21vw;
+  margin-top: 50px;
+  
+}
+
+.login_label{
+  padding-right: 600px;
+}
+
+.login_label{
+  display: flex;
+  flex-direction: column;
+}
+.iconAccount{
+  margin-left: 24.5vw;
+  margin-right: 24.5vw;
+  border: 5px solid black;
+  background-color: aliceblue;
+  border-radius: 10px;
+  padding-bottom: 1px;
+  padding-top: 1px;
+}
+
+.am{
+  padding-bottom: 10vh;
+}
+
+.loginForm{
+
+  justify-items: center;
+  background: rgb(0,127,255);
+background: linear-gradient(21deg, rgba(0,127,255,1) 0%, rgba(0,195,172,0.6096813725490196) 84%);
+border-radius: 20px;
+box-shadow: 5px 10px 10px #0404046f;
+
+}
+
+/* .loginForm{
+ background-image: url(https://i.pinimg.com/originals/ed/3a/b3/ed3ab3cfffa1b6c37992652775fa27fe.png);
+ background-position: right;
+ background-repeat: no-repeat;
+} */
+
+.okButton{
+  font-size: 25px;
+  margin-left: 26vw;
+
+  margin-bottom: 10vh;
+  margin-top: 100px;
+
+
+}
+
+.title{
+  font-size: 100px;
+margin-left: 16vw;
+margin-right: 16vw;
+}
+
+.loginForm, .login_label{
+
+  column-gap: 10px;
+}
