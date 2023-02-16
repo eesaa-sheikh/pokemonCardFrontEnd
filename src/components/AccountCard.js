@@ -6,9 +6,13 @@ const AccountCard = ({acc, setOpp}) => {
     // handleClick()
 
     return ( 
-        <>
+        <>                
+       <div>
+             <div>                                
             <Link to={`playgame/${acc.id}`}><h3>{acc.username}</h3></Link>
             {/* <button onClick={console.log(acc)}>PLAY</button> */}
+                </div> 
+        </div>
         </> 
     );
 }
