@@ -179,13 +179,13 @@ const Game = ({user}) => {
             <p>{opponent.username}: {gameState.scoreB} </p> */}
             {gameState.winner !== "" ? <p>Winner: {gameState.winner}</p> : <></>}
             
-            <div className="flex w-[100vw] bg-[url('https://images.gamebanana.com/img/ss/mods/5f3ad2ae45e16.jpg')] bg-cover">
+            <div className="flex h-[100vh] bg-[url('https://images.gamebanana.com/img/ss/mods/5f3ad2ae45e16.jpg')] bg-cover">
                 <div className="w-[20vw] z-50">
 
                 </div>
 
                 <div className="flex flex-col w-[60vw] mx-auto z-50">
-                    <div className="text-white text-center h-[60px] -mb-[40px] flex-col">
+                    <div className="text-white text-center h-[60px] flex-col">
 
                         <div className="flex mt-5">
                             <div className="w-[48%] text-right"><p className="mx-auto my-auto">{account.trainerTitle} <span className=" font-extrabold">{account.username}</span></p></div>
@@ -202,23 +202,23 @@ const Game = ({user}) => {
                         <p className="mx-auto my-auto text-3xl"><span className=" font-extrabold">{account.username}</span> {gameState.scoreA} : {gameState.scoreB} <span className="font-extrabold">{opponent.username}</span></p> */}
                         {selectedStat !== "" ? <p className="font-bold">{gameState.playerATurn ? account.username : opponent.username} chose {selectedStat}!</p> : <div></div>}
                     </div>
-                    <div className="scale-[40%] h-[200px] origin-bottom-left">
+                    <div className="scale-[70%] h-[200px] origin-bottom-left">
                         <HandCards userHand={opponentHand} inHand={true}/>
                     </div>
                     <div className="flex h-[50vh] mt-5 mx-auto z-50">
                         {/* OpponentCard */}
                         {console.log(oppSelectedCard)}
-                        <div className="w-[15vw] mr-2 my-auto">
+                        <div className="w-[15vw] scale-125 mr-2 my-auto">
                             {oppSelectedCard ? <Card pokemon={oppSelectedCard} selectedCard={oppSelectedCard} handleRound={handleRound} gameState={gameState}/> : <></> }
                         </div>
                         
                         {/* YourCard */}
-                        <div className="w-[15vw] ml-2 my-auto">
+                        <div className="w-[15vw] scale-125 ml-2 my-auto">
                             {selectedCard ? <Card pokemon={selectedCard} selectedCard={selectedCard} handleRound={handleRound} handleTimeOutBeforeRound={handleTimeOutBeforeRound} gameState={gameState} setSelectedStat={setSelectedStat}/> : <></> }
                         </div>
                         
                     </div>
-                    <div className="scale-[40%] h-[200px] origin-top-right z-50">
+                    <div className="scale-[70%] h-[200px] origin-top-right z-50 translate-x-36">
                         <HandCards userHand={userHand} setUserHand={setUserHand} selectedCard={selectedCard} setSelectedCard={setSelectedCard} gameState={gameState} handleRound={handleRound} inHand={true}/>
                     </div>
                 </div>
