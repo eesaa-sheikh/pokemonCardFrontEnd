@@ -1,14 +1,22 @@
 import { Link } from "react-router-dom";
 import AccountList from "./AccountList";
+import React, { useEffect, useRef } from 'react'
 
-const AccountCard = ({acc, setOpp}) => {
+
+const AccountCard = ({acc, setOpp, props}) => {
+
+
+    
 
     // handleClick()
 
     return ( 
         <> 
-        <Link to={`playgame/${acc.id}`}>       
-        <div className={`relative flex ]`} style = {{
+        <Link to={`playgame/${acc.id}`}>     
+        <div className={`relative flex ]`}
+        enableRotate
+        enableTransform
+        style = {{
                                                     width: "6.3cm",
                                                     height: "8.8cm", 
                                                     backgroundSize: "cover", 
@@ -19,7 +27,7 @@ const AccountCard = ({acc, setOpp}) => {
                                                     fontFamily: "'Roboto', sans-serif"}}>
             <img className="w-[6.3cm] object-cover" src={require(`../TrainerAsset/${acc.username}.jpg`)}/>
              {/* <button onClick={console.log(acc)}>PLAY</button> */}
-         </div>  
+        </div>
        </Link>
         </> 
     );
