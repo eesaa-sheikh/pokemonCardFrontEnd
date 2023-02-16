@@ -209,9 +209,10 @@ const Game = ({user}) => {
                     <div className="flex h-[50vh] mt-5 mx-auto z-50">
                         {/* OpponentCard */}
                         {console.log(oppSelectedCard)}
-                        <div className="my-auto">
-                            <img src={opponent.spriteNumber} className="w-[300px] relative z-10"/>
-                            <img src={battlePodium} className="w-[300px] -translate-y-10 -z-10"/>
+                        <div className="my-auto text-center">
+                            <img src={opponent.spriteNumber} className="h-[300px] relative z-10 mx-auto" alt={`${opponent.username} battle sprite`}/>
+                            <img src={battlePodium} className="w-[300px] -translate-y-10 -z-10" alt="battle podium"/>
+                            {gameState.playerATurn ? <p className="text-transparent font-extrabold text-3xl -mt-6">{opponent.username}'s turn</p> : <p className="text-white font-extrabold text-3xl -mt-6">{opponent.username}'s turn</p>}
                         </div>
                         <div className="w-[15vw] scale-125 mr-2 my-auto">
                             {oppSelectedCard ? <Card pokemon={oppSelectedCard} selectedCard={oppSelectedCard} handleRound={handleRound} gameState={gameState}/> : <></> }
@@ -221,9 +222,10 @@ const Game = ({user}) => {
                         <div className="w-[15vw] scale-125 ml-2 my-auto">
                             {selectedCard ? <Card pokemon={selectedCard} selectedCard={selectedCard} handleRound={handleRound} handleTimeOutBeforeRound={handleTimeOutBeforeRound} gameState={gameState} setSelectedStat={setSelectedStat}/> : <></> }
                         </div>
-                        <div className="my-auto" >
-                            <img src={account.spriteNumber} className="w-[300px] relative z-10"/>
-                            <img src={battlePodium} className="w-[300px] -translate-y-10 -z-10"/>
+                        <div className="my-auto text-center" >
+                            <img src={account.spriteNumber} className="h-[300px] relative z-10" alt={`${account.username} battle sprite`}/>
+                            <img src={battlePodium} className="w-[300px] -translate-y-10 -z-10" alt="battle podium"/>
+                            {gameState.playerATurn ? <p className="text-white font-extrabold text-3xl -mt-6">It's your turn</p> : <p className="text-transparent font-extrabold text-3xl -mt-6">It's your turn</p>}
 
                         </div>
                     </div>
