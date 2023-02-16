@@ -20,6 +20,6 @@ const AccountList = ({allAccounts, setOpp}) => {
         </div>
         </>
     );
-}
+} 
  
 export default AccountList;

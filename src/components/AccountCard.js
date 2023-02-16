@@ -1,50 +1,66 @@
 import { Link } from "react-router-dom";
 import AccountList from "./AccountList";
 import React, { useEffect, useRef } from 'react'
+import { useMotionValue, useTransform, motion } from "framer-motion";
+import brock from '../TrainerPng/Brock.png'
+import ash from '../TrainerPng/Ash.png'
+
 
 
 const AccountCard = ({acc, setOpp, props}) => {
-
-
+// const img = require(`../TrainerAsset/${acc.username}.jpg`)
     
 
-    // handleClick()
+        const x = useMotionValue(0);
+        const y = useMotionValue(0);
+        const rotateX = useTransform(y, [-100, 100], [30, -30]);
+        const rotateY = useTransform(x, [-100, 100], [-30, 30]);
 
-    return ( 
-        <> 
-        <Link to={`playgame/${acc.id}`}>     
-        <div className={`relative flex ]`}
-        enableRotate
-        enableTransform
-        style = {{
-                                                    width: "6.3cm",
-                                                    height: "8.8cm", 
-                                                    backgroundSize: "cover", 
-                                                    backgroundPosition:"center",
-                                                    border: "10px solid black",
-                                                    borderRadius: "10px",
-                                                    position: "relative",
-                                                    fontFamily: "'Roboto', sans-serif"}}>
-            <img className="w-[6.3cm] object-cover" src={require(`../TrainerAsset/${acc.username}.jpg`)}/>
-             {/* <button onClick={console.log(acc)}>PLAY</button> */}
-        </div>
-       </Link>
-        </> 
-    );
-}
+        return (
+            // card wrapper
+            <div style={{ perspective: 2000 }}>
+                {/* card */}
+                <motion.div
+                style={{ x, y, rotateX, rotateY, z: 5, backgroundImage : `url(require(../TrainerAsset/${acc.username}.jpg))` }}
+                drag
+                dragElastic={0.50}
+                dragConstraints={{ top: 0, left: 0, right: 0, bottom: 0 }}
+                whileTap={{ cursor: 'grabbing' }}
+                className='w-[426px] min-h-[600px] rounded-[30px] border-[4px] border-white px-[40px] py-[24px] cursor-grab relative'
+                >
+    
+                {/* card image */}
+                <motion.div style={{ x, y, rotateX, rotateY, z: 10 }} className='absolute top-20 -right-64 w-[620px]'>
+                    <img className='h-[400px]' src={require(`../TrainerPng/${acc.username}.png`)} alt='trainer image' draggable='false' />
+                </motion.div>
+                </motion.div>
 
-//bg-[url('../TrainerAsset/${acc.username}.jpg')
-//backgroundImage : `url(require(../TrainerAsset/${acc.username}.jpg))`
+                ``
 
-export default AccountCard;       
-    // <div className = "trainerCard" style = {{backgroundImage : `url= {require(../TrainerAsset/${acc.username}.jpg)`,
-    //                                                 width: "6.3cm",
-    //                                                 height: "8.8cm", 
-    //                                                 backgroundSize: "cover", 
-    //                                                 backgroundPosition:"center",
-    //                                                 border: "10px solid",
-    //                                                 borderRadius: "10px",
-    //                                                 position: "relative",
-    //                                                 fontFamily: "'Roboto', sans-serif"}}>
-    // <img className=" object-cover" src= {require(`../TrainerAsset/${acc.username}.jpg`)}/>   
-    //     </div>  
+            </div>
+            );
+        };
+    
+
+    export default AccountCard
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
