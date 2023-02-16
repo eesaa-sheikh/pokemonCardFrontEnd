@@ -26,7 +26,7 @@ const PokedexList = ({pokedex, setShowCard}) => {
             <div onMouseOver={() => {setShowCard(pokemon)}} className="pokedex-entry flex" style={{border: `5px solid ${pokemon.type.colourType}`,
                                                             backgroundColor: `${pokemon.type.colourType}`}}>
                 <h4 className="pokemon-name">{pokemon.name}</h4>
-                <img className='typeImage' src= {require(`../PokemonTypeAsset/${pokemon.type.name}_icon_SwSh.png`)} width="25px" alt = {pokemon.type.name}/>
+                <img className='typeImage' src= {require(`../PokemonTypeAsset/${pokemon.type.name}_icon_SwSh.png`)} width="125px" alt = {pokemon.type.name}/>
                 {/* <div></div> */}
                 {/* <img src={pokeApi.sprites.front_default}/> */}
             </div>
