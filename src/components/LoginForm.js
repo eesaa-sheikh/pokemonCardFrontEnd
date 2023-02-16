@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import video from "../PokemonTypeAsset/pokiIntro.mp4"
 
 
 const LoginForm = ({logInToAnAccount}) => {
@@ -26,7 +27,11 @@ const LoginForm = ({logInToAnAccount}) => {
         <>
 
         <div className="am">
-            <div className="loginForm">
+
+       
+            <div className="loginForm"> 
+
+
                 <h1 className="title"> Please log in</h1>
                 <img src="https://cdn-icons-png.flaticon.com/512/287/287226.png" className="iconAccount" width={200}></img>
                 <form  role="search" onSubmit={handleSubmit}>
@@ -47,7 +52,8 @@ const LoginForm = ({logInToAnAccount}) => {
                     </li>
                     <input type="submit" value="OK" className="okButton"/>
                 </form>
-                <p>{error}</p>
+                <p className="error">{error}</p>
+                
                 
             </div>
             </div>

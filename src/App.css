@@ -266,7 +266,20 @@ height: 8vh;
 
 
 }
+.okButton{
+  border: 3px solid black ;
+  background-color: aquamarine;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
+  border-radius: 10px;
+}
 
+.okButton:hover{
+  scale: 1.5;
+  transform: 0.1s;
+}
 .helloWill{
   position: absolute;
   margin-left: 10px;
@@ -485,6 +498,8 @@ background: linear-gradient(21deg, rgba(0,127,255,1) 0%, rgba(27,0,195,1) 84%); 
 background: linear-gradient(21deg, rgba(0,127,255,1) 0%, rgba(0,195,172,0.6096813725490196) 84%);
 border-radius: 20px;
 box-shadow: 5px 10px 10px #0404046f;
+border: 3px solid black ;
+
 
 }
 
@@ -513,4 +528,12 @@ margin-right: 16vw;
 .loginForm, .login_label{
 
   column-gap: 10px;
+}
+
+.error{
+  color: red;
+  margin-bottom: 5vh;
+  font-size: x-large;
+  margin-top: 0;
+  margin-left: 20.5vw;
 }
