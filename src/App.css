@@ -135,10 +135,6 @@ html, body {
   padding: 8px;
 }
 
-.pokemonCard .cardBanner {
-  
-}
-
 .pokemonCard .cardBanner h2 {
   margin: 0px;
   padding-left: 10px;
@@ -216,9 +212,6 @@ html, body {
 }
 
 
-.pokiType{
-  /* background-color: blue; */
-}
 
 .back{
 background-color: aqua;
@@ -437,9 +430,11 @@ background: linear-gradient(21deg, rgba(0,127,255,1) 0%, rgba(27,0,195,1) 84%); 
 
 
 .endGameScreen{
+  margin-top: 10vh;
   display: flex;
 }
 .endGameText{
   border: 3px solid white;
   display: relative;
+  color: white
 }

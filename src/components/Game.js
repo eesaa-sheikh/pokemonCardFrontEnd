@@ -237,24 +237,24 @@ const Game = ({user}) => {
                     {gameState.winner === "" ?<div className="scale-[70%] h-[200px] origin-top-right z-50 translate-x-36">
                         <HandCards userHand={userHand} setUserHand={setUserHand} selectedCard={selectedCard} setSelectedCard={setSelectedCard} gameState={gameState} handleRound={handleRound} inHand={true}/>
                     </div>:<></>}
+
+                    {gameState.winner !== "" ?<div >
+                        <div className="endGameScreen">
+                            <img src= "https://pbs.twimg.com/media/EWCNVF8WkAA2b_t.png" alt="opponent"/>
+                            {reward !== "" && gameState.winner === account.username? <Card className="endGameScreen" key={reward.id} pokemon={reward}/>: <></>}
+                            <hr/>
+                        </div>
+                    
+                        <div className="endGameText">
+                            {gameState.winner === "Tie"? <p>That was a close battle!</p>: <></>}
+                            {gameState.winner === account.username ? <p>You are stronger than I thought!</p>: <></>}
+                            {gameState.winner === opponent.username ? <p>Better luck next time</p>: <></>}
+                        <button onClick={()=>navigate("/")}>Home</button>
+                        </div>
+                    </div>: <></>}
                 </div>
 
-                {gameState.winner !== "" ?<div className="endGameScreen">
-                    <div>
-                        <img src= "https://pbs.twimg.com/media/EWCNVF8WkAA2b_t.png" alt="opponent"/>
-                    </div>
-                    <div>
-                        {gameState.winner === account.username ?<p>Reward</p>: <></>}
-                        {reward !== "" && gameState.winner === account.username? <Card key={reward.id} pokemon={reward}/>: <></>}
-                        <hr/>
-                    </div>
-                    <div className="endGameText">
-                        {gameState.winner === "Tie"? <p>That was a close battle!</p>: <></>}
-                        {gameState.winner === account.username ? <p>You are stronger than I thought!</p>: <></>}
-                        {gameState.winner === opponent.username ? <p>Better luck next time</p>: <></>}
-                        <button onClick={()=>navigate("/")}>Home</button>
-                    </div>
-                </div>: <></>}
+                
 
                 <div className="w-[20vw]">
 
