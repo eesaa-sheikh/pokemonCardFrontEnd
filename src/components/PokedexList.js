@@ -19,6 +19,7 @@ const PokedexList = ({pokedex, setShowCard}) => {
     //         })
 
     // console.log(pokeArray);
+    
 
     
     const listPokemon = pokedex.map((pokemon) => {

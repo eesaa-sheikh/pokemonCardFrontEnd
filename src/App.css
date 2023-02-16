@@ -436,3 +436,52 @@ background: linear-gradient(21deg, rgba(0,127,255,1) 0%, rgba(27,0,195,1) 84%); 
 }
 
 
+
+
+.pokedex-container{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  position: relative;
+  overflow-y: auto;
+  overflow: hidden;
+}
+
+.entry-list{
+  padding-top: 3em;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  width: 1500px;
+}
+
+::-webkit-scrollbar{
+  background: transparent;
+}
+
+.pokedex-entry {
+  display: flex;
+  justify-content: space-between;
+  border-radius: 55px;
+  padding: 50px 100px;
+  transition: all 0.25s ease;
+
+}
+
+.pokedex-entry:hover{
+  filter: brightness(110%);
+  padding: 75px 120px;
+  transition: all 0.25s ease;
+}
+
+.pokemon-name {
+  color: white;
+  font-weight: bold;
+  font-size: 5em;
+}
+
+.card-div{
+  margin: auto;
+  scale: 400%;
+}
