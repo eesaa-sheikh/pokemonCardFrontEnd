@@ -248,7 +248,7 @@ const Game = ({user}) => {
 
                     {gameState.winner !== "" ?<div >
                         <div className="endGameScreen">
-                            <img src= "https://pbs.twimg.com/media/EWCNVF8WkAA2b_t.png" alt="opponent"/>
+                            <img src= "https://avatars.githubusercontent.com/u/35168987?s=280&v=4" alt="opponent"/>
                             {reward !== "" && gameState.winner === account.username? <Card className="endGameScreen" key={reward.id} pokemon={reward}/>: <></>}
                             <hr/>
                         </div>
