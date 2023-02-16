@@ -10,7 +10,7 @@ html, body {
 }
 
 .pokemonCard {
-  transition: all 1s ease;
+  transition: box-shadow 1s ease;
 }
 
 .pokemonCard:after {
@@ -197,4 +197,26 @@ html, body {
 
 .pokiType{
   /* background-color: blue; */
+}
+
+.pokedex{
+  display: flex;
+  overflow-y: auto;
+  overflow-x: hidden;
+  border: 1px solid black;
+  justify-content: space-around;
+}
+
+.pokedex-list {
+  border: 1px solid red;
+}
+
+.pokedex-entry {
+  display: flex;
+  justify-content: space-between;
+  /* row-gap: 10px; */
+}
+
+.show-card{
+  border: 1px solid blue;
 }
