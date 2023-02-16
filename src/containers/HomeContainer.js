@@ -24,7 +24,7 @@ const HomeContainer = () => {
        
             <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/Pok%C3%A9mon_Trading_Card_Game_logo.svg/1200px-Pok%C3%A9mon_Trading_Card_Game_logo.svg.png" width ={1000} className ="pokemonLogo"/>
             <div className="">
-            <img className="overlay" src={bgImage}/>
+            <img className="logo" src={bgImage} id="logoP"/>
             {/* <img className="" src= "https://www.freepnglogos.com/uploads/pokemon-logo-png-0.png"/> */}
 
             </div>

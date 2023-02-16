@@ -8,6 +8,8 @@ import LoginContainer from './containers/LoginContainer';
 import OppsSelect from './containers/OppsSelect';
 import PokedexContainer from './containers/PokedexContainer';
 
+
+
 const AccountContext = createContext();  
 
 function App() {
@@ -54,6 +56,7 @@ function App() {
         <BrowserRouter>
 
         <div className='helloWill'>
+          
           <img src ="https://cdn-icons-png.flaticon.com/512/287/287226.png" width={75} className ="icon"/>
             <p className='acc'>Hello {account.username}</p>
         </div>
@@ -74,6 +77,8 @@ function App() {
           
         </BrowserRouter>
       </AccountContext.Provider>
+
+      
     </>
   );
 }

@@ -217,16 +217,14 @@ background: url(PokemonTypeAsset/PokemonOverlay.png);
 }
 
 .navBar{
-  position:fixed;
-  z-index: 2;
-  overflow: hidden;
+position:absolute;
+z-index: 2;
 padding: 15%;
 display: grid;
 grid-template-columns: 1fr 1fr 1fr 1fr;
 z-index:10;
-padding-top: 15px;
-margin-top: auto;
-margin-bottom: auto;
+overflow: scroll;
+padding-top: 55px;
 padding-left: 100px;
 font-style: oblique;
 gap: 100px;
@@ -239,7 +237,7 @@ padding-bottom: 15px;
 text-align: center;
 font-weight: bold;
 margin-top: 75px;
-
+overflow: hidden;
 
 
 }
@@ -310,7 +308,7 @@ background: linear-gradient(21deg, rgba(0,127,255,1) 0%, rgba(27,0,195,1) 84%); 
   bottom: 0;
   left: 0;
   background-color: #0087ca;
-  transform-origin: bottom right;
+  transform-origin: bottom;
   transition: transform 0.25s ease-out;
 }
 
@@ -324,6 +322,7 @@ background: linear-gradient(21deg, rgba(0,127,255,1) 0%, rgba(27,0,195,1) 84%); 
   padding-top: 25vh;
   padding-left: 10vw;
 }
+
 
 .pokemonLogo {
     
@@ -361,7 +360,8 @@ background: linear-gradient(21deg, rgba(0,127,255,1) 0%, rgba(27,0,195,1) 84%); 
   height: 100vh;
   padding: 1rem; */
 
-  background-image: url(https://i.redd.it/0kkvgt5iqby61.gif);
+  /* background-image: url(https://i.redd.it/0kkvgt5iqby61.gif); */
+  background-image: url(https://wallpapercave.com/wp/wp8053173.jpg);
   background-size: contain;
   background-position: right;
   background-repeat: no-repeat;
