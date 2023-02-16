@@ -15,18 +15,17 @@ const PokedexContainer = () => {
         .then(data => setPokedex(data));
     }, []);
 
-    
+    const [showCard, setShowCard] = useState("");
+
 
     return ( 
-
-        
-        <div className="white">
-
-<audio  autoPlay>
-            <source src={pokedexSong} type="audio/mp3"></source>
-        </audio>
-
-            <PokedexList pokedex={pokedex}/>
+        <div className="pokedex-container">
+            <div className="pokedex-list grid gap-2 overflow-y-scroll h-screen whitespace-nowrap scrollbar-hide">
+                <PokedexList pokedex={pokedex} setShowCard={setShowCard}/>
+            </div>
+            <div className="card-div">
+                {showCard ? <Card className="pokedex-card" pokemon={showCard}/> : <div className="w-1/2"></div>}
+            </div>
         </div>
     );
 }

@@ -31,7 +31,7 @@ html, body {
 }
 
 .pokemonCard {
-  transition: all 1s ease;
+  transition: box-shadow 1s ease;
 }
 
 .pokemonCard:after {
@@ -135,10 +135,6 @@ html, body {
   padding: 8px;
 }
 
-.pokemonCard .cardBanner {
-  
-}
-
 .pokemonCard .cardBanner h2 {
   margin: 0px;
   padding-left: 10px;
@@ -216,9 +212,6 @@ html, body {
 }
 
 
-.pokiType{
-  /* background-color: blue; */
-}
 
 .back{
 background-color: aqua;
@@ -238,6 +231,7 @@ background: url(PokemonTypeAsset/PokemonOverlay.png);
 }
 
 .navBar{
+display: flexbox;
 position:absolute;
 z-index: 2;
 padding: 15%;
@@ -265,7 +259,20 @@ height: 8vh;
 
 
 }
+.okButton{
+  border: 3px solid black ;
+  background-color: aquamarine;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
+  border-radius: 10px;
+}
 
+.okButton:hover{
+  scale: 1.5;
+  transform: 0.1s;
+}
 .helloWill{
   position: absolute;
   margin-left: 10px;
@@ -461,3 +468,149 @@ background: linear-gradient(21deg, rgba(0,127,255,1) 0%, rgba(27,0,195,1) 84%); 
 }
 
 
+
+
+.pokedex-container{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  position: relative;
+  overflow-y: auto;
+  overflow: hidden;
+}
+
+.entry-list{
+  padding-top: 3em;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  width: 1500px;
+}
+
+::-webkit-scrollbar{
+  background: transparent;
+}
+
+.pokedex-entry {
+  display: flex;
+  justify-content: space-between;
+  border-radius: 55px;
+  padding: 50px 100px;
+  transition: all 0.25s ease;
+
+}
+
+.pokedex-entry:hover{
+  filter: brightness(110%);
+  padding: 75px 120px;
+  transition: all 0.25s ease;
+}
+
+.pokemon-name {
+  color: white;
+  font-weight: bold;
+  font-size: 5em;
+}
+
+.card-div{
+  margin: auto;
+  scale: 400%;
+}
+.loginForm{
+
+  margin-bottom: 10vh;
+  color: rgb(0, 0, 0);
+  
+  font-weight:bold;
+  list-style: none;
+
+  margin-left: 20.5vw;
+  margin-top: 7vh;
+  margin-right: 20.5vw; 
+}
+
+.login_label{
+  margin-left: 21vw;
+  margin-top: 50px;
+  
+}
+
+.login_label{
+  padding-right: 600px;
+}
+
+.login_label{
+  display: flex;
+  flex-direction: column;
+}
+.iconAccount{
+  margin-left: 24.5vw;
+  margin-right: 24.5vw;
+  border: 5px solid black;
+  background-color: aliceblue;
+  border-radius: 10px;
+  padding-bottom: 1px;
+  padding-top: 1px;
+}
+
+.am{
+  padding-bottom: 10vh;
+}
+
+.loginForm{
+
+  justify-items: center;
+  background: rgb(0,127,255);
+background: linear-gradient(21deg, rgba(0,127,255,1) 0%, rgba(0,195,172,0.6096813725490196) 84%);
+border-radius: 20px;
+box-shadow: 5px 10px 10px #0404046f;
+border: 3px solid black ;
+
+
+}
+
+/* .loginForm{
+ background-image: url(https://i.pinimg.com/originals/ed/3a/b3/ed3ab3cfffa1b6c37992652775fa27fe.png);
+ background-position: right;
+ background-repeat: no-repeat;
+} */
+
+.okButton{
+  font-size: 25px;
+  margin-left: 26vw;
+
+  margin-bottom: 10vh;
+  margin-top: 100px;
+
+
+}
+
+.title{
+  font-size: 100px;
+margin-left: 16vw;
+margin-right: 16vw;
+}
+
+.loginForm, .login_label{
+
+  column-gap: 10px;
+}
+
+.error{
+  color: red;
+  margin-bottom: 5vh;
+  font-size: x-large;
+  margin-top: 0;
+  margin-left: 20.5vw;
+}
+
+.endGameScreen{
+  margin-top: 10vh;
+  display: flex;
+}
+.endGameText{
+  border: 3px solid white;
+  display: relative;
+  color: white
+}

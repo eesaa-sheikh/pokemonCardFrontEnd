@@ -1,5 +1,6 @@
+import { Button } from "@mui/material";
 import { useContext, useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate} from "react-router-dom";
 import { AccountContext } from "../App";
 import Card from "./Card";
 import HandCards from "./HandCards";
@@ -12,6 +13,9 @@ const Game = ({user}) => {
     const SERVER_URL = "http://localhost:8080/accounts"
 
     const {id} = useParams();
+
+    const deckLength =11;
+    const navigate = useNavigate();
 
     // GAME SETUP
 
@@ -56,9 +60,11 @@ const Game = ({user}) => {
 
     const [userHand, setUserHand] = useState([]);
     const [opponentHand, setOpponentHand] = useState([]);
+    const [reward, setReward] = useState("");
+
 
     useEffect(() => {
-        if (userDeck.length===11) {
+        if (userDeck.length===deckLength) {
             const newHand = userDeck.slice(0, 5);
             setUserHand(newHand)
 
@@ -69,13 +75,16 @@ const Game = ({user}) => {
     }, [id, account, userDeck]) // might not need account, will see later
    
     useEffect(() => {
-        if (opponentDeck.length===11) {
+        if (opponentDeck.length===deckLength) {
             const newHand = opponentDeck.slice(0, 5);
             setOpponentHand(newHand)
 
             const newDeck = opponentDeck.slice(5);
             setOpponentDeck(newDeck);
-            
+
+            const newReward = opponentDeck.slice(deckLength-1, deckLength)[0];
+            setReward(newReward);
+
         }
     }, [id, account, opponentDeck])
 
@@ -134,6 +143,16 @@ const Game = ({user}) => {
         }, 3100);
     })
 
+    const handlePostRound =((response) =>{
+        setGameState(response);
+        if(response.winner === account.username){
+            fetch(`http://localhost:8080/ownerships/${account.id}/${reward.id}?inDeck=false`,
+            {method: "POST",
+            headers: {'Content-Type': 'application/json'}
+            })
+        }
+    })
+
     const handleRound = ((selectedStat) => {
 
         let userPlayStat
@@ -145,22 +164,16 @@ const Game = ({user}) => {
             
         opponentPlayStat = opponentHand[0][selectedStat];
         userPlayStat = selectedCard[selectedStat];
-            
-        // } 
-        
-        // if(){
-            
-        // }
+
         fetch(`http://localhost:8080/games/${gameState.id}?statA=${userPlayStat}&statB=${opponentPlayStat}&typeAId=${userPlayTypeId}&typeBId=${opponentPlayTypeId}`,
             {method: "PATCH",
             headers: {'Content-Type': 'application/json'}
             })
         .then ((response)=> response.json())
-        .then ((response)=> {setGameState(response)})
-
-        
+        .then ((response)=> {handlePostRound(response)})
     
     })
+
     
     // Opponent Plays First Card in Hand -------------
     // After game is updated 
@@ -169,16 +182,19 @@ const Game = ({user}) => {
     // Opponent and user's hand is updated with the next card in deck
     // Display winner when gameState.winner !== ""
     
-    useEffect(() => {
-        console.log(gameState, "game state");
-    }, [gameState])
+    // useEffect(() => {
+    //     console.log(gameState, "game state");
+    // }, [gameState])
 
     return ( 
         <>
+            
             {/* <p>{account.trainerTitle} {account.username} VS {opponent.trainerTitle} {opponent.username}</p> */}
             {/* <p>{account.username}: {gameState.scoreA} </p>
             <p>{opponent.username}: {gameState.scoreB} </p> */}
-            {gameState.winner !== "" ? <p>Winner: {gameState.winner}</p> : <></>}
+            {gameState.winner !== "" && gameState.winner !== "Tie"? <p>Winner: {gameState.winner}</p> : <></>}
+            {gameState.winner === "Tie" ? <p> {gameState.winner}</p> : <></>}
+
             
             <div className="flex h-[100vh] bg-[url('https://images.gamebanana.com/img/ss/mods/5f3ad2ae45e16.jpg')] bg-cover">
                 <div className="w-[20vw] z-50">
@@ -186,6 +202,8 @@ const Game = ({user}) => {
                 </div>
 
                 <div className="flex flex-col w-[60vw] mx-auto z-50">
+
+
                     <div className="text-white text-center h-[60px] flex-col">
 
                         <div className="flex mt-5">
@@ -203,10 +221,15 @@ const Game = ({user}) => {
                         <p className="mx-auto my-auto text-3xl"><span className=" font-extrabold">{account.username}</span> {gameState.scoreA} : {gameState.scoreB} <span className="font-extrabold">{opponent.username}</span></p> */}
                         {/* {selectedStat !== "" ? <p className="font-bold">{gameState.playerATurn ? account.username : opponent.username} chose {selectedStat}!</p> : <div></div>} */}
                     </div>
-                    <div className="scale-[70%] h-[200px] origin-bottom-left">
+
+
+                    {gameState.winner === "" ?<div className="scale-[70%] h-[200px] origin-bottom-left">
                         <HandCards userHand={opponentHand} inHand={true} isOpponent={true}/>
-                    </div>
-                    <div className="flex h-[50vh] mt-5 mx-auto z-50">
+                    </div>:<></>}
+
+                            
+
+                    {gameState.winner === "" ?<div className="flex h-[50vh] mt-5 mx-auto z-50">
                         {/* OpponentCard */}
                         {console.log(oppSelectedCard)}
                         <div className="my-auto text-center">
@@ -242,11 +265,33 @@ const Game = ({user}) => {
                             : selectedCard === "" ? <p className="text-white pulsingGameText font-light text-3xl -mt-6">Pick a <span className="font-extrabold text-transparent animate-text-moving-background transition-all ease-in-out duration-200 bg-gradient-to-r from-cyan-500 via-blue-400 to-sky-400 bg-clip-text">card only</span></p> : <p className="text-white pulsingGameText font-light text-3xl -mt-6"><span className="font-extrabold text-transparent animate-text-moving-background transition-all ease-in-out duration-200 bg-gradient-to-r from-cyan-500 via-blue-400 to-sky-400 bg-clip-text">Click card to play</span></p> }
 
                         </div>
-                    </div>
-                    <div className="scale-[70%] h-[200px] origin-top-right z-50 translate-x-36">
+                        
+                    </div>:<></>}
+
+
+                    {gameState.winner === "" ?<div className="scale-[70%] h-[200px] origin-top-right z-50 translate-x-36">
                         <HandCards userHand={userHand} setUserHand={setUserHand} selectedCard={selectedCard} setSelectedCard={setSelectedCard} gameState={gameState} handleRound={handleRound} inHand={true}/>
-                    </div>
+                    </div>:<></>}
+
+                    {gameState.winner !== "" ?<div >
+                        <div className="endGameScreen">
+                            <img src= "https://avatars.githubusercontent.com/u/35168987?s=280&v=4" alt="opponent"/>
+                            {reward !== "" && gameState.winner === account.username? <Card className="endGameScreen" key={reward.id} pokemon={reward}/>: <></>}
+                            <hr/>
+                        </div>
+                    
+                        <div className="endGameText">
+                            {gameState.winner === "Tie"? <p>That was a close battle!</p>: <></>}
+                            {gameState.winner === account.username ? <p>You are stronger than I thought!</p>: <></>}
+                            {gameState.winner === opponent.username ? <p>Better luck next time</p>: <></>}
+                        <button onClick={()=>navigate("/")}>Home</button>
+                        </div>
+                    </div>: <></>}
+
+
                 </div>
+
+                
 
                 <div className="w-[20vw]">
 

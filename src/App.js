@@ -17,13 +17,6 @@ function App() {
   const [account, setAccount] = useState("");
   const [allAccounts, setAllAccounts] = useState([])
 
-
-  useEffect(() => {
-    fetch("http://localhost:8080/accounts/10")
-    .then(response => response.json( ))
-    .then (data => setAccount(data))
-  }, []);
-
   useEffect(() => {
     const fetchData = async() => {
         const response = await fetch("http://localhost:8080/accounts")
@@ -54,17 +47,19 @@ function App() {
     <>
       <AccountContext.Provider value={account}>
         <BrowserRouter>
+            
 
         <div className='helloWill'>
           
-          <img src ="https://cdn-icons-png.flaticon.com/512/287/287226.png" width={75} className ="icon"/>
-            <p className='acc'>Hello {account.username}</p>
+            {account !== "" ?<img src ="https://cdn-icons-png.flaticon.com/512/287/287226.png" width={75} className ="icon"/>:<></>}
+            {account !== "" ? <p className='acc'>Hello {account.username}</p>:<></>}
         </div>
           <header className='navBar'>
             <Link className ="home" to="/">Home</Link>
-            <Link className ="game" to="/game">Play</Link>
-            <Link className ="pokedex" to="/pokedex">Pokedex</Link>
-            <Link className ="register" to="/register">Login</Link>
+            {account !== "" ? <Link className ="home" to="/game">Play</Link> :<></>}
+            {account !== "" ? <Link className ="home" to="/pokedex">Pokedex</Link> :<></>}
+            {account === "" ?<Link className ="home" to="/register">Login</Link>:<></>}
+            {account !== "" ? <button onClick={()=>setAccount("")}><Link className ="home" to="/">Logout</Link></button> :<></>}
         </header>
         <div className="mainContainer">
           <Routes>
