@@ -7,11 +7,13 @@ const AccountCard = ({acc, setOpp}) => {
 
     return ( 
         <>                
-       <div>
-             <div>                                
+       <div className=" border-gray-700">
+        
+       <img className='typeImage' src= {require(`../TrainerAsset/${acc.username}.jpg`)}/>
+                                             
             <Link to={`playgame/${acc.id}`}><h3>{acc.username}</h3></Link>
             {/* <button onClick={console.log(acc)}>PLAY</button> */}
-                </div> 
+        
         </div>
         </> 
     );
