@@ -2,7 +2,7 @@ import Rating from '@mui/material/Rating';
 import { useState, useEffect } from 'react';
 
 
-const Card = ({pokemon, userHand, setUserHand, selectedCard, setSelectedCard, oppSelectedCard, setOppSelectedCard, opponentHand, setOpponentHand, handleRound, gameState}) => {
+const Card = ({pokemon, userHand, setUserHand, selectedCard, setSelectedCard, handleRound, handleTimeOutBeforeRound, gameState, setSelectedStat}) => {
 
 //     const [mousePos, setMousePos] = useState({});
 
@@ -22,9 +22,13 @@ const Card = ({pokemon, userHand, setUserHand, selectedCard, setSelectedCard, op
 //   }, []);
 
     
+    
 
     const handleClick = (() => {
-        
+        // check if NOT playerA turn 
+        // check 
+        console.log(gameState);
+        let chosenStat;
         if (selectedCard === "") {
             setSelectedCard(pokemon);
             console.log(opponentHand);
@@ -32,13 +36,22 @@ const Card = ({pokemon, userHand, setUserHand, selectedCard, setSelectedCard, op
             
             const newHand = userHand.filter(item => item !== pokemon);
             setUserHand(newHand);
-
-            // const newOppHand = opponentHand.filter(item => item !== oppSelectedCard);
-            // setOpponentHand(newOppHand);
+            
+        }
+        if(!gameState.playerATurn && selectedCard){
+            // setTimeout(500);
+            const statArray = ["hp", "attack", "defence", "specialAttack", "specialDefence", "speed"];
+            chosenStat = statArray[Math.floor(Math.random() * statArray.length)];  
+            handleTimeOutBeforeRound(chosenStat);
+            setSelectedStat(chosenStat);      
         }
 
     })
 
+    const handleStateClick = (stat) => {
+        setSelectedStat(stat);
+        handleTimeOutBeforeRound(stat);
+    };
 
     return ( 
         <>
@@ -74,19 +87,19 @@ const Card = ({pokemon, userHand, setUserHand, selectedCard, setSelectedCard, op
                 <div className="pokeInfo z-50">
                     <ul>
                         {/* extract selectedStat name from both cards */}
-                        {pokemon === selectedCard && gameState.playerATurn ? <p onClick={() => {handleRound("hp")}} className={pokemon === selectedCard && gameState.playerATurn ? "hover:border-white  transition-all duration-500 border-cyan-500/0 rounded-md border-[1px] m-[1px] mx-auto w-fit p-[3px] text-sm cursor-pointer z-50" : "m-[1px] mx-auto w-fit p-[3px] text-sm cursor-default"}><span className="statName">HP</span> {pokemon.hp}</p> : <p className={pokemon === selectedCard && gameState.playerATurn ? "hover:border-white  transition-all duration-500 border-cyan-500/0 rounded-md border-[1px] m-[1px] mx-auto w-fit p-[3px] text-sm cursor-pointer" : "m-[1px] mx-auto w-fit p-[3px] text-sm cursor-default"}><span className="statName">HP</span> {pokemon.hp}</p>}                
-                        {pokemon === selectedCard && gameState.playerATurn ? <p onClick={() => {handleRound("attack")}} className={pokemon === selectedCard && gameState.playerATurn ? "hover:border-white  transition-all duration-500 border-cyan-500/0 rounded-md border-[1px] m-[1px] mx-auto w-fit p-[3px] text-sm cursor-pointer z-50" : "m-[1px] mx-auto w-fit p-[3px] text-sm cursor-default"}><span className="statName">Atk</span> {pokemon.attack}</p> : <p className={pokemon === selectedCard && gameState.playerATurn ? "hover:border-white  transition-all duration-500 border-cyan-500/0 rounded-md border-[1px] m-[1px] mx-auto w-fit p-[3px] text-sm cursor-pointer" : "m-[1px] mx-auto w-fit p-[3px] text-sm cursor-default"}><span className="statName">Atk</span> {pokemon.attack}</p>}                
+                        {pokemon === selectedCard && gameState.playerATurn ? <p onClick={() => {handleStateClick("hp")}} className={pokemon === selectedCard && gameState.playerATurn ? "hover:border-white  transition-all duration-500 border-cyan-500/0 rounded-md border-[1px] m-[1px] mx-auto w-fit p-[3px] text-sm cursor-pointer z-50" : "m-[1px] mx-auto w-fit p-[3px] text-sm cursor-default"}><span className="statName">HP</span> {pokemon.hp}</p> : <p className={pokemon === selectedCard && gameState.playerATurn ? "hover:border-white  transition-all duration-500 border-cyan-500/0 rounded-md border-[1px] m-[1px] mx-auto w-fit p-[3px] text-sm cursor-pointer" : "m-[1px] mx-auto w-fit p-[3px] text-sm cursor-default"}><span className="statName">HP</span> {pokemon.hp}</p>}                
+                        {pokemon === selectedCard && gameState.playerATurn ? <p onClick={() => {handleStateClick("attack")}} className={pokemon === selectedCard && gameState.playerATurn ? "hover:border-white  transition-all duration-500 border-cyan-500/0 rounded-md border-[1px] m-[1px] mx-auto w-fit p-[3px] text-sm cursor-pointer z-50" : "m-[1px] mx-auto w-fit p-[3px] text-sm cursor-default"}><span className="statName">Atk</span> {pokemon.attack}</p> : <p className={pokemon === selectedCard && gameState.playerATurn ? "hover:border-white  transition-all duration-500 border-cyan-500/0 rounded-md border-[1px] m-[1px] mx-auto w-fit p-[3px] text-sm cursor-pointer" : "m-[1px] mx-auto w-fit p-[3px] text-sm cursor-default"}><span className="statName">Atk</span> {pokemon.attack}</p>}                
                         {/* <p className={pokemon === selectedCard ? "hover:border-white  transition-all duration-500 border-cyan-500/0 rounded-md border-[1px] m-[1px] mx-auto w-fit p-[3px] text-sm cursor-pointer  z-50" : "m-[1px] mx-auto w-fit p-[3px] text-sm cursor-default"}><span className="statName">Atk</span> {pokemon.attack}</p>         */}
                     </ul>
                     <ul>
-                        {pokemon === selectedCard && gameState.playerATurn ? <p onClick={() => {handleRound("defence")}} className={pokemon === selectedCard && gameState.playerATurn ? "hover:border-white  transition-all duration-500 border-cyan-500/0 rounded-md border-[1px] m-[1px] mx-auto w-fit p-[3px] text-sm cursor-pointer z-50" : "m-[1px] mx-auto w-fit p-[3px] text-sm cursor-default"}><span className="statName">Def</span> {pokemon.defence}</p> : <p className={pokemon === selectedCard && gameState.playerATurn ? "hover:border-white  transition-all duration-500 border-cyan-500/0 rounded-md border-[1px] m-[1px] mx-auto w-fit p-[3px] text-sm cursor-pointer" : "m-[1px] mx-auto w-fit p-[3px] text-sm cursor-default"}><span className="statName">Def</span> {pokemon.defence}</p>}                
-                        {pokemon === selectedCard && gameState.playerATurn ? <p onClick={() => {handleRound("specialAttack")}} className={pokemon === selectedCard && gameState.playerATurn ? "hover:border-white  transition-all duration-500 border-cyan-500/0 rounded-md border-[1px] m-[1px] mx-auto w-fit p-[3px] text-sm cursor-pointer z-50" : "m-[1px] mx-auto w-fit p-[3px] text-sm cursor-default"}><span className="statName">SpA</span> {pokemon.specialAttack}</p> : <p className={pokemon === selectedCard && gameState.playerATurn ? "hover:border-white  transition-all duration-500 border-cyan-500/0 rounded-md border-[1px] m-[1px] mx-auto w-fit p-[3px] text-sm cursor-pointer" : "m-[1px] mx-auto w-fit p-[3px] text-sm cursor-default"}><span className="statName">SpA</span> {pokemon.specialAttack}</p>}                
+                        {pokemon === selectedCard && gameState.playerATurn ? <p onClick={() => {handleStateClick("defence")}} className={pokemon === selectedCard && gameState.playerATurn ? "hover:border-white  transition-all duration-500 border-cyan-500/0 rounded-md border-[1px] m-[1px] mx-auto w-fit p-[3px] text-sm cursor-pointer z-50" : "m-[1px] mx-auto w-fit p-[3px] text-sm cursor-default"}><span className="statName">Def</span> {pokemon.defence}</p> : <p className={pokemon === selectedCard && gameState.playerATurn ? "hover:border-white  transition-all duration-500 border-cyan-500/0 rounded-md border-[1px] m-[1px] mx-auto w-fit p-[3px] text-sm cursor-pointer" : "m-[1px] mx-auto w-fit p-[3px] text-sm cursor-default"}><span className="statName">Def</span> {pokemon.defence}</p>}                
+                        {pokemon === selectedCard && gameState.playerATurn ? <p onClick={() => {handleStateClick("specialAttack")}} className={pokemon === selectedCard && gameState.playerATurn ? "hover:border-white  transition-all duration-500 border-cyan-500/0 rounded-md border-[1px] m-[1px] mx-auto w-fit p-[3px] text-sm cursor-pointer z-50" : "m-[1px] mx-auto w-fit p-[3px] text-sm cursor-default"}><span className="statName">SpA</span> {pokemon.specialAttack}</p> : <p className={pokemon === selectedCard && gameState.playerATurn ? "hover:border-white  transition-all duration-500 border-cyan-500/0 rounded-md border-[1px] m-[1px] mx-auto w-fit p-[3px] text-sm cursor-pointer" : "m-[1px] mx-auto w-fit p-[3px] text-sm cursor-default"}><span className="statName">SpA</span> {pokemon.specialAttack}</p>}                
                         {/* <p className={pokemon === selectedCard ? "hover:border-white  transition-all duration-500 border-cyan-500/0 rounded-md border-[1px] m-[1px] mx-auto w-fit p-[3px] text-sm cursor-pointer z-50" : "m-[1px] mx-auto w-fit p-[3px] text-sm cursor-default"}><span className="statName">Def</span> {pokemon.defence}</p>
                         <p className={pokemon === selectedCard ? "hover:border-white  transition-all duration-500 border-cyan-500/0 rounded-md border-[1px] m-[1px] mx-auto w-fit p-[3px] text-sm cursor-pointer z-50" : "m-[1px] mx-auto w-fit p-[3px] text-sm cursor-default"}><span className="statName">SpA</span> {pokemon.specialAttack}</p> */}
                     </ul>
                     <ul>
-                        {pokemon === selectedCard && gameState.playerATurn ? <p onClick={() => {handleRound("specialDefence")}} className={pokemon === selectedCard && gameState.playerATurn ? "hover:border-white  transition-all duration-500 border-cyan-500/0 rounded-md border-[1px] m-[1px] mx-auto w-fit p-[3px] text-sm cursor-pointer z-50" : "m-[1px] mx-auto w-fit p-[3px] text-sm cursor-default"}><span className="statName">SpD</span> {pokemon.specialDefence}</p> : <p className={pokemon === selectedCard && gameState.playerATurn ? "hover:border-white  transition-all duration-500 border-cyan-500/0 rounded-md border-[1px] m-[1px] mx-auto w-fit p-[3px] text-sm cursor-pointer" : "m-[1px] mx-auto w-fit p-[3px] text-sm cursor-default"}><span className="statName">SpD</span> {pokemon.specialDefence}</p>}                
-                        {pokemon === selectedCard && gameState.playerATurn ? <p onClick={() => {handleRound("speed")}} className={pokemon === selectedCard && gameState.playerATurn ? "hover:border-white  transition-all duration-500 border-cyan-500/0 rounded-md border-[1px] m-[1px] mx-auto w-fit p-[3px] text-sm cursor-pointer z-50" : "m-[1px] mx-auto w-fit p-[3px] text-sm cursor-default"}><span className="statName">Spe</span> {pokemon.speed}</p> : <p className={pokemon === selectedCard && gameState.playerATurn ? "hover:border-white  transition-all duration-500 border-cyan-500/0 rounded-md border-[1px] m-[1px] mx-auto w-fit p-[3px] text-sm cursor-pointer" : "m-[1px] mx-auto w-fit p-[3px] text-sm cursor-default"}><span className="statName">Spe</span> {pokemon.speed}</p>}                
+                        {pokemon === selectedCard && gameState.playerATurn ? <p onClick={() => {handleStateClick("specialDefence")}} className={pokemon === selectedCard && gameState.playerATurn ? "hover:border-white  transition-all duration-500 border-cyan-500/0 rounded-md border-[1px] m-[1px] mx-auto w-fit p-[3px] text-sm cursor-pointer z-50" : "m-[1px] mx-auto w-fit p-[3px] text-sm cursor-default"}><span className="statName">SpD</span> {pokemon.specialDefence}</p> : <p className={pokemon === selectedCard && gameState.playerATurn ? "hover:border-white  transition-all duration-500 border-cyan-500/0 rounded-md border-[1px] m-[1px] mx-auto w-fit p-[3px] text-sm cursor-pointer" : "m-[1px] mx-auto w-fit p-[3px] text-sm cursor-default"}><span className="statName">SpD</span> {pokemon.specialDefence}</p>}                
+                        {pokemon === selectedCard && gameState.playerATurn ? <p onClick={() => {handleStateClick("speed")}} className={pokemon === selectedCard && gameState.playerATurn ? "hover:border-white  transition-all duration-500 border-cyan-500/0 rounded-md border-[1px] m-[1px] mx-auto w-fit p-[3px] text-sm cursor-pointer z-50" : "m-[1px] mx-auto w-fit p-[3px] text-sm cursor-default"}><span className="statName">Spe</span> {pokemon.speed}</p> : <p className={pokemon === selectedCard && gameState.playerATurn ? "hover:border-white  transition-all duration-500 border-cyan-500/0 rounded-md border-[1px] m-[1px] mx-auto w-fit p-[3px] text-sm cursor-pointer" : "m-[1px] mx-auto w-fit p-[3px] text-sm cursor-default"}><span className="statName">Spe</span> {pokemon.speed}</p>}                
                         
                         {/* <p className={pokemon === selectedCard ? "hover:border-white  transition-all duration-500 border-cyan-500/0 rounded-md border-[1px] m-[1px] mx-auto w-fit p-[3px] text-sm cursor-pointer z-50" : "m-[1px] mx-auto w-fit p-[3px] text-sm cursor-default"}><span className="statName">SpD</span> {pokemon.specialDefence}</p>
                         <p className={pokemon === selectedCard ? "hover:border-white  transition-all duration-500 border-cyan-500/0 rounded-md border-[1px] m-[1px] mx-auto w-fit p-[3px] text-sm cursor-pointer z-50" : "m-[1px] mx-auto w-fit p-[3px] text-sm cursor-default"}><span className="statName">Spe</span> {pokemon.speed}</p> */}
