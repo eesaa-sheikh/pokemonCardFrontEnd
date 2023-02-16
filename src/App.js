@@ -56,7 +56,6 @@ function App() {
         y: e.clientY
       })
 
-      console.log(e);
 
 
     }
