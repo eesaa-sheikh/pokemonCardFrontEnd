@@ -189,9 +189,9 @@ const Game = ({user}) => {
                     <div className="text-white text-center h-[60px] flex-col">
 
                         <div className="flex mt-5">
-                            <div className="w-[48%] text-2xl text-right"><p className="mx-auto my-auto">{opponent.trainerTitle} <span className=" font-extrabold">{opponent.username}</span></p></div>
-                            <div className="w-[4%] text-2xl"><p className="mx-auto my-auto">VS</p></div>
-                            <div className="w-[48%] text-2xl text-left"><p className="mx-auto my-auto"> {account.trainerTitle} <span className=" font-extrabold">{account.username}</span></p></div>
+                            <div className="w-[44%] text-2xl text-right"><p className="mx-auto my-auto">{opponent.trainerTitle} <span className=""></span></p></div>
+                            <div className="w-[12%] text-2xl"><p className="mx-auto my-auto">VS</p></div>
+                            <div className="w-[44%] text-2xl text-left"><p className="mx-auto my-auto"> {account.trainerTitle} <span className=""></span></p></div>
                         </div>
                         <div className="flex">
                             <div className="w-[44%] text-right"><p className="mx-auto my-auto text-5xl"><span className=" font-extrabold">{opponent.username}</span></p></div>
@@ -201,7 +201,7 @@ const Game = ({user}) => {
 
                         {/* <p className="mx-auto mt-5 my-auto">{account.trainerTitle} {account.username} VS {opponent.trainerTitle} {opponent.username}</p>
                         <p className="mx-auto my-auto text-3xl"><span className=" font-extrabold">{account.username}</span> {gameState.scoreA} : {gameState.scoreB} <span className="font-extrabold">{opponent.username}</span></p> */}
-                        {selectedStat !== "" ? <p className="font-bold">{gameState.playerATurn ? account.username : opponent.username} chose {selectedStat}!</p> : <div></div>}
+                        {/* {selectedStat !== "" ? <p className="font-bold">{gameState.playerATurn ? account.username : opponent.username} chose {selectedStat}!</p> : <div></div>} */}
                     </div>
                     <div className="scale-[70%] h-[200px] origin-bottom-left">
                         <HandCards userHand={opponentHand} inHand={true} isOpponent={true}/>
@@ -218,13 +218,15 @@ const Game = ({user}) => {
                             <img src={battlePodium} className="w-[300px] -translate-y-10 -z-10" alt="battle podium"/>
                             {gameState.playerATurn ? <p className="w-[300px] text-transparent font-bold text-3xl -mt-6">{opponent.username}'s turn to pick a <span className="font-bold">stat</span></p> : <p className="w-[300px] text-transparent drop-shadow-md shadow-black font-bold text-3xl -mt-6  animate-text-moving-background transition-all ease-in-out duration-200 bg-gradient-to-r from-cyan-500 via-blue-400 to-sky-400 bg-clip-text">{opponent.username}'s turn to pick a stat</p>}
                         </div>
-                        <div className="w-[15vw] scale-125 mr-2 my-auto">
+                        <div className="w-[15vw] scale-125 mr-2 my-auto text-center">
                             {oppSelectedCard ? <Card pokemon={oppSelectedCard} selectedCard={oppSelectedCard} handleRound={handleRound} gameState={gameState}/> : <></> }
+                            {selectedStat ? <p className="text-white mt-5 text-xl z-50">{selectedStat.charAt(0).toUpperCase() + selectedStat.substring(1)}: <span className="font-bold">{oppSelectedCard[selectedStat]}</span></p> : <p className="mt-5 text-xl text-transparent">selectedStat</p>}
                         </div>
                         
                         {/* YourCard */}
-                        <div className="w-[15vw] scale-125 ml-2 my-auto">
+                        <div className="w-[15vw] scale-125 ml-2 my-auto text-center">
                             {selectedCard ? <Card pokemon={selectedCard} selectedCard={selectedCard} handleRound={handleRound} handleTimeOutBeforeRound={handleTimeOutBeforeRound} gameState={gameState} setSelectedStat={setSelectedStat}/> : <></> }
+                            {selectedStat ? <p className="text-white mt-5 text-xl z-50">{selectedStat.charAt(0).toUpperCase() + selectedStat.substring(1)}: <span className="font-bold">{selectedCard[selectedStat]}</span></p> : <p className="mt-5 text-xl text-transparent">selectedStat</p>}
                         </div>
                         <div className="my-auto text-center" >
                             {gameState.playerATurn ? <p className="mb-5 text-transparent drop-shadow-md shadow-white font-extrabold text-3xl -mt-6 animate-text-moving-background transition-all ease-in-out duration-200 bg-gradient-to-r from-cyan-500 via-blue-400 to-sky-400  bg-clip-text">Your turn</p> : 
