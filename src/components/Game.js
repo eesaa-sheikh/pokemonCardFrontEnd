@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import { AccountContext } from "../App";
 import Card from "./Card";
 import HandCards from "./HandCards";
+import battlePodium from "../PokemonTypeAsset/battlePodium.png";
 
 const Game = ({user}) => {
 
@@ -188,14 +189,14 @@ const Game = ({user}) => {
                     <div className="text-white text-center h-[60px] flex-col">
 
                         <div className="flex mt-5">
-                            <div className="w-[48%] text-right"><p className="mx-auto my-auto">{account.trainerTitle} <span className=" font-extrabold">{account.username}</span></p></div>
+                            <div className="w-[48%] text-right"><p className="mx-auto my-auto">{opponent.trainerTitle} <span className=" font-extrabold">{opponent.username}</span></p></div>
                             <div className="w-[4%]"><p className="mx-auto my-auto">VS</p></div>
-                            <div className="w-[48%] text-left"><p className="mx-auto my-auto"> {opponent.trainerTitle} <span className=" font-extrabold">{opponent.username}</span></p></div>
+                            <div className="w-[48%] text-left"><p className="mx-auto my-auto"> {account.trainerTitle} <span className=" font-extrabold">{account.username}</span></p></div>
                         </div>
                         <div className="flex">
-                            <div className="w-[44%] text-right"><p className="mx-auto my-auto text-3xl"><span className=" font-extrabold">{account.username}</span></p></div>
-                            <div className="w-[12%]"><p className="mx-auto my-auto text-3xl">{gameState.scoreA} : {gameState.scoreB}</p></div>
-                            <div className="w-[44%] text-left"><p className="mx-auto my-auto text-3xl"><span className=" font-extrabold">{opponent.username}</span></p></div>
+                            <div className="w-[44%] text-right"><p className="mx-auto my-auto text-3xl"><span className=" font-extrabold">{opponent.username}</span></p></div>
+                            <div className="w-[12%]"><p className="mx-auto my-auto text-3xl">{gameState.scoreB} : {gameState.scoreA}</p></div>
+                            <div className="w-[44%] text-left"><p className="mx-auto my-auto text-3xl"><span className=" font-extrabold">{account.username}</span></p></div>
                         </div>
 
                         {/* <p className="mx-auto mt-5 my-auto">{account.trainerTitle} {account.username} VS {opponent.trainerTitle} {opponent.username}</p>
@@ -208,6 +209,10 @@ const Game = ({user}) => {
                     <div className="flex h-[50vh] mt-5 mx-auto z-50">
                         {/* OpponentCard */}
                         {console.log(oppSelectedCard)}
+                        <div className="my-auto">
+                            <img src={opponent.spriteNumber} className="w-[300px] relative z-10"/>
+                            <img src={battlePodium} className="w-[300px] -translate-y-10 -z-10"/>
+                        </div>
                         <div className="w-[15vw] scale-125 mr-2 my-auto">
                             {oppSelectedCard ? <Card pokemon={oppSelectedCard} selectedCard={oppSelectedCard} handleRound={handleRound} gameState={gameState}/> : <></> }
                         </div>
@@ -216,7 +221,11 @@ const Game = ({user}) => {
                         <div className="w-[15vw] scale-125 ml-2 my-auto">
                             {selectedCard ? <Card pokemon={selectedCard} selectedCard={selectedCard} handleRound={handleRound} handleTimeOutBeforeRound={handleTimeOutBeforeRound} gameState={gameState} setSelectedStat={setSelectedStat}/> : <></> }
                         </div>
-                        
+                        <div className="my-auto" >
+                            <img src={account.spriteNumber} className="w-[300px] relative z-10"/>
+                            <img src={battlePodium} className="w-[300px] -translate-y-10 -z-10"/>
+
+                        </div>
                     </div>
                     <div className="scale-[70%] h-[200px] origin-top-right z-50 translate-x-36">
                         <HandCards userHand={userHand} setUserHand={setUserHand} selectedCard={selectedCard} setSelectedCard={setSelectedCard} gameState={gameState} handleRound={handleRound} inHand={true}/>
