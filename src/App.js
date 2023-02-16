@@ -66,6 +66,7 @@ function App() {
             <Link className ="pokedex" to="/pokedex">Pokedex</Link>
             <Link className ="register" to="/register">Login</Link>
         </header>
+        <div className="mainContainer">
           <Routes>
             <Route path="/" element={<HomeContainer/>}/>
             <Route path="/pokedex" element={<PokedexContainer/>}/>
@@ -73,7 +74,7 @@ function App() {
             <Route path="/game/playgame/:id" element={<Game account={account}/>}/>
             <Route path="/register" element={<LoginContainer logInToAnAccount={logInToAnAccount}/>} /> 
           </Routes>
-
+          </div>
           
         </BrowserRouter>
       </AccountContext.Provider>

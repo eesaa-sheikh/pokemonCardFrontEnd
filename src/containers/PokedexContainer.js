@@ -17,9 +17,9 @@ const PokedexContainer = () => {
     
 
     return ( 
-        <>
+        <div className="white">
             <PokedexList pokedex={pokedex}/>
-        </>
+        </div>
     );
 }
  
