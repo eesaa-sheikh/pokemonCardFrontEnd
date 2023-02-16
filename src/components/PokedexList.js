@@ -29,7 +29,7 @@ const PokedexList = ({pokedex, setShowCard, ownedCards}) => {
                         <div onMouseOver={() => {setShowCard(pokedex[i])}} className="pokedex-entry flex" style={{border: `5px solid ${pokedex[i].type.colourType}`,
                                                                 backgroundColor: `${pokedex[i].type.colourType}`}}>
                             <h4 className="pokemon-name">{pokedex[i].name}</h4>
-                            <img className='typeImage' src= {require(`../PokemonTypeAsset/${pokedex[i].type.name}_icon_SwSh.png`)} width="35px" alt = {pokedex[i].type.name}/>
+                            <img src= {require(`../PokemonTypeAsset/${pokedex[i].type.name}_icon_SwSh.png`)} width="105px" alt = {pokedex[i].type.name}/>
                         </div>)
                     continue;
                 } else {
@@ -37,7 +37,7 @@ const PokedexList = ({pokedex, setShowCard, ownedCards}) => {
                     <div onMouseOver={() => {setShowCard()}} className="pokedex-entry flex" style={{border: `5px solid grey`,
                                                             backgroundColor: `grey`}}>
                         <h4 className="pokemon-name">???</h4>
-                        <img className='typeImage' src= {require(`../PokemonTypeAsset/pokemonCardBack.png`)} width="35px" alt = {"??? unknown Pokémon"}/>
+                        {/* <img className='typeImage' src= {require(`../PokemonTypeAsset/pokemonCardBack.png`)} width="25px" alt = {"??? unknown Pokémon"}/> */}
                     </div>)
                 }
             }

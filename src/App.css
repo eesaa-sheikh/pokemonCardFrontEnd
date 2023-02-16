@@ -474,19 +474,21 @@ background: linear-gradient(21deg, rgba(0,127,255,1) 0%, rgba(27,0,195,1) 84%); 
   border-radius: 55px;
   padding: 25px 50px;
   transition: all 0.25s ease;
-
+  margin-top: 1vh;
+  margin-bottom: auto;
+  
 }
 
 .pokedex-entry:hover{
   filter: brightness(110%);
-  padding: 50px 80px;
+  padding: 50px 70px;
   transition: all 0.25s ease;
 }
 
 .pokemon-name {
   color: white;
   font-weight: bold;
-  font-size: 3em;
+  font-size: 4em;
 }
 
 .card-div{

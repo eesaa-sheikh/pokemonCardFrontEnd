@@ -18,29 +18,28 @@ const PokedexContainer = ({account}) => {
     // console.log(pokedex);
 
     const [showCard, setShowCard] = useState("");
-    const [ownedCards, setOwnedCards] = useState([]);
-    const [isOpp, setIsOpp] = useState("");
+    const [ownedCards, setOwnedCards] = useState("");
+    const [ownedPokedex, setOwnedPokedex] = useState("");
 
     useEffect(() => {
+        let ownedPokedex;
         if (account && pokedex) {
             
             const ownedIdArray = account.ownerships.map((owned) => {return owned.card.id});
-            console.log(ownedIdArray);
-            console.log(pokedex)
-
-            const ownedPokedex = pokedex.map((card) => {
+            
+            ownedPokedex = pokedex.map((card) => {
                 if (ownedIdArray.includes(card.id)) {
-                    console.log(card.id)
+                    
                     return true;
                 } else {
                     return false;
                 }
                 });
 
-            setOwnedCards(ownedPokedex); 
-            console.log(ownedCards)
-        }
-
+                
+                setOwnedCards(ownedPokedex); 
+            }
+            
     }, [pokedex, account]);
 
 
