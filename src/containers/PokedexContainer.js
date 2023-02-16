@@ -18,22 +18,28 @@ const PokedexContainer = ({account}) => {
     // console.log(pokedex);
 
     const [showCard, setShowCard] = useState("");
-    const [showOwned, setOwnedCard] = useState("");
+    const [ownedCards, setOwnedCards] = useState([]);
+    const [isOpp, setIsOpp] = useState("");
 
     useEffect(() => {
-        if (account) {
+        if (account && pokedex) {
+            
             const ownedIdArray = account.ownerships.map((owned) => {return owned.card.id});
             console.log(ownedIdArray);
+            console.log(pokedex)
 
-            setOwnedCard(pokedex.map((entry) => {
-                if (!ownedIdArray.includes(entry.id)) {
-                    console.log(entry);
-                }    
-                return("") 
-                }));
+            const ownedPokedex = pokedex.map((card) => {
+                if (ownedIdArray.includes(card.id)) {
+                    console.log(card.id)
+                    return true;
+                } else {
+                    return false;
+                }
+                });
+
+            setOwnedCards(ownedPokedex); 
+            console.log(ownedCards)
         }
-
-        
 
     }, [pokedex, account]);
 
@@ -42,7 +48,7 @@ const PokedexContainer = ({account}) => {
     return ( 
         <div className="pokedex-container">
             <div className="pokedex-list grid gap-2 overflow-y-scroll h-screen whitespace-nowrap scrollbar-hide">
-                <PokedexList pokedex={pokedex} setShowCard={setShowCard}/>
+                <PokedexList pokedex={pokedex} setShowCard={setShowCard} ownedCards={ownedCards}/>
             </div>
             <div className="card-div">
                 {showCard ? <Card className="pokedex-card" pokemon={showCard}/> : <div className="w-1/2"></div>}

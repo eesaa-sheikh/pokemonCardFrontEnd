@@ -459,8 +459,9 @@ background: linear-gradient(21deg, rgba(0,127,255,1) 0%, rgba(27,0,195,1) 84%); 
   margin-right: auto;
   display: flex;
   flex-direction: column;
-  gap: 1em;
-  width: 1500px;
+  gap: 0.5em;
+  width: 1000px;
+
 }
 
 ::-webkit-scrollbar{
@@ -471,26 +472,26 @@ background: linear-gradient(21deg, rgba(0,127,255,1) 0%, rgba(27,0,195,1) 84%); 
   display: flex;
   justify-content: space-between;
   border-radius: 55px;
-  padding: 50px 100px;
+  padding: 25px 50px;
   transition: all 0.25s ease;
 
 }
 
 .pokedex-entry:hover{
   filter: brightness(110%);
-  padding: 75px 120px;
+  padding: 50px 80px;
   transition: all 0.25s ease;
 }
 
 .pokemon-name {
   color: white;
   font-weight: bold;
-  font-size: 5em;
+  font-size: 3em;
 }
 
 .card-div{
   margin: auto;
-  scale: 400%;
+  scale: 300%;
 }
 .loginForm{
 
