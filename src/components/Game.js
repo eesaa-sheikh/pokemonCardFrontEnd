@@ -201,26 +201,32 @@ const Game = ({user}) => {
                 </div>
 
                 <div className="flex flex-col w-[60vw] mx-auto z-50">
+
+
                     <div className="text-white text-center h-[60px] flex-col">
 
                         <div className="flex mt-5">
-                            <div className="w-[48%] text-right"><p className="mx-auto my-auto">{account.trainerTitle} <span className=" font-extrabold">{account.username}</span></p></div>
+                            <div className="w-[48%] text-right"><p className="mx-auto my-auto">{opponent.trainerTitle} <span className=" font-extrabold">{opponent.username}</span></p></div>
                             <div className="w-[4%]"><p className="mx-auto my-auto">VS</p></div>
-                            <div className="w-[48%] text-left"><p className="mx-auto my-auto"> {opponent.trainerTitle} <span className=" font-extrabold">{opponent.username}</span></p></div>
+                            <div className="w-[48%] text-left"><p className="mx-auto my-auto"> {account.trainerTitle} <span className=" font-extrabold">{account.username}</span></p></div>
                         </div>
                         <div className="flex">
-                            <div className="w-[44%] text-right"><p className="mx-auto my-auto text-3xl"><span className=" font-extrabold">{account.username}</span></p></div>
+                            <div className="w-[44%] text-right"><p className="mx-auto my-auto text-3xl"><span className=" font-extrabold">{opponent.username}</span></p></div>
                             <div className="w-[12%]"><p className="mx-auto my-auto text-3xl">{gameState.scoreA} : {gameState.scoreB}</p></div>
-                            <div className="w-[44%] text-left"><p className="mx-auto my-auto text-3xl"><span className=" font-extrabold">{opponent.username}</span></p></div>
+                            <div className="w-[44%] text-left"><p className="mx-auto my-auto text-3xl"><span className=" font-extrabold">{account.username}</span></p></div>
                         </div>
 
                         {/* <p className="mx-auto mt-5 my-auto">{account.trainerTitle} {account.username} VS {opponent.trainerTitle} {opponent.username}</p>
                         <p className="mx-auto my-auto text-3xl"><span className=" font-extrabold">{account.username}</span> {gameState.scoreA} : {gameState.scoreB} <span className="font-extrabold">{opponent.username}</span></p> */}
                         {selectedStat !== "" ? <p className="font-bold">{gameState.playerATurn ? account.username : opponent.username} chose {selectedStat}!</p> : <div></div>}
                     </div>
+
+
                     {gameState.winner === "" ?<div className="scale-[70%] h-[200px] origin-bottom-left">
-                        <HandCards userHand={opponentHand} inHand={true}/>
+                        <HandCards userHand={opponentHand} inHand={true} isOpponent={true}/>
                     </div>:<></>}
+
+
                     {gameState.winner === "" ?<div className="flex h-[50vh] mt-5 mx-auto z-50">
                         {/* OpponentCard */}
                         {console.log(oppSelectedCard)}
@@ -234,6 +240,8 @@ const Game = ({user}) => {
                         </div>
                         
                     </div>:<></>}
+
+
                     {gameState.winner === "" ?<div className="scale-[70%] h-[200px] origin-top-right z-50 translate-x-36">
                         <HandCards userHand={userHand} setUserHand={setUserHand} selectedCard={selectedCard} setSelectedCard={setSelectedCard} gameState={gameState} handleRound={handleRound} inHand={true}/>
                     </div>:<></>}
@@ -252,6 +260,8 @@ const Game = ({user}) => {
                         <button onClick={()=>navigate("/")}>Home</button>
                         </div>
                     </div>: <></>}
+
+
                 </div>
 
                 
