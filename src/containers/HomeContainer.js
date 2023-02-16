@@ -6,6 +6,8 @@ import GameContainer from "./GameContainer";
 import PokedexContainer from "./PokedexContainer";
 import bgImage from "../PokemonTypeAsset/PokemonOverlay.png"
 
+import battleSound from "../PokemonTypeAsset/pokkenMain.mp3"
+
 // §§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§
     // §§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§
 
@@ -25,6 +27,10 @@ const HomeContainer = () => {
 
     return ( 
         <>
+
+        <audio  autoPlay>
+            <source src={battleSound} type="audio/mp3"></source>
+        </audio>
 
          <div className="overlay z-50" id="aa"></div>
         <div className="w-screen bg-slate-600 h-100vh" style={{}} id="testing"> 
