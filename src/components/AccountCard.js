@@ -13,11 +13,11 @@ const AccountCard = ({acc, setOpp}) => {
                                                     height: "8.8cm", 
                                                     backgroundSize: "cover", 
                                                     backgroundPosition:"center",
-                                                    border: "10px solid",
+                                                    border: "10px solid black",
                                                     borderRadius: "10px",
                                                     position: "relative",
                                                     fontFamily: "'Roboto', sans-serif"}}>
-            <img src={require(`../TrainerAsset/${acc.username}.jpg`)}/>
+            <img className="w-[6.3cm] object-cover" src={require(`../TrainerAsset/${acc.username}.jpg`)}/>
              {/* <button onClick={console.log(acc)}>PLAY</button> */}
          </div>  
        </Link>
