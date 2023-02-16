@@ -283,6 +283,12 @@ height: 8vh;
   -webkit-text-stroke-color: black
 }
 
+.home:hover, .register:hover, .pokedex:hover, .game:hover{
+
+  color: yellow;
+
+}
+
 
 .home, .register, .pokedex, .game {
   justify-content: center;
@@ -309,7 +315,7 @@ background: linear-gradient(21deg, rgba(0,127,255,1) 0%, rgba(27,0,195,1) 84%); 
 
 
 .home::after,.register::after, .pokedex::after, .game::after{
-  content: "Choose a Desitnation";
+  content: "Choose a Destination";
   color: rgb(61, 61, 61);
   position: absolute;
   width: 100%;
@@ -317,9 +323,9 @@ background: linear-gradient(21deg, rgba(0,127,255,1) 0%, rgba(27,0,195,1) 84%); 
   height: 2px;
   bottom: 0;
   left: 0;
-  background-color: antiquewhite;
-  transform-origin: bottom;
-  transition: transform 0.25s ease-out;
+  background-color: yellow;
+  transform-origin: bottom right 60px;
+  transition: transform 0.25s ease-in;
 }
 
 .home:hover::after, .register:hover::after, .pokedex:hover::after, .game:hover::after {
@@ -368,7 +374,9 @@ background: linear-gradient(21deg, rgba(0,127,255,1) 0%, rgba(27,0,195,1) 84%); 
 
 
 
-  background-image: url(https://images.alphacoders.com/114/1140436.jpg);
+  /* background-image: url(https://images.alphacoders.com/114/1140436.jpg); */
+  background-image: url(https://media1.giphy.com/media/Y3XoVhrbRfOkhnzFf9/giphy.gif?cid=6c09b952ca1flp10ica0tg2cxhk68p1gafgua8rawcn3q8vq&rid=giphy.gif&ct=g);
+  /* background-image: url("https://gfycat.com/unripedeterminedchicken"); */
   background-size: cover;
   background-position: right;
   background-repeat: no-repeat;

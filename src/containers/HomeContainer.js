@@ -6,6 +6,10 @@ import GameContainer from "./GameContainer";
 import PokedexContainer from "./PokedexContainer";
 import bgImage from "../PokemonTypeAsset/PokemonOverlay.png"
 
+// §§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§
+    // §§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§
+
+
 
 const HomeContainer = () => {
     
@@ -15,11 +19,12 @@ const HomeContainer = () => {
     // if not, prompt user to login 
     // then display all options ()
 
+
+
     
 
     return ( 
         <>
-
 
          <div className="overlay z-50" id="aa"></div>
         <div className="w-screen bg-slate-600 h-100vh" style={{}} id="testing"> 
