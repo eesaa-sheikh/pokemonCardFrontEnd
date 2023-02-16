@@ -24,12 +24,12 @@ const AccountCard = ({acc, setOpp, props}) => {
                 <motion.div
                 style={{ x, y, rotateX, rotateY, z: 5,  }}
                 drag
-                dragElastic={0.50}
+                dragElastic={0.2}
                 dragConstraints={{ top: 0, left: 0, right: 0, bottom: 0 }}
                 whileTap={{ cursor: 'grabbing' }}
-                className='w-[426px] min-h-[600px] rounded-[30px] border-[4px] border-white  cursor-grab relative'
+                className='w-[426px] min-h-[600px] rounded-[30px] border-[4px] border-white hover:border-cyan-600 transition-all duration-150 hover:scale-[125%] cursor-grab relative'
                 >
-                <img className='w-[426px] min-h-[600px] rounded-[30px] max-h-[600px] cursor-grab relative ' src={require(`../TrainerAsset/${acc.username}.jpg`)} alt='trainer fanart' draggable='false' />
+                <img className='object-cover min-h-[600px] rounded-[30px] max-h-[600px] cursor-grab relative ' src={require(`../TrainerPokemon/${acc.username}.jpg`)} alt='trainer fanart' draggable='false' />
                 {/* card image */}
                 <motion.div style={{ x, y, rotateX, rotateY, z: 10 }} className='absolute top-20 -right-64 w-[620px]'>
                     <img className='h-[400px] drop-shadow-lg' src={require(`../TrainerPng/${acc.username}.png`)} alt='trainer image' draggable='false' id={"floaterTrainer"}/>
