@@ -78,7 +78,7 @@ const Card = ({pokemon, userHand, setUserHand, selectedCard, setSelectedCard, ha
             <div className='cardBannerTop'>
                 <div className="cardBanner">
                 <h2>{pokemon.name}</h2>
-                <Rating name="pokemonRating" size="small" className="cardRating" value={pokemon.rating} max={pokemon.rating} readOnly/>
+                <Rating size="small" className="pokemonRating cardRating" value={pokemon.rating} max={pokemon.rating} readOnly/>
                 </div>
                 {/* <img src={pokemon.imgUrl}/> */}
                 

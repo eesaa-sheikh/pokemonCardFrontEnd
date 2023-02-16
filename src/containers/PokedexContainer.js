@@ -3,7 +3,7 @@ import Card from "../components/Card"
 import PokedexList from "../components/PokedexList";
 import pokedexSong from "../PokemonTypeAsset/pokiSong.mp3";
 
-const PokedexContainer = () => {
+const PokedexContainer = ({account}) => {
 
     const SERVER_URL = "http://localhost:8080/cards";
 
@@ -15,7 +15,28 @@ const PokedexContainer = () => {
         .then(data => setPokedex(data));
     }, []);
 
+    // console.log(pokedex);
+
     const [showCard, setShowCard] = useState("");
+    const [showOwned, setOwnedCard] = useState("");
+
+    useEffect(() => {
+        if (account) {
+            const ownedIdArray = account.ownerships.map((owned) => {return owned.card.id});
+            console.log(ownedIdArray);
+
+            setOwnedCard(pokedex.map((entry) => {
+                if (!ownedIdArray.includes(entry.id)) {
+                    console.log(entry);
+                }    
+                return("") 
+                }));
+        }
+
+        
+
+    }, [pokedex, account]);
+
 
 
     return ( 
