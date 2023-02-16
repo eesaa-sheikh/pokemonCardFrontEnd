@@ -407,3 +407,10 @@ background: linear-gradient(21deg, rgba(0,127,255,1) 0%, rgba(27,0,195,1) 84%); 
 }
 
 
+.endGameScreen{
+  display: flex;
+}
+.endGameText{
+  border: 3px solid white;
+  display: relative;
+}

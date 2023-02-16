@@ -209,7 +209,7 @@ const Game = ({user}) => {
                 <HandCards userHand={userHand} setUserHand={setUserHand} selectedCard={selectedCard} setSelectedCard={setSelectedCard} gameState={gameState} handleRound={handleRound}/>
             </div> : <></>}
 
-            {gameState.winner !== "" ?<div>
+            {gameState.winner !== "" ?<div className="endGameScreen">
                 <div>
                     <img src= "https://pbs.twimg.com/media/EWCNVF8WkAA2b_t.png" alt="opponent"/>
                 </div>
@@ -218,7 +218,7 @@ const Game = ({user}) => {
                     {reward !== "" && gameState.winner === account.username? <Card key={reward.id} pokemon={reward}/>: <></>}
                     <hr/>
                 </div>
-                <div>
+                <div className="endGameText">
                     {gameState.winner === "Tie"? <p>That was a close battle!</p>: <></>}
                     {gameState.winner === account.username ? <p>You are stronger than I thought!</p>: <></>}
                     {gameState.winner === opponent.username ? <p>Better luck next time</p>: <></>}
