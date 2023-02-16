@@ -8,7 +8,7 @@ const AccountCard = ({acc, setOpp}) => {
     return ( 
         <> 
         <Link to={`playgame/${acc.id}`}>       
-  <div className="relative flex " style = {{backgroundImage : `url(require(../TrainerAsset/${acc.username}.jpg))`,
+        <div className={`relative flex ]`} style = {{
                                                     width: "6.3cm",
                                                     height: "8.8cm", 
                                                     backgroundSize: "cover", 
@@ -17,14 +17,17 @@ const AccountCard = ({acc, setOpp}) => {
                                                     borderRadius: "10px",
                                                     position: "relative",
                                                     fontFamily: "'Roboto', sans-serif"}}>
-       
+            <img src={require(`../TrainerAsset/${acc.username}.jpg`)}/>
              {/* <button onClick={console.log(acc)}>PLAY</button> */}
          </div>  
        </Link>
         </> 
     );
 }
- 
+
+//bg-[url('../TrainerAsset/${acc.username}.jpg')
+//backgroundImage : `url(require(../TrainerAsset/${acc.username}.jpg))`
+
 export default AccountCard;       
     // <div className = "trainerCard" style = {{backgroundImage : `url= {require(../TrainerAsset/${acc.username}.jpg)`,
     //                                                 width: "6.3cm",
