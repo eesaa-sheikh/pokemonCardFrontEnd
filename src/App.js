@@ -1,3 +1,4 @@
+import { mobileStepperClasses } from '@mui/material';
 import { createContext, useContext, useEffect, useState } from 'react';
 import { BrowserRouter, Link, Route, Router, Routes, useSearchParams } from 'react-router-dom';
 import './App.css';
@@ -7,7 +8,7 @@ import HomeContainer from './containers/HomeContainer';
 import LoginContainer from './containers/LoginContainer';
 import OppsSelect from './containers/OppsSelect';
 import PokedexContainer from './containers/PokedexContainer';
-
+import { motion } from 'framer-motion';
 
 
 const AccountContext = createContext();  
@@ -16,13 +17,6 @@ function App() {
   
   const [account, setAccount] = useState("");
   const [allAccounts, setAllAccounts] = useState([])
-
-
-  useEffect(() => {
-    fetch("http://localhost:8080/accounts/10")
-    .then(response => response.json( ))
-    .then (data => setAccount(data))
-  }, []);
 
   useEffect(() => {
     const fetchData = async() => {
@@ -44,27 +38,77 @@ function App() {
     return check;
   };
 
+  const [mousePosition, setMousePosition] = useState ({
+
+    x: 0,
+    y: 0
+  });
+
+  console.log(mousePosition)
+
+
+  const [cursorVariant,setCursorVariant] = useState("default")
+  useEffect(() =>{
+    const mouseMove = e => {
+      setMousePosition({
+
+        x: e.clientX,
+        y: e.clientY
+      })
+
+      console.log(e);
+
+
+    }
+
+    window.addEventListener("mousemove",mouseMove)
+
+    return () => {
+      window.removeEventListener("mousemove",mouseMove);
+    }
+  }, [])
+
+
   // const logInToAnAccount = async (accountName, accountPassword) => {
   //   const response = await fetch(`http://localhost:8080/accounts/login?name=${accountName}&password=${accountPassword}`)
   //   const data = await response.json()
   //   setAccount(data);
   // };
 
+
+  const variants ={
+    default: {
+      x: mousePosition.x -16,
+      y: mousePosition.y - 16
+    },
+    text: {
+      height:150,
+      width: 150,
+      x: mousePosition.x-75,
+      y: mousePosition.y-75,
+      backgroundColor: "blue"
+    }
+  }
+
+  const textEnter =() => setCursorVariant("text");
+  const textLeave =() => setCursorVariant("default");
+
   return (
     <>
       <AccountContext.Provider value={account}>
         <BrowserRouter>
+            
 
-        <div className='helloWill'>
-          
-          <img src ="https://cdn-icons-png.flaticon.com/512/287/287226.png" width={75} className ="icon"/>
-            <p className='acc'>Hello {account.username}</p>
+        <div className='helloWill'>          
+            {account !== "" ?<img src ="https://cdn-icons-png.flaticon.com/512/287/287226.png" width={75} className ="icon"/>:<></>}
+            {account !== "" ? <p className='acc'>Hello {account.username}</p>:<></>}
         </div>
           <header className='navBar'>
-            <Link className ="home" to="/">Home</Link>
-            <Link className ="game" to="/game">Play</Link>
-            <Link className ="pokedex" to="/pokedex">Pokedex</Link>
-            <Link className ="register" to="/register">Login</Link>
+            <Link onMouseEnter={textEnter} onMouseLeave={textLeave} className ="home" to="/">Home</Link>
+            {account !== "" ? <Link onMouseEnter={textEnter} onMouseLeave={textLeave} className ="home" to="/game">Play</Link> :<></>}
+            {account !== "" ? <Link  onMouseEnter={textEnter} onMouseLeave={textLeave}className ="home" to="/pokedex">Pokedex</Link> :<></>}
+            {account === "" ?<Link onMouseEnter={textEnter} onMouseLeave={textLeave} className ="home" to="/register">Login</Link>:<></>}
+            {account !== "" ? <button onClick={()=>setAccount("")}><Link  onMouseEnter={textEnter} onMouseLeave={textLeave} className ="home" to="/">Logout</Link></button> :<></>}
         </header>
         <div className="mainContainer">
           <Routes>
@@ -75,6 +119,11 @@ function App() {
             <Route path="/register" element={<LoginContainer logInToAnAccount={logInToAnAccount}/>} /> 
           </Routes>
           </div>
+
+          <motion.img src='https://www.freepnglogos.com/uploads/pokeball-png/pokeball-icon-download-icons-32.png' className='cursor'
+          variants={variants}
+          animate = {cursorVariant}
+          />
           
         </BrowserRouter>
       </AccountContext.Provider>

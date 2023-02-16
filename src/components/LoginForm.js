@@ -24,7 +24,15 @@ const LoginForm = ({logInToAnAccount}) => {
 
     return (
         <>
-            <div >
+
+        <div className="am">
+
+       
+            <div className="loginForm"> 
+
+
+                <h1 className="title"> Please log in</h1>
+                <img src="https://cdn-icons-png.flaticon.com/512/287/287226.png" className="iconAccount" width={200}></img>
                 <form  role="search" onSubmit={handleSubmit}>
                     <li className="login_label" htmlFor="login_input">Username:
                     <input 
@@ -43,8 +51,10 @@ const LoginForm = ({logInToAnAccount}) => {
                     </li>
                     <input type="submit" value="OK" className="okButton"/>
                 </form>
-                <p>{error}</p>
+                <p className="error">{error}</p>
                 
+                
+            </div>
             </div>
         </>
     );
