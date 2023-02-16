@@ -546,12 +546,9 @@ margin-right: 16vw;
 }
 
 .cursor{
-
-  /* background-color: rgb(214, 226, 43); */
-  mix-blend-mode: difference;
+    mix-blend-mode: difference;
   -webkit-filter: grayscale(1) invert(1);
     filter: grayscale(1) invert(1);
-
   height: 50px;
   width: 50px;
   border-radius: 50%;
