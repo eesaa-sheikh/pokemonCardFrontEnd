@@ -3,9 +3,9 @@ const LoginContainer = ({logInToAnAccount}) => {
 
     return ( 
 
-        <>
+        <div className="login">
         <LoginForm logInToAnAccount={logInToAnAccount}/>
-        </>
+        </div>
     );
 }
  

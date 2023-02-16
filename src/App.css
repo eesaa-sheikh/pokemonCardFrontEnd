@@ -198,3 +198,212 @@ html, body {
 .pokiType{
   /* background-color: blue; */
 }
+
+.back{
+background-color: aqua;
+}
+
+.overlay{
+  /* position: absolute;
+width: 100vw;
+height:310vh;
+padding-right: 50px;
+
+background: #D9D9D9;
+transform: matrix(00.94, 0.33, -0.34, 0.94, -1200, -430); */
+
+background: url(PokemonTypeAsset/PokemonOverlay.png);
+
+}
+
+.navBar{
+position:absolute;
+z-index: 2;
+padding: 15%;
+display: grid;
+grid-template-columns: 1fr 1fr 1fr 1fr;
+z-index:10;
+overflow: scroll;
+padding-top: 55px;
+padding-left: 100px;
+font-style: oblique;
+gap: 100px;
+justify-content: center;
+font-size: 20px;
+color: antiquewhite;
+
+width:100%;
+padding-bottom: 15px;
+text-align: center;
+font-weight: bold;
+margin-top: 75px;
+overflow: hidden;
+
+height: 8vh;
+
+
+
+}
+
+.helloWill{
+  position: absolute;
+  margin-left: 10px;
+  /* padding-bottom: 30vh; */
+  height: 8vh;
+  /* left: 10px; */
+  /* All the way to the left */
+  left: 2275px;
+  top: 90px;
+
+  padding-top: 10px;
+  font-size: 20px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+
+  /* border: 2px solid #0b0b0baa;  
+  border-radius: 10px;
+  background-color: aliceblue;
+  */
+  justify-content: center;
+
+  
+  
+}
+
+.acc{
+  padding-top: 25px;
+  text-align: center;
+  box-sizing: border-box;
+  font-weight: bold; 
+  font-style:oblique;
+  justify-content: space-between;
+  -webkit-text-fill-color: white; 
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: black
+}
+
+
+.home, .register, .pokedex, .game {
+  justify-content: center;
+
+ 
+  /* border: 5px solid #fffcfc;
+  text-align: center;
+  -webkit-text-stroke: 0.2px black;
+  justify-content: center;
+  height: 50px;
+  border-radius: 10px;
+  width: 100px;
+  background: rgb(0,127,255);
+background: linear-gradient(21deg, rgba(0,127,255,1) 0%, rgba(27,0,195,1) 84%); */
+
+
+}
+
+/* .home:hover, .register:hover, .pokedex:hover, .game:hover{
+  color: rgb(248, 12, 0);
+  text-decoration: underline;
+
+} */
+
+
+.home::after,.register::after, .pokedex::after, .game::after{
+  content: "Choose a Desitnation";
+  color: rgb(61, 61, 61);
+  position: absolute;
+  width: 100%;
+  transform: scaleX(0);
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: antiquewhite;
+  transform-origin: bottom;
+  transition: transform 0.25s ease-out;
+}
+
+.home:hover::after, .register:hover::after, .pokedex:hover::after, .game:hover::after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}
+
+.pokemonLogo{
+  position:absolute;
+  padding-top: 25vh;
+  padding-left: 10vw;
+  transform: scale(1);
+  animation: pulse-black 5s infinite;
+  z-index: 5;
+}
+
+@keyframes pulse-black {
+  0% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+    animation: ease-in-out
+  }
+  
+  70% {
+    transform: scale(1);
+    box-shadow: 0 0 5px 10px rgba(0, 0, 0, 0);
+ 
+    filter: drop-shadow(5px 5px 5px black);
+  }
+  
+  100% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+
+  }
+}
+
+#testing{
+
+  /* width: 100vw;
+  height: 100vh;
+  padding: 1rem; */
+
+  /* background-image: url(https://i.redd.it/0kkvgt5iqby61.gif); */
+
+
+
+
+  background-image: url(https://images.alphacoders.com/114/1140436.jpg);
+  background-size: cover;
+  background-position: right;
+  background-repeat: no-repeat;
+  
+
+
+}
+
+
+@keyframes slide{
+  0%{
+    transform: translate3d(0, 0, 0);
+  }
+  100%{
+    transform: translate3d(-1692px, 0, 0);
+  }
+}
+
+
+.icon{
+  border: 5px solid #000000;
+  border-radius: 10px;
+  background-color: aliceblue;
+}
+
+.wi{
+
+  opacity: 30%;
+ 
+}
+
+
+.mainContainer{
+  padding-top: 16vh;
+  background: linear-gradient(109.6deg, rgb(20, 30, 48) 11.2%, rgb(36, 59, 85) 91.1%);
+}
+
+

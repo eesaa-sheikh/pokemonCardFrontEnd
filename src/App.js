@@ -8,6 +8,8 @@ import LoginContainer from './containers/LoginContainer';
 import OppsSelect from './containers/OppsSelect';
 import PokedexContainer from './containers/PokedexContainer';
 
+
+
 const AccountContext = createContext();  
 
 function App() {
@@ -45,13 +47,21 @@ function App() {
     <>
       <AccountContext.Provider value={account}>
         <BrowserRouter>
-            <p>Hello {account.username}</p>
-            <Link to="/">Home</Link>
+            
+
+        <div className='helloWill'>
+          
+          <img src ="https://cdn-icons-png.flaticon.com/512/287/287226.png" width={75} className ="icon"/>
+            <p className='acc'>Hello {account.username}</p>
+        </div>
+          <header className='navBar'>
+            <Link className ="home" to="/">Home</Link>
             {account !== "" ? <Link to="/game">Play</Link> :<></>}
             {account !== "" ? <Link to="/pokedex">Pokedex</Link> :<></>}
             {account === "" ?<Link to="/register">Login</Link>:<></>}
             {account !== "" ? <button onClick={()=>setAccount("")}><Link to="/">Logout</Link></button> :<></>}
-
+        </header>
+        <div className="mainContainer">
           <Routes>
             <Route path="/" element={<HomeContainer/>}/>
             <Route path="/pokedex" element={<PokedexContainer/>}/>
@@ -59,10 +69,12 @@ function App() {
             <Route path="/game/playgame/:id" element={<Game account={account}/>}/>
             <Route path="/register" element={<LoginContainer logInToAnAccount={logInToAnAccount}/>} /> 
           </Routes>
-
+          </div>
           
         </BrowserRouter>
       </AccountContext.Provider>
+
+      
     </>
   );
 }
