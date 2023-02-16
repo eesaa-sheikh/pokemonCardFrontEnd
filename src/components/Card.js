@@ -2,7 +2,7 @@ import Rating from '@mui/material/Rating';
 import { useState, useEffect } from 'react';
 
 
-const Card = ({pokemon, userHand, setUserHand, selectedCard, setSelectedCard, handleRound, handleTimeOutBeforeRound, gameState, setSelectedStat}) => {
+const Card = ({pokemon, userHand, setUserHand, selectedCard, setSelectedCard, handleRound, handleTimeOutBeforeRound, gameState, setSelectedStat, inHand}) => {
 
 //     const [mousePos, setMousePos] = useState({});
 
@@ -59,15 +59,16 @@ const Card = ({pokemon, userHand, setUserHand, selectedCard, setSelectedCard, ha
             {/* ({mousePos.x}, {mousePos.y}) */}
             </>
             <div onClick={handleClick} 
-                className = "pokemonCard" style = {{backgroundImage : `url(${pokemon.imgUrl})`,
-                                                    width: "6.3cm",
-                                                    height: "8.8cm", 
+                className = {inHand ? `pokemonCard ${"w-[6.3cm] h-[8.8cm]"}` : `pokemonCard ${"w-[6.3cm] h-[8.8cm]"}`} style = {{backgroundImage : `url(${pokemon.imgUrl})`,
+                                                    
                                                     backgroundSize: "cover", 
                                                     backgroundPosition:"center",
                                                     border: `10px solid ${pokemon.type.colourType}`,
                                                     borderRadius: "10px",
                                                     position: "relative",
-                                                    fontFamily: "'Roboto', sans-serif"}}>
+                                                    fontFamily: "'Roboto', sans-serif",
+                                                    marginRight: "auto",
+                                                    marginLeft: "auto"}}>
                 <div class="card"></div>
                 <div class="card"></div>
                 <div class="card"></div>
