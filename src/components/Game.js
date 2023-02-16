@@ -189,14 +189,14 @@ const Game = ({user}) => {
                     <div className="text-white text-center h-[60px] flex-col">
 
                         <div className="flex mt-5">
-                            <div className="w-[48%] text-right"><p className="mx-auto my-auto">{opponent.trainerTitle} <span className=" font-extrabold">{opponent.username}</span></p></div>
-                            <div className="w-[4%]"><p className="mx-auto my-auto">VS</p></div>
-                            <div className="w-[48%] text-left"><p className="mx-auto my-auto"> {account.trainerTitle} <span className=" font-extrabold">{account.username}</span></p></div>
+                            <div className="w-[48%] text-2xl text-right"><p className="mx-auto my-auto">{opponent.trainerTitle} <span className=" font-extrabold">{opponent.username}</span></p></div>
+                            <div className="w-[4%] text-2xl"><p className="mx-auto my-auto">VS</p></div>
+                            <div className="w-[48%] text-2xl text-left"><p className="mx-auto my-auto"> {account.trainerTitle} <span className=" font-extrabold">{account.username}</span></p></div>
                         </div>
                         <div className="flex">
-                            <div className="w-[44%] text-right"><p className="mx-auto my-auto text-3xl"><span className=" font-extrabold">{opponent.username}</span></p></div>
-                            <div className="w-[12%]"><p className="mx-auto my-auto text-3xl">{gameState.scoreB} : {gameState.scoreA}</p></div>
-                            <div className="w-[44%] text-left"><p className="mx-auto my-auto text-3xl"><span className=" font-extrabold">{account.username}</span></p></div>
+                            <div className="w-[44%] text-right"><p className="mx-auto my-auto text-5xl"><span className=" font-extrabold">{opponent.username}</span></p></div>
+                            <div className="w-[12%]"><p className="mx-auto my-auto text-5xl">{gameState.scoreB} : {gameState.scoreA}</p></div>
+                            <div className="w-[44%] text-left"><p className="mx-auto my-auto text-5xl"><span className=" font-extrabold">{account.username}</span></p></div>
                         </div>
 
                         {/* <p className="mx-auto mt-5 my-auto">{account.trainerTitle} {account.username} VS {opponent.trainerTitle} {opponent.username}</p>
@@ -210,9 +210,13 @@ const Game = ({user}) => {
                         {/* OpponentCard */}
                         {console.log(oppSelectedCard)}
                         <div className="my-auto text-center">
+                            {!gameState.playerATurn ? <p className="mb-5 text-transparent drop-shadow-md shadow-white font-extrabold text-3xl -mt-6 animate-text-moving-background transition-all ease-in-out duration-200 bg-gradient-to-r from-cyan-500 via-blue-400 to-sky-400  bg-clip-text">{opponent.username}'s turn</p> : 
+                            
+                            <p className="mb-5 text-transparent drop-shadow-md shadow-white font-light text-3xl -mt-6 animate-text-moving-background transition-all ease-in-out duration-200">Your turn</p>}
+                            
                             <img src={opponent.spriteNumber} className="h-[300px] relative z-10 mx-auto" alt={`${opponent.username} battle sprite`}/>
                             <img src={battlePodium} className="w-[300px] -translate-y-10 -z-10" alt="battle podium"/>
-                            {gameState.playerATurn ? <p className="text-transparent font-extrabold text-3xl -mt-6">{opponent.username}'s turn</p> : <p className="text-white font-extrabold text-3xl -mt-6">{opponent.username}'s turn</p>}
+                            {gameState.playerATurn ? <p className="w-[300px] text-transparent font-bold text-3xl -mt-6">{opponent.username}'s turn to pick a <span className="font-bold">stat</span></p> : <p className="w-[300px] text-transparent drop-shadow-md shadow-black font-bold text-3xl -mt-6  animate-text-moving-background transition-all ease-in-out duration-200 bg-gradient-to-r from-cyan-500 via-blue-400 to-sky-400 bg-clip-text">{opponent.username}'s turn to pick a stat</p>}
                         </div>
                         <div className="w-[15vw] scale-125 mr-2 my-auto">
                             {oppSelectedCard ? <Card pokemon={oppSelectedCard} selectedCard={oppSelectedCard} handleRound={handleRound} gameState={gameState}/> : <></> }
@@ -223,9 +227,17 @@ const Game = ({user}) => {
                             {selectedCard ? <Card pokemon={selectedCard} selectedCard={selectedCard} handleRound={handleRound} handleTimeOutBeforeRound={handleTimeOutBeforeRound} gameState={gameState} setSelectedStat={setSelectedStat}/> : <></> }
                         </div>
                         <div className="my-auto text-center" >
+                            {gameState.playerATurn ? <p className="mb-5 text-transparent drop-shadow-md shadow-white font-extrabold text-3xl -mt-6 animate-text-moving-background transition-all ease-in-out duration-200 bg-gradient-to-r from-cyan-500 via-blue-400 to-sky-400  bg-clip-text">Your turn</p> : 
+                            
+                            <p className="mb-5 text-transparent drop-shadow-md shadow-white font-light text-3xl -mt-6 animate-text-moving-background transition-all ease-in-out duration-200">Your turn</p>}
+                            
                             <img src={account.spriteNumber} className="h-[300px] relative z-10" alt={`${account.username} battle sprite`}/>
                             <img src={battlePodium} className="w-[300px] -translate-y-10 -z-10" alt="battle podium"/>
-                            {gameState.playerATurn ? <p className="text-white font-extrabold text-3xl -mt-6">It's your turn</p> : <p className="text-transparent font-extrabold text-3xl -mt-6">It's your turn</p>}
+                            {gameState.playerATurn ? selectedCard === "" ? <p className="pulsingGameText text-transparent drop-shadow-md shadow-white font-light text-3xl -mt-6 animate-text-moving-background transition-all ease-in-out duration-200 bg-gradient-to-r from-white to-sky-100 bg-clip-text">Pick a <span className="font-extrabold text-transparent animate-text-moving-background transition-all ease-in-out duration-200 bg-gradient-to-r from-cyan-500 via-blue-400 to-sky-400 bg-clip-text">card</span></p> : 
+                            
+                            <p className="pulsingGameText text-transparent drop-shadow-md shadow-white font-light text-3xl -mt-6 animate-text-moving-background transition-all ease-in-out duration-200 bg-gradient-to-r from-white to-sky-100 bg-clip-text">Pick a <span className="font-extrabold text-transparent animate-text-moving-background transition-all ease-in-out duration-200 bg-gradient-to-r from-cyan-500 via-blue-400 to-sky-400 bg-clip-text">stat</span></p>
+                            
+                            : selectedCard === "" ? <p className="text-white pulsingGameText font-light text-3xl -mt-6">Pick a <span className="font-extrabold text-transparent animate-text-moving-background transition-all ease-in-out duration-200 bg-gradient-to-r from-cyan-500 via-blue-400 to-sky-400 bg-clip-text">card only</span></p> : <p className="text-white pulsingGameText font-light text-3xl -mt-6"><span className="font-extrabold text-transparent animate-text-moving-background transition-all ease-in-out duration-200 bg-gradient-to-r from-cyan-500 via-blue-400 to-sky-400 bg-clip-text">Click card to play</span></p> }
 
                         </div>
                     </div>
