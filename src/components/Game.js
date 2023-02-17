@@ -118,7 +118,7 @@ const Game = ({user}) => {
         setOppSelectedCard(opponentHand[0]);
         const newHand = opponentHand.filter(item => item !== opponentHand[0]);
         setOpponentHand(newHand);
-        let timeout = setTimeout(function(){handleRound(selectedStat);}, 3000);
+        let timeout = setTimeout(function(){handleRound(selectedStat);}, 4000);
         let timeouttwo = setTimeout(function(){
             setSelectedCard("");
             setOppSelectedCard("");
@@ -140,7 +140,7 @@ const Game = ({user}) => {
             console.log(opponentDeck);
         
             setSelectedStat("");
-        }, 3100);
+        }, 4100);
     })
 
     const handlePostRound =((response) =>{
@@ -244,12 +244,17 @@ const Game = ({user}) => {
                         <div className="w-[15vw] scale-125 mr-2 my-auto text-center">
                             {oppSelectedCard ? <Card pokemon={oppSelectedCard} selectedCard={oppSelectedCard} handleRound={handleRound} gameState={gameState}/> : <></> }
                             {selectedStat ? <p className="text-white mt-5 text-xl z-50">{selectedStat.charAt(0).toUpperCase() + selectedStat.substring(1)}: <span className="font-bold">{oppSelectedCard[selectedStat]}</span></p> : <p className="mt-5 text-xl text-transparent">selectedStat</p>}
+                            {selectedCard && oppSelectedCard ? oppSelectedCard.type.strongAgainst.includes(selectedCard.type.name) ? <p className="text-white">{oppSelectedCard.type.name} is <span className="font-extrabold text-transparent animate-text-moving-background transition-all ease-in-out duration-200 bg-gradient-to-r from-cyan-500 via-blue-400 to-sky-400 bg-clip-text">super-effective</span> against {selectedCard.type.name}!</p> : oppSelectedCard.type.weakAgainst.includes(selectedCard.type.name) ? <p className="text-white">{oppSelectedCard.type.name} is not very effective against {selectedCard.type.name}...</p> : <p className="text-transparent">Hi</p> : <p className="text-transparent">Hi</p>}
                         </div>
                         
                         {/* YourCard */}
                         <div className="w-[15vw] scale-125 ml-2 my-auto text-center">
                             {selectedCard ? <Card pokemon={selectedCard} selectedCard={selectedCard} handleRound={handleRound} handleTimeOutBeforeRound={handleTimeOutBeforeRound} gameState={gameState} setSelectedStat={setSelectedStat}/> : <></> }
                             {selectedStat ? <p className="text-white mt-5 text-xl z-50">{selectedStat.charAt(0).toUpperCase() + selectedStat.substring(1)}: <span className="font-bold">{selectedCard[selectedStat]}</span></p> : <p className="mt-5 text-xl text-transparent">selectedStat</p>}
+                            {/* {selectedCard && oppSelectedCard ? selectedCard.type.strongAgainst.includes(oppSelectedCard.type.name) ? <p className="text-white">{selectedCard.type.name} is super-effective against {oppSelectedCard.type.name}!</p> : <p className="text-transparent">Hi</p> : <p className="text-transparent">Hi</p>}
+                            {selectedCard && oppSelectedCard ? selectedCard.type.weakAgainst.includes(oppSelectedCard.type.name) ? <p className="text-white">{selectedCard.type.name} is not very effective against {oppSelectedCard.type.name}...</p> : <p className="text-transparent">Hi</p> : <p className="text-transparent">Hi</p>} */}
+                            {selectedCard && oppSelectedCard ? selectedCard.type.strongAgainst.includes(oppSelectedCard.type.name) ? <p className="text-white">{selectedCard.type.name} is <span className="font-extrabold text-transparent animate-text-moving-background transition-all ease-in-out duration-200 bg-gradient-to-r from-cyan-500 via-blue-400 to-sky-400 bg-clip-text">super-effective</span> against {oppSelectedCard.type.name}!</p> : selectedCard.type.weakAgainst.includes(oppSelectedCard.type.name) ? <p className="text-white">{selectedCard.type.name} is not very effective against {oppSelectedCard.type.name}...</p> : <p className="text-transparent">Hi</p> : <p className="text-transparent">Hi</p>}
+
                         </div>
                         <div className="my-auto text-center" >
                             {gameState.playerATurn ? <p className="mb-5 text-transparent drop-shadow-md shadow-white font-extrabold text-3xl -mt-6 animate-text-moving-background transition-all ease-in-out duration-200 bg-gradient-to-r from-cyan-500 via-blue-400 to-sky-400  bg-clip-text">Your turn</p> : 
