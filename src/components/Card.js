@@ -2,7 +2,7 @@ import Rating from '@mui/material/Rating';
 import { useState, useEffect } from 'react';
 
 
-const Card = ({pokemon, userHand, setUserHand, selectedCard, setSelectedCard, handleRound, handleTimeOutBeforeRound, gameState, setSelectedStat, inHand, isOpponent}) => {
+const Card = ({pokemon, userHand, setUserHand, selectedCard, setSelectedCard, handleRound, handleTimeOutBeforeRound, gameState, selectedStat, setSelectedStat, inHand, isOpponent}) => {
 
 //     const [mousePos, setMousePos] = useState({});
 
@@ -38,7 +38,7 @@ const Card = ({pokemon, userHand, setUserHand, selectedCard, setSelectedCard, ha
             setUserHand(newHand);
             
         }
-        if(!gameState.playerATurn && selectedCard){
+        if(!gameState.playerATurn && selectedCard && selectedStat === ""){
             // setTimeout(500);
             const statArray = ["hp", "attack", "defence", "specialAttack", "specialDefence", "speed"];
             chosenStat = statArray[Math.floor(Math.random() * statArray.length)];  
@@ -49,8 +49,11 @@ const Card = ({pokemon, userHand, setUserHand, selectedCard, setSelectedCard, ha
     })
 
     const handleStateClick = (stat) => {
-        setSelectedStat(stat);
-        handleTimeOutBeforeRound(stat);
+        
+        if (selectedStat === "") {
+            setSelectedStat(stat);
+            handleTimeOutBeforeRound(stat);
+        }
     };
 
     return ( 
