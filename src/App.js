@@ -56,7 +56,6 @@ function App() {
         y: e.clientY
       })
 
-      console.log(e);
 
 
     }
@@ -113,7 +112,7 @@ function App() {
         <div className="mainContainer">
           <Routes>
             <Route path="/" element={<HomeContainer/>}/>
-            <Route path="/pokedex" element={<PokedexContainer/>}/>
+            <Route path="/pokedex" element={<PokedexContainer account={account}/>}/>
             <Route path="/game" element={<OppsSelect/>}/>
             <Route path="/game/playgame/:id" element={<Game account={account}/>}/>
             <Route path="/register" element={<LoginContainer logInToAnAccount={logInToAnAccount}/>} /> 

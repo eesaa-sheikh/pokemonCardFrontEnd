@@ -8,6 +8,7 @@ html, body {
   border: 0px;
 }
 
+
 :root {
   --color1: rgb(0, 231, 255);
   --color2: rgb(255, 0, 231);
@@ -491,8 +492,9 @@ background: linear-gradient(21deg, rgba(0,127,255,1) 0%, rgba(27,0,195,1) 84%); 
   margin-right: auto;
   display: flex;
   flex-direction: column;
-  gap: 1em;
-  width: 1500px;
+  gap: 0.5em;
+  width: 1000px;
+
 }
 
 ::-webkit-scrollbar{
@@ -503,26 +505,28 @@ background: linear-gradient(21deg, rgba(0,127,255,1) 0%, rgba(27,0,195,1) 84%); 
   display: flex;
   justify-content: space-between;
   border-radius: 55px;
-  padding: 50px 100px;
+  padding: 25px 50px;
   transition: all 0.25s ease;
-
+  margin-top: 1vh;
+  margin-bottom: auto;
+  
 }
 
 .pokedex-entry:hover{
   filter: brightness(110%);
-  padding: 75px 120px;
+  padding: 50px 70px;
   transition: all 0.25s ease;
 }
 
 .pokemon-name {
   color: white;
   font-weight: bold;
-  font-size: 5em;
+  font-size: 4em;
 }
 
 .card-div{
   margin: auto;
-  scale: 400%;
+  scale: 300%;
 }
 .loginForm{
 
@@ -617,21 +621,58 @@ margin-right: 16vw;
   display: flex;
 }
 .endGameText{
-  border: 3px solid white;
-  display: relative;
-  color: white
+  border: 5px solid rgb(3, 3, 3); 
+  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  margin-inline: 10px;
+  background-color: aliceblue;
+  text-align: center;
+  outline-style: dotted;
+  font-size: 50px;
+
+  overflow: hidden; 
+  white-space: nowrap; 
+  margin: 0 auto; 
+  letter-spacing: .15em;
+  animation: 
+    typing 1.5s steps(40, end),
+    blink-caret .75s step-end infinite;
+
+}
+
+.homeB{
+  overflow: hidden; 
+  white-space: nowrap; 
+  margin: 0 auto; 
+  letter-spacing: .15em;
+  animation: 
+    typing 1.5s steps(40, end),
+    blink-caret .75s step-end infinite;
+
+}
+
+
+/* The typing effect */
+@keyframes typing {
+  from { width: 0 }
+  to { width: 100% }
+}
+
+/* The typewriter cursor effect */
+@keyframes blink-caret {
+  from, to { border-color: transparent }
+
 }
 
 .cursor{
-    mix-blend-mode: difference;
-  -webkit-filter: grayscale(1) invert(1);
-    filter: grayscale(1) invert(1);
-  height: 50px;
-  width: 50px;
-  border-radius: 50%;
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 50;
-  pointer-events: none;
+  mix-blend-mode: difference;
+-webkit-filter: grayscale(1) invert(1);
+  filter: grayscale(1) invert(1);
+height: 50px;
+width: 50px;
+border-radius: 50%;
+position: fixed;
+top: 0;
+left: 0;
+z-index: 50;
+pointer-events: none;
 }
