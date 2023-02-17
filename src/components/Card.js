@@ -1,5 +1,6 @@
 import Rating from '@mui/material/Rating';
 import { useState, useEffect } from 'react';
+import { useMotionValue, useTransform, motion } from "framer-motion";
 
 
 const Card = ({pokemon, userHand, setUserHand, selectedCard, setSelectedCard, handleRound, handleTimeOutBeforeRound, gameState, selectedStat, setSelectedStat, inHand, isOpponent, oppPlayedCard}) => {
@@ -21,8 +22,10 @@ const Card = ({pokemon, userHand, setUserHand, selectedCard, setSelectedCard, ha
 //     };
 //   }, []);
 
-    
-    
+    const x = useMotionValue(0);
+    const y = useMotionValue(0);
+    const rotateX = useTransform(y, [-100, 100], [30, -30]);
+    const rotateY = useTransform(x, [-100, 100], [-30, 30]);
 
     const handleClick = (() => {
         // check if NOT playerA turn 
@@ -61,6 +64,14 @@ const Card = ({pokemon, userHand, setUserHand, selectedCard, setSelectedCard, ha
             <>
             {/* ({mousePos.x}, {mousePos.y}) */}
             </>
+            <motion.div
+                style={{ x, y, rotateX, rotateY, z: 5,  }}
+                drag
+                dragElastic={0.2}
+                dragConstraints={{ top: 0, left: 0, right: 0, bottom: 0 }}
+                whileTap={{ cursor: 'grabbing' }}
+                className='transition-all duration-150 hover:scale-[125%] cursor-grab relative'
+                >
             {!isOpponent ? 
             <div onClick={handleClick} 
                 className = {inHand ? `pokemonCard ${"w-[6.3cm] h-[8.8cm]"}` : `pokemonCard ${"w-[6.3cm] h-[8.8cm]"}`} style = {{backgroundImage : `url(${pokemon.imgUrl})`,
@@ -131,6 +142,7 @@ const Card = ({pokemon, userHand, setUserHand, selectedCard, setSelectedCard, ha
                 {/* mega lucario: https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/2cdf2e60-0243-485d-a272-d1dcd303cb53/dbkm2m6-9bc4ad73-fe77-4000-9a53-65bd8f48b568.jpg/v1/fill/w_294,h_350,q_70,strp/no_448_mega_by_ffxazq_dbkm2m6-350t.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9MTIxOCIsInBhdGgiOiJcL2ZcLzJjZGYyZTYwLTAyNDMtNDg1ZC1hMjcyLWQxZGNkMzAzY2I1M1wvZGJrbTJtNi05YmM0YWQ3My1mZTc3LTQwMDAtOWE1My02NWJkOGY0OGI1NjguanBnIiwid2lkdGgiOiI8PTEwMjQifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6aW1hZ2Uub3BlcmF0aW9ucyJdfQ.POTcNHPHtrB6-6MKsXvcti0VkYprWK7f0S9xNm7FYK8 */}
                 {/* <p>Rating: {pokemon.rating}</p> */}
             </div></>}
+            </motion.div>
         </>
     );
 }
