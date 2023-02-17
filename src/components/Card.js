@@ -85,7 +85,7 @@ const Card = ({pokemon, userHand, setUserHand, selectedCard, setSelectedCard, ha
                 </div>
                 {/* <img src={pokemon.imgUrl}/> */}
                 
-                <img className='typeImage' src= {require(`../PokemonTypeAsset/${pokemon.type.name}_icon_SwSh.png`)} width = {"30px"} alt = {pokemon.type.name}/>
+                <img className='w-[30px] h-fit pt-2 pr-2' src= {require(`../PokemonTypeAsset/${pokemon.type.name}_icon_SwSh.png`)} alt = {pokemon.type.name}/>
                 </div>
             
             
