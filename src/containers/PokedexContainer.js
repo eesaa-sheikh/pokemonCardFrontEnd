@@ -46,6 +46,9 @@ const PokedexContainer = ({account}) => {
 
     return ( 
         <div className="pokedex-container">
+            <audio  autoPlay>
+            <source src={pokedexSong} type="audio/mp3"></source>
+        </audio>
             <div className="pokedex-list grid gap-2 overflow-y-scroll h-screen whitespace-nowrap scrollbar-hide">
                 <PokedexList pokedex={pokedex} setShowCard={setShowCard} ownedCards={ownedCards}/>
             </div>

@@ -1,8 +1,13 @@
+*{
+  cursor: none;
+}
+
 html, body {
   margin: 0px;
   padding: 0px;
   border: 0px;
 }
+
 
 :root {
   --color1: rgb(0, 231, 255);
@@ -391,6 +396,31 @@ background: linear-gradient(21deg, rgba(0,127,255,1) 0%, rgba(27,0,195,1) 84%); 
   }
 }
 
+@keyframes pulse-forward {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+    animation: ease-in-out
+  }
+  
+  50% {
+    transform: scale(1.15);
+    box-shadow: 0 0 5px 10px rgba(0, 0, 0, 0);
+ 
+    filter: drop-shadow(5px 5px 5px black);
+  }
+  
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+
+  }
+}
+
+.pulsingGameText {
+  animation: pulse-forward 2s infinite;
+}
+
 #testing{
 
   /* width: 100vw;
@@ -588,7 +618,58 @@ margin-right: 16vw;
   display: flex;
 }
 .endGameText{
-  border: 3px solid white;
-  display: relative;
-  color: white
+  border: 5px solid rgb(3, 3, 3); 
+  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  margin-inline: 10px;
+  background-color: aliceblue;
+  text-align: center;
+  outline-style: dotted;
+  font-size: 50px;
+
+  overflow: hidden; 
+  white-space: nowrap; 
+  margin: 0 auto; 
+  letter-spacing: .15em;
+  animation: 
+    typing 1.5s steps(40, end),
+    blink-caret .75s step-end infinite;
+
+}
+
+.homeB{
+  overflow: hidden; 
+  white-space: nowrap; 
+  margin: 0 auto; 
+  letter-spacing: .15em;
+  animation: 
+    typing 1.5s steps(40, end),
+    blink-caret .75s step-end infinite;
+
+}
+
+
+/* The typing effect */
+@keyframes typing {
+  from { width: 0 }
+  to { width: 100% }
+}
+
+/* The typewriter cursor effect */
+@keyframes blink-caret {
+  from, to { border-color: transparent }
+
+}
+
+.cursor{
+  mix-blend-mode: difference;
+-webkit-filter: grayscale(1) invert(1);
+  filter: grayscale(1) invert(1);
+height: 50px;
+width: 50px;
+border-radius: 50%;
+position: fixed;
+top: 0;
+left: 0;
+z-index: 50;
+pointer-events: none;
 }
