@@ -1,6 +1,4 @@
-/* *{
-  cursor: none;
-} */
+
 
 html, body {
   margin: 0px;
@@ -662,16 +660,3 @@ margin-right: 16vw;
   from, to { border-color: transparent }
 
 }
-
-/* .cursor{
--webkit-filter: grayscale(1) invert(1);
-  filter: grayscale(1) invert(1);
-height: 50px;
-width: 50px;
-border-radius: 50%;
-position: fixed;
-top: 0;
-left: 0;
-z-index: 150;
-pointer-events: none;
-} */
