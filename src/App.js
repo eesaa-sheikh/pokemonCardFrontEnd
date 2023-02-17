@@ -38,34 +38,34 @@ function App() {
     return check;
   };
 
-  const [mousePosition, setMousePosition] = useState ({
+  // const [mousePosition, setMousePosition] = useState ({
 
-    x: 0,
-    y: 0
-  });
+  //   x: 0,
+  //   y: 0
+  // });
 
-  console.log(mousePosition)
-
-
-  const [cursorVariant,setCursorVariant] = useState("default")
-  useEffect(() =>{
-    const mouseMove = e => {
-      setMousePosition({
-
-        x: e.clientX,
-        y: e.clientY
-      })
+  // console.log(mousePosition)
 
 
+  // const [cursorVariant,setCursorVariant] = useState("default")
+  // useEffect(() =>{
+  //   const mouseMove = e => {
+  //     setMousePosition({
 
-    }
+  //       x: e.clientX,
+  //       y: e.clientY
+  //     })
 
-    window.addEventListener("mousemove",mouseMove)
 
-    return () => {
-      window.removeEventListener("mousemove",mouseMove);
-    }
-  }, [])
+
+  //   }
+
+  //   window.addEventListener("mousemove",mouseMove)
+
+  //   return () => {
+  //     window.removeEventListener("mousemove",mouseMove);
+  //   }
+  // }, [])
 
 
   // const logInToAnAccount = async (accountName, accountPassword) => {
@@ -75,22 +75,22 @@ function App() {
   // };
 
 
-  const variants ={
-    default: {
-      x: mousePosition.x -16,
-      y: mousePosition.y - 16
-    },
-    text: {
-      height:150,
-      width: 150,
-      x: mousePosition.x-75,
-      y: mousePosition.y-75,
-      backgroundColor: "blue"
-    }
-  }
+  // const variants ={
+  //   default: {
+  //     x: mousePosition.x -16,
+  //     y: mousePosition.y - 16
+  //   },
+  //   text: {
+  //     height:150,
+  //     width: 150,
+  //     x: mousePosition.x-75,
+  //     y: mousePosition.y-75,
+  //     backgroundColor: "blue"
+  //   }
+  // }
 
-  const textEnter =() => setCursorVariant("text");
-  const textLeave =() => setCursorVariant("default");
+  // const textEnter =() => setCursorVariant("text");
+  // const textLeave =() => setCursorVariant("default");
 
   return (
     <>
@@ -103,11 +103,11 @@ function App() {
             {account !== "" ? <p className='acc'>Hello {account.username}</p>:<></>}
         </div>
           <header className='navBar'>
-            <Link onMouseEnter={textEnter} onMouseLeave={textLeave} className ="home" to="/">Home</Link>
-            {account !== "" ? <Link onMouseEnter={textEnter} onMouseLeave={textLeave} className ="home" to="/game">Play</Link> :<></>}
-            {account !== "" ? <Link  onMouseEnter={textEnter} onMouseLeave={textLeave}className ="home" to="/pokedex">Pokedex</Link> :<></>}
-            {account === "" ?<Link onMouseEnter={textEnter} onMouseLeave={textLeave} className ="home" to="/register">Login</Link>:<></>}
-            {account !== "" ? <button onClick={()=>setAccount("")}><Link  onMouseEnter={textEnter} onMouseLeave={textLeave} className ="home" to="/">Logout</Link></button> :<></>}
+            <Link className ="home" to="/">Home</Link>
+            {account !== "" ? <Link className ="home" to="/game">Play</Link> :<></>}
+            {account !== "" ? <Link className ="home" to="/pokedex">Pokedex</Link> :<></>}
+            {account === "" ?<Link  className ="home" to="/register">Login</Link>:<></>}
+            {account !== "" ? <button onClick={()=>setAccount("")}><Link className ="home" to="/">Logout</Link></button> :<></>}
         </header>
         <div className="mainContainer">
           <Routes>
@@ -119,11 +119,11 @@ function App() {
           </Routes>
           </div>
 
-          <motion.img src='https://www.freepnglogos.com/uploads/pokeball-png/pokeball-icon-download-icons-32.png' className='cursor'
+          {/* <motion.img src='https://www.freepnglogos.com/uploads/pokeball-png/pokeball-icon-download-icons-32.png' className='cursor'
           variants={variants}
           animate = {cursorVariant}
           />
-          
+           */}
         </BrowserRouter>
       </AccountContext.Provider>
 
