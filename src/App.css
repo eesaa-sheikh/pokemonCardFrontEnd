@@ -214,7 +214,14 @@ html, body {
   font-weight: 300;
 }
 
+.parallax-effect {
+  transform-style: preserve-3d;
+  transform: perspective(1000px);
+}
 
+.inner-element {
+  transform: translateZ(20px)
+}
 
 .back{
 background-color: aqua;

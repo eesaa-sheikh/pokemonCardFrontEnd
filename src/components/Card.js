@@ -4,7 +4,6 @@ import { useMotionValue, useTransform, motion } from "framer-motion";
 import React from 'react';
 import Tilt from 'react-parallax-tilt';
 
-
 const Card = ({pokemon, userHand, setUserHand, selectedCard, setSelectedCard, handleRound, handleTimeOutBeforeRound, gameState, selectedStat, setSelectedStat, inHand, isOpponent, oppPlayedCard}) => {
 
 //     const [mousePos, setMousePos] = useState({});
@@ -76,7 +75,7 @@ const Card = ({pokemon, userHand, setUserHand, selectedCard, setSelectedCard, ha
                 className='transition-all duration-150 hover:scale-[125%] cursor-grab relative'
                 >
             {!isOpponent ? 
-            <Tilt glareEnable={true} glareMaxOpacity={0.9} glareColor="lightblue" glarePosition="all"><div onClick={handleClick}
+            <Tilt className='' glareEnable={true} glareMaxOpacity={0.9} glareColor="lightblue" glarePosition="all" glareBorderRadius='10px'><div onClick={handleClick}
                 className = {inHand ? `pokemonCard ${"w-[6.3cm] h-[8.8cm]"}` : `pokemonCard ${"w-[6.3cm] h-[8.8cm]"}`} style = {{backgroundImage : `url(${pokemon.imgUrl})`,
                                                     
                                                     backgroundSize: "cover", 
