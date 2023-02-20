@@ -75,7 +75,7 @@ const Card = ({pokemon, userHand, setUserHand, selectedCard, setSelectedCard, ha
                 className='transition-all duration-150 hover:scale-[125%] cursor-grab relative'
                 >
             {!isOpponent ? 
-            <Tilt className='' glareEnable={true} glareMaxOpacity={0.9} glareColor="lightblue" glarePosition="all" glareBorderRadius='10px'><div onClick={handleClick}
+            <Tilt className='' glareEnable={false} glareMaxOpacity={0.9} glareColor="lightblue" glarePosition="all" glareBorderRadius='10px'><div onClick={handleClick}
                 className = {inHand ? `pokemonCard ${"w-[6.3cm] h-[8.8cm]"}` : `pokemonCard ${"w-[6.3cm] h-[8.8cm]"}`} style = {{backgroundImage : `url(${pokemon.imgUrl})`,
                                                     
                                                     backgroundSize: "cover", 
