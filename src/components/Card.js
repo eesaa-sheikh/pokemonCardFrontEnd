@@ -86,9 +86,6 @@ const Card = ({pokemon, userHand, setUserHand, selectedCard, setSelectedCard, ha
                                                     fontFamily: "'Roboto', sans-serif",
                                                     marginRight: "auto",
                                                     marginLeft: "auto"}}>
-                <div class="card"></div>
-                <div class="card"></div>
-                <div class="card"></div>
   
                                              
             <div className='cardBannerTop'>
